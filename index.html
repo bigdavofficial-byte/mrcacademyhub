@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr C Academy Hub - Your #1 NOUN Success Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0B4D2A;--yellow:#FFC300;--dark:#0E1E14}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1}
+.logo img{width:48px;height:48px;border-radius:12px;background:#f6f6f6;object-fit:contain}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
+.login{border:1.5px solid var(--green);padding:8px 20px;border-radius:100px;color:var(--green);font-weight:700;text-decoration:none;cursor:pointer}
+.hero{padding:40px 6% 60px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%);display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:30px}
+.hero h1{font-size:52px;line-height:1.05;color:var(--dark);letter-spacing:-1.5px}
+.hero h1 span{color:var(--green)}
+.hero p{margin:16px 0 26px;color:#5a6d5e;font-size:17px;max-width:480px}
+.btn{padding:15px 26px;border-radius:100px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:10px}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 10px 20px rgba(11,77,42,.25)}
+.btn-quiz{background:#fff;border:1.5px solid #0B4D2A;color:#0B4D2A}
+.trust{display:flex;gap:30px;justify-content:center;padding:14px;background:#0E1E14;color:#D6E8D8;font-size:13px;flex-wrap:wrap}
+.section{padding:40px 6%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card-premium{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:22px;transition:.25s;cursor:pointer;display:block;text-decoration:none;color:inherit}
+.card-premium:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center}
+.badge{margin-top:14px;display:inline-block;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;border:1px solid #e0e0e0}
+.badge-free{background:#E8F5E9;color:var(--green);border-color:#C8E6C9}
+.badge-action{background:#111;color:#fff}
+.img-box{width:100%;height:420px;background:radial-gradient(circle at 30% 20%, #E8F9E9 0%, #FFF7CC 70%);border-radius:32px;display:grid;place-items:center;position:relative}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex!important}
+.modal{background:#fff;border-radius:20px;padding:28px;max-width:400px;width:100%}
+.input{width:100%;padding:14px;border:1.5px solid #e5e5e5;border-radius:12px;margin-bottom:12px;font-size:14px;outline:none}
+.input:focus{border-color:var(--green)}
+.btn-login{width:100%;background:var(--green);color:#fff;padding:14px;border-radius:100px;border:none;font-weight:800;cursor:pointer}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:36px}.img-box{height:320px} nav{display:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo"><img src="images/logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div>
+<nav>
+<a href="index.html" style="color:var(--green);font-weight:700">Home</a>
+<a href="tma.html">TMA Booking</a>
+<a href="quiz.html">Quiz</a>
+<a href="past-questions.html">Past Questions</a>
+<a href="materials.html">Course Materials</a>
+<a href="summary.html">Comprehensive Summaries</a>
+<a href="project.html">Project</a>
+<a href="resources.html">Resources</a>
+<a href="#" id="headerLoginBtn" class="login" onclick="openGlobalLogin(); return false;">Login</a>
+<span id="loggedInfo" style="display:none;font-size:13px;margin-left:6px"></span>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>Your #1 <span>NOUN</span><br>Success Partner</h1>
+<p>Join 10,000+ smart NOUN students using Mr C Academy Hub to pass TMA, Quiz, Exams & Project — faster and easier.</p>
+<div style="display:flex;gap:14px;flex-wrap:wrap">
+<a class="btn btn-wa" href="https://wa.me/2349046023711?text=Hi%20Mr%20C%2C%20I%20want%20to%20book%20for%20TMA%20Assistance">
+<svg width="20" height="20" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+Book TMA Assistance
+</a>
+<a class="btn btn-quiz" href="quiz.html">Try 5 Free Questions →</a>
+</div>
+</div>
+<div><div class="img-box"><div style="text-align:center;padding:20px"><div style="font-size:80px">👨‍🎓</div><div style="font-size:24px;font-weight:800;color:#0B4D2A;margin-top:10px">10,000+<br>NOUN Students</div><div style="margin-top:10px;background:#fff;padding:10px 18px;border-radius:100px;display:inline-block;box-shadow:0 8px 20px rgba(0,0,0,.1);font-size:13px;font-weight:700">✅ Verified Success Partner</div></div></div></div>
+</section>
+
+<div class="trust"><span>✓ Trusted by 10,000+ NOUN Students</span><span>★ 4.8/5 Average Rating</span><span>◍ 24/7 Support on WhatsApp</span></div>
+
+<section class="section"><div class="grid">
+<a href="tma.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#DCF8C6"><svg width="24" height="24" viewBox="0 0 448 512" fill="#25D366"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></div><h3>TMA Assistance Booking</h3></div>
+<p style="color:#666;font-size:14px">Book us for your TMA assistance. We guide you and ensure your TMA is submitted correctly.</p>
+<span class="badge badge-action">Book on WhatsApp</span>
+</a>
+
+<a href="quiz.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#FFF3C4">🎯</div><h3>CBT Quiz Practice</h3></div>
+<p style="color:#666;font-size:14px">Attempt 5 free questions. Unlock unlimited quiz practice after.</p>
+<span class="badge badge-action">Try 5 Free Now</span>
+</a>
+
+<a href="past-questions.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#E8F5E9">📁</div><h3>Past Questions</h3></div>
+<p style="color:#666;font-size:14px">Original NOUN past questions from 2015–2024 directly from the university portal.</p>
+<span class="badge badge-free">FREE Access</span>
+</a>
+
+<a href="materials.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#E3F2FD">📚</div><h3>Course Materials</h3></div>
+<p style="color:#666;font-size:14px">All NOUN e-courseware PDFs for 100L – 800L. Free download from nou.edu.ng</p>
+<span class="badge badge-free">FREE Download</span>
+</a>
+
+<a href="summary.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#FFF3E0">📝</div><h3>Comprehensive Summaries</h3></div>
+<p style="color:#666;font-size:14px">Premium comprehensive summaries for fast revision before exams. 40+ pages, exam-focused. Pay and download instantly.</p>
+<span class="badge">From ₦500</span>
+</a>
+
+<a href="project.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#F3E5F5">🎓</div><h3>Project Topics</h3></div>
+<p style="color:#666;font-size:14px">Approved topics. Pay once and 3 topics are automatically generated for your department.</p>
+<span class="badge">100+ Topics • Auto-Generate</span>
+</a>
+
+<a href="resources.html" class="card-premium">
+<div class="top"><div class="ic" style="background:#E0F2F1">🔗</div><h3>Resources & Tools</h3></div>
+<p style="color:#666;font-size:14px">GPA Calculator, Study Planner, NOUN Portal Links, Important Updates.</p>
+<span class="badge badge-free">Free Tools</span>
+</a>
+
+</div></section>
+
+<footer style="background:#0E1E14;color:#C8D9CA;padding:60px 6% 25px;margin-top:40px">
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:30px">
+<div>
+<div style="display:flex;align-items:center;gap:12px;font-weight:800;color:#fff;font-size:18px;margin-bottom:14px">
+<img src="images/logo.png" style="width:44px;height:44px;border-radius:12px;background:#fff;object-fit:contain"> Mr C Academy Hub
+</div>
+<p style="font-size:14px;line-height:1.6;color:#A8BEAB">Your #1 NOUN Success Partner. We help 10,000+ NOUN students pass TMA, Quizzes, Exams and Projects faster.</p>
+<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+<a href="https://wa.me/2349046023711" style="width:42px;height:42px;background:#25D366;border-radius:50%;display:grid;place-items:center;text-decoration:none" title="WhatsApp">
+<svg width="20" height="20" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+<a href="https://t.me/YOUR_TELEGRAM_LINK" style="width:42px;height:42px;background:#229ED9;border-radius:50%;display:grid;place-items:center;text-decoration:none" title="Telegram Group">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.15-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+</a>
+<a href="https://whatsapp.com/channel/0029VbDJXsPDZ4LhnF7HHp2C" style="width:42px;height:42px;background:#1A3320;border:1.5px solid #25D366;border-radius:50%;display:grid;place-items:center;text-decoration:none" title="NOUN WhatsApp Channel">
+<span style="font-size:11px;font-weight:800;color:#25D366">CH</span>
+</a>
+</div>
+</div>
+<div><h4 style="color:#fff;margin-bottom:16px;font-size:14px">QUICK LINKS</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:14px"><a href="tma.html" style="color:#A8BEAB;text-decoration:none">TMA Booking</a><a href="quiz.html" style="color:#A8BEAB;text-decoration:none">CBT Quiz Practice</a><a href="past-questions.html" style="color:#A8BEAB;text-decoration:none">Past Questions</a><a href="materials.html" style="color:#A8BEAB;text-decoration:none">Course Materials</a><a href="summary.html" style="color:#A8BEAB;text-decoration:none">Comprehensive Summaries</a></div></div>
+<div><h4 style="color:#fff;margin-bottom:16px;font-size:14px">SUPPORT</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:14px"><a href="project.html" style="color:#A8BEAB;text-decoration:none">Project Topics</a><a href="resources.html" style="color:#A8BEAB;text-decoration:none">Resources & Tools</a><a href="resources.html#gpa-calculator" style="color:#A8BEAB;text-decoration:none">GPA Calculator</a><a href="resources.html#study-planner" style="color:#A8BEAB;text-decoration:none">Study Planner</a><a href="#" onclick="openGlobalLogin(); return false;" style="color:#A8BEAB;text-decoration:none">Student Login</a></div></div>
+<div><h4 style="color:#fff;margin-bottom:16px;font-size:14px">GET IN TOUCH</h4><p style="font-size:14px;color:#A8BEAB;line-height:1.6">Questions? Chat us 24/7 on WhatsApp or join our groups.</p>
+<a href="https://wa.me/2349046023711?text=Hi%20Mr%20C" style="margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 20px;border-radius:100px;text-decoration:none;font-weight:700;font-size:14px">
+<svg width="18" height="18" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+Chat on WhatsApp
+</a>
+<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+<a href="https://t.me/YOUR_TELEGRAM_LINK" style="font-size:12px;background:#1A3320;border:1px solid #229ED9;color:#fff;padding:7px 14px;border-radius:100px;text-decoration:none">Join Telegram Group</a>
+<a href="https://whatsapp.com/channel/0029VbDJXsPDZ4LhnF7HHp2C" style="font-size:12px;background:#1A3320;border:1px solid #25D366;color:#fff;padding:7px 14px;border-radius:100px;text-decoration:none">Join WhatsApp Channel</a>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #1E3A24;margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#7A9A7D"><span>© 2026 Mr C Academy Hub. All rights reserved. Not affiliated with NOUN.</span><span>Made for NOUN Students ❤️</span></div>
+</footer>
+
+<div id="globalLoginModal" class="modal-overlay"><div class="modal"><h3 style="font-size:22px;font-weight:800">Login / Create Account</h3><p style="font-size:13px;color:#666;margin:6px 0 18px">One login works everywhere on Mr C Academy Hub.</p><input id="globalEmail" type="email" placeholder="Email e.g. student@gmail.com" class="input"><input id="globalPass" type="password" placeholder="Password (min 4 chars)" class="input"><div id="globalLoginMsg" style="font-size:12px;color:#ff5252;margin-bottom:10px;display:none"></div><button onclick="handleGlobalLogin()" class="btn-login">Login / Create Account →</button><button onclick="closeGlobalLogin()" style="width:100%;background:#f2f2f2;color:#333;padding:12px;border-radius:100px;border:none;font-weight:700;cursor:pointer;margin-top:10px">Cancel</button></div></div>
+<script src="auth.js"></script>
+</body>
+</html>

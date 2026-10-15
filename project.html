@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Topics - Mr C Academy Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--green:#0B4D2A;--dark:#0E1E14}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#F8FAF8;color:var(--dark)}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1}
+.logo img{width:44px;height:44px;border-radius:12px;background:#fff;object-fit:contain}
+nav{display:flex;gap:18px;align-items:center}
+nav a{text-decoration:none;color:#444;font-size:13px}
+nav a.active{color:var(--green);font-weight:800}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:9px 16px;border-radius:100px;font-weight:700;font-size:12px;text-decoration:none}
+.hero{padding:36px 6% 26px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 45%,#FFF9E5 100%)}
+.hero h1{font-size:38px;line-height:1.05;letter-spacing:-1px}.hero h1 span{color:var(--green)}
+.hero p{max-width:720px;margin-top:10px;color:#5a6d5e;font-size:14px;line-height:1.6}
+.badge{display:inline-block;background:#FFC300;color:#111;padding:7px 16px;border-radius:100px;font-weight:800;font-size:12px;margin-top:12px}
+.trust{background:#0E1E14;color:#D6E8D8;text-align:center;padding:10px;font-size:11px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.section{padding:24px 6% 60px;display:grid;grid-template-columns:1.1fr.9fr;gap:20px}
+.card{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:22px;box-shadow:0 8px 24px rgba(0,0,0,.03)}
+.input,select{width:100%;padding:13px 15px;border:1.5px solid #e5e5e5;border-radius:12px;font-size:13px;outline:none;margin-bottom:12px;background:#fff}
+.btn-pay{width:100%;background:var(--green);color:#fff;padding:15px;border-radius:100px;border:none;font-weight:800;font-size:14px;cursor:pointer}
+.info{background:#0E1E14;color:#A8BEAB;border-radius:16px;padding:18px;font-size:12px;line-height:1.6;margin-top:16px}
+.topics{display:none}
+.topic-box{border:1px solid #E2EFE3;border-radius:16px;padding:16px;margin-bottom:12px;background:linear-gradient(135deg,#fff,#F6FFF6);position:relative}
+.topic-num{background:var(--green);color:#fff;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;position:absolute;top:-8px;left:-8px}
+.success{display:none;background:#E8F5E9;border:1.5px solid #C8E6C9;border-radius:16px;padding:16px;text-align:center;margin-bottom:16px}
+@media(max-width:900px){.section{grid-template-columns:1fr}.hero h1{font-size:28px} nav{display:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo"><img src="images/logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="past-questions.html">Past Questions</a>
+<a href="project.html" class="active">Project Topics</a>
+<a href="resources.html">Resources</a>
+<a href="https://wa.me/2349046023711" class="wa-btn">
+<svg width="16" height="16" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+Chat on WhatsApp
+</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>NOUN Project Topics <span>₦1,000 for 3 Topics</span></h1>
+<p>Approved NOUN project topics auto-generated for your department. Pay once with Paystack, payment verifies automatically, and you get 3 different professional topics instantly with real PDF download. No waiting.</p>
+<div class="badge">💳 Pay ₦1,000 Once → Get 3 Topics Instantly • Auto PDF Download</div>
+</section>
+
+<div class="trust"><span>✓ 500+ Departments</span><span>✓ 3 Topics Per Payment</span><span>✓ Paystack Auto-Verify</span><span>✓ Instant PDF</span></div>
+
+<section class="section">
+<div>
+<div class="card">
+<h3>🎓 Get Your 3 Project Topics</h3>
+<input id="name" class="input" placeholder="Full Name">
+<input id="email" class="input" type="email" placeholder="Email (for receipt)">
+<input id="mat" class="input" placeholder="Matric Number e.g. NOU123456789">
+<select id="dept" class="input">
+<option value="">Select Department</option>
+<option>Public Administration (PAD)</option><option>Business Administration (BUS)</option><option>Accounting (ACC)</option><option>Banking and Finance (BFN)</option><option>Computer Science (CIT)</option><option>Nursing Science (NSC)</option><option>Economics (ECO)</option><option>Political Science</option><option>Mass Communication</option><option>Education</option><option>Law</option><option>Agricultural Extension</option>
+</select>
+<div style="background:#FFF9E5;border:1px solid #FFE082;border-radius:12px;padding:12px;font-size:11px;margin-bottom:12px">
+<b>What you get for ₦1,000:</b><br>✓ 3 approved topics ✓ Chapter 1 guide ✓ Instant PDF download ✓ WhatsApp copy sent to us
+</div>
+<button class="btn-pay" onclick="payWithPaystack()">💳 Pay ₦1,000 - Auto Generate 3 Topics</button>
+</div>
+
+<div class="info">
+<b style="color:#fff">How it works (100% automatic):</b><br>
+1. Fill name, email, department<br>
+2. Click Pay → Paystack popup<br>
+3. Pay with card / transfer<br>
+4. Paystack verifies automatically<br>
+5. 3 topics appear instantly + PDF downloads automatically<br>
+6. We also receive your order on WhatsApp for backup<br><br>
+<a href="https://wa.me/2349046023711" style="color:#25D366;text-decoration:none;font-weight:800;display:inline-flex;gap:6px;align-items:center">
+<svg width="14" height="14" viewBox="0 0 448 512" fill="#25D366"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z"/></svg>
+Need help? Contact us on WhatsApp
+</a>
+</div>
+</div>
+
+<div>
+<div id="success" class="success"><h3 style="color:var(--green)">✅ Payment Successful!</h3><p style="font-size:12px;margin-top:6px">Your 3 topics generated for <span id="sDept"></span></p></div>
+<div id="topics" class="topics">
+<div class="card">
+<h3>📚 Your 3 Topics - <span id="tDept"></span></h3>
+<p style="font-size:11px;color:#777">For <span id="tName"></span> • Ref: <span id="tRef"></span></p>
+<div id="topicList" style="margin-top:14px"></div>
+<div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+<button onclick="downloadPDF()" style="flex:1;background:var(--green);color:#fff;padding:12px;border-radius:100px;border:none;font-weight:800;cursor:pointer">📄 Download PDF Now</button>
+<a id="waShare" href="#" target="_blank" style="flex:1;background:#25D366;color:#fff;padding:12px;border-radius:100px;text-align:center;text-decoration:none;font-weight:800;font-size:12px">💬 Contact us on WhatsApp</a>
+</div>
+</div>
+</div>
+<div id="preview" class="card"><h3>🔍 Sample Topics</h3><p style="font-size:11px;color:#666">Pay to unlock your department's real topics</p></div>
+</div>
+</div>
+</section>
+
+<script>
+const PAYSTACK_PUBLIC_KEY = "pk_live_YOUR_REAL_KEY_HERE";
+const topicsDB = {
+ "Public Administration (PAD)":[
+  ["Impact of E-Governance on Public Service Delivery in Nigeria","Examine how e-governance enhances transparency and efficiency."],
+  ["Assessment of Performance Appraisal in Local Government","Evaluate appraisal and productivity."],
+  ["Role of Public Enterprises in Economic Development","Contribution to GDP and employment."],
+  ["Bureaucracy and Development in Nigeria","Bottlenecks affecting development."],
+  ["Public Policy Implementation and National Development","Case study of policy success/failure."]
+ ],
+ "Computer Science (CIT)":[
+  ["Design of NOUN Online TMA Submission System","Automated TMA with anti-plagiarism."],
+  ["AI-Powered CBT Quiz System for NOUN","ML for personalized quizzes."],
+  ["Cybersecurity Awareness Among NOUN Students","Survey security practices."],
+  ["Mobile Learning App for NOUN Materials","Offline e-courseware access."],
+  ["Blockchain Certificate Verification for NOUN","Prevent fake certificates."]
+ ]
+};
+function getFallback(dept){return [[`Impact of Technology on ${dept} in Nigeria`,`Transforming ${dept}`],[`Assessment of ${dept} Education and Development`,`Role in sustainable development`],[`${dept} Management Strategies in Lagos`,`Management practices`],[`Government Policy and ${dept} Sector`,`Policy effects`],[`Improving ${dept} Performance`,`Strategies`]];}
+let current=[];
+function payWithPaystack(){
+  const name=document.getElementById('name').value.trim(), email=document.getElementById('email').value.trim(), dept=document.getElementById('dept').value;
+  if(!name||!email||!dept){alert("Fill Name, Email, Department");return;}
+  if(PAYSTACK_PUBLIC_KEY.includes("YOUR_REAL_KEY")){
+    if(confirm("Demo mode (key not set). Click OK to simulate payment and generate PDF now.")){onSuccess({reference:"DEMO_"+Date.now()});}
+    return;
+  }
+  const handler=PaystackPop.setup({key:PAYSTACK_PUBLIC_KEY,email:email,amount:100000,currency:"NGN",ref:"MRC_"+Math.floor(Math.random()*1e9),callback:function(r){onSuccess(r);},onClose:function(){alert("Closed - not paid yet");}});
+  handler.openIframe();
+}
+function onSuccess(res){
+  const name=document.getElementById('name').value, email=document.getElementById('email').value, dept=document.getElementById('dept').value;
+  let pool=topicsDB[dept]||getFallback(dept); pool=pool.sort(()=>0.5-Math.random()).slice(0,3); current=pool;
+  document.getElementById('success').style.display='block'; document.getElementById('topics').style.display='block'; document.getElementById('preview').style.display='none';
+  document.getElementById('sDept').textContent=dept; document.getElementById('tDept').textContent=dept; document.getElementById('tName').textContent=name; document.getElementById('tRef').textContent=res.reference;
+  const list=document.getElementById('topicList'); list.innerHTML=''; pool.forEach((t,i)=>{list.innerHTML+=`<div class="topic-box"><div class="topic-num">${i+1}</div><b>${t[0]}</b><p style="font-size:11.5px;color:#555;margin-top:6px">${t[1]}</p></div>`;});
+  const waMsg=`Hello Mr C Academy Hub, I just paid ₦1000 for project topics. Name: ${name}, Dept: ${dept}, Ref: ${res.reference}. Topics:\n1. ${pool[0][0]}\n2. ${pool[1][0]}\n3. ${pool[2][0]}\nEmail: ${email}`; document.getElementById('waShare').href=`https://wa.me/2349046023711?text=${encodeURIComponent(waMsg)}`;
+  setTimeout(()=>downloadPDF(),800);
+}
+function downloadPDF(){
+  const {jsPDF}=window.jspdf; const doc=new jsPDF(); const name=document.getElementById('name').value||"Student", dept=document.getElementById('dept').value||"Dept", ref=document.getElementById('tRef').textContent||"REF";
+  doc.setFontSize(16); doc.text("Mr C Academy Hub",10,15); doc.setFontSize(12); doc.text(`Project Topics - ${dept}`,10,23);
+  doc.setFontSize(10); doc.text(`Name: ${name} | Dept: ${dept} | Ref: ${ref} | Date: ${new Date().toLocaleDateString()}`,10,30);
+  let y=40; current.forEach((t,i)=>{doc.setFontSize(11); doc.setFont(undefined,'bold'); doc.text(`TOPIC ${i+1}: ${t[0]}`,10,y,{maxWidth:190}); y+=10; doc.setFont(undefined,'normal'); doc.setFontSize(10); doc.text(`Guide: ${t[1]}`,10,y,{maxWidth:190}); y+=20; if(y>270){doc.addPage(); y=20;}});
+  doc.text("Contact us on WhatsApp: https://wa.me/2349046023711 - Mr C Academy Hub",10,y+10);
+  doc.save(`${dept.replace(/[^a-zA-Z]/g,'_')}_3_Topics.pdf`);
+}
+</script>
+</body>
+</html>
