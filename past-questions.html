@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Questions - Mr C Academy Hub - ₦100 for 2 PQs</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0B4D2A;--yellow:#FFC300;--dark:#0E1E14}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#F8FAF8;color:var(--dark)}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #eee}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1}
+.logo img{width:44px;height:44px;border-radius:12px;background:#f6f6f6;object-fit:contain}
+nav{display:flex;gap:18px;align-items:center}
+nav a{text-decoration:none;color:#444;font-size:13.5px;font-weight:500}
+nav a.active{color:var(--green);font-weight:800}
+.hero{padding:34px 6% 26px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 45%,#FFF9E5 100%);border-bottom:1px solid #E9F0E9}
+.hero h1{font-size:38px;line-height:1.05;letter-spacing:-1px;color:var(--dark)}.hero h1 span{color:var(--green)}
+.hero p{margin:10px 0 18px;color:#5a6d5e;font-size:14.5px;max-width:700px;line-height:1.5}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.search-wrap{flex:1;min-width:300px;max-width:520px;position:relative}
+.search-input{width:100%;padding:16px 20px 16px 48px;border-radius:100px;border:1.5px solid #DDE8DE;font-size:14px;outline:none;background:#fff}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%)}
+.wa-help{background:#fff;border:1.5px solid #25D366;color:#075E54;padding:13px 20px;border-radius:100px;font-weight:800;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.badge-price{background:var(--yellow);color:#111;padding:6px 14px;border-radius:100px;font-weight:800;font-size:12px;display:inline-block}
+.count-bar{padding:12px 6% 0;font-size:12px;color:#6B7F6D;font-weight:700}
+.section{padding:12px 6% 60px}
+.list{background:#fff;border:1px solid #EEF2EF;border-radius:16px;overflow:hidden}
+.row{display:grid;grid-template-columns:110px 1fr 110px 120px;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid #F0F3F0}
+.row.head{background:#0E1E14;color:#fff;font-size:11px;font-weight:800}
+.code{font-weight:800;background:#111;color:#fff;padding:5px 10px;border-radius:100px;font-size:11px;text-align:center}
+.title{font-size:13px;font-weight:600}
+.title small{font-size:10px;color:#777;display:block;margin-top:2px}
+.price{font-weight:800;color:var(--green);font-size:12px;text-align:center}
+.price span{font-size:9px;color:#777;display:block}
+.btn-buy{background:#25D366;color:#fff;padding:9px 14px;border-radius:100px;font-size:11px;font-weight:800;text-decoration:none;display:inline-flex;gap:6px;justify-content:center;align-items:center}
+.whatsapp-box{background:linear-gradient(135deg,#E8F5E9,#FFF9E5);border:1.5px dashed var(--green);border-radius:16px;padding:18px;text-align:center;margin-top:18px;display:none}
+@media(max-width:850px){.row{grid-template-columns:1fr auto}.row.head{display:none}.hide-m{display:none}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo"><img src="logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="past-questions.html" class="active">Past Questions</a>
+<a href="summary.html">Comprehensive Summaries</a>
+<a href="https://wa.me/2349046023711" style="background:var(--green);color:#fff;padding:9px 18px;border-radius:100px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:6px;font-size:13px"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:18px;height:18px"> WhatsApp</a>
+</nav>
+</header>
+<section class="hero">
+<h1>NOUN Past Questions <span>₦100 for 2 PQs</span></h1>
+<p>Search 1500+ NOUN courses below. <b>Each course = ₦100 for 2 different past questions</b>.</p>
+<div class="badge-price">₦100 = 2 PQs • Instant WhatsApp Delivery</div>
+<div class="hero-actions">
+<div class="search-wrap"><span class="search-icon">🔍</span><input id="q" type="text" class="search-input" placeholder="Search: PAD101, NSC201, BFN302..." oninput="render()"></div>
+<a href="https://wa.me/2349046023711" class="wa-help"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:20px;height:20px"> Couldn't find your course? Chat on WhatsApp</a>
+</div>
+</section>
+<div class="count-bar"><span id="count">0 Courses</span></div>
+<section class="section">
+<div class="list"><div class="row head"><div>CODE</div><div>COURSE</div><div class="hide-m">PRICE</div><div>ACTION</div></div><div id="listBody"></div></div>
+<div id="whatsappBox" class="whatsapp-box"><h3>Course not in list?</h3><p style="font-size:12px;color:#555;margin-top:6px">Chat us - we have 10,000+ courses.</p><a href="https://wa.me/2349046023711" target="_blank" style="background:#25D366;color:#fff;padding:12px 22px;border-radius:100px;text-decoration:none;font-weight:800;display:inline-flex;align-items:center;gap:6px;margin-top:10px"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:18px;height:18px"> Chat 09046023711</a></div>
+<div style="text-align:center;margin-top:20px"><button id="loadMore" onclick="loadMore()" style="padding:12px 24px;border-radius:100px;border:1.5px solid var(--green);background:#fff;color:var(--green);font-weight:800;cursor:pointer">Load More Courses</button></div>
+</section>
+<script>
+const faculties = {"PAD":"Management Sciences","NSC":"Health Sciences","BFN":"Management Sciences","ACC":"Management Sciences","BUS":"Management Sciences","ENT":"Management Sciences","CIT":"Sciences","CSS":"Sciences","BIO":"Sciences","CHM":"Sciences","PHY":"Sciences","MTH":"Sciences","ECO":"Social Sciences","POL":"Social Sciences","SOC":"Social Sciences","EDU":"Education","LAW":"Law","AEM":"Agricultural Sciences","AGR":"Agricultural Sciences","GST":"General Studies","ENG":"Education","INR":"Social Sciences","PCR":"Social Sciences","CYS":"Sciences"};
+const titles = {"PAD":"Public Administration","NSC":"Nursing Science","BFN":"Banking & Finance","ACC":"Accounting","BUS":"Business Admin","ENT":"Entrepreneurship","CIT":"Computer Science","CSS":"Computer Science","BIO":"Biology","CHM":"Chemistry","PHY":"Physics","MTH":"Mathematics","ECO":"Economics","POL":"Political Science","SOC":"Sociology","EDU":"Education","LAW":"Law","AEM":"Agricultural Economics","AGR":"Agriculture","GST":"General Studies","ENG":"English","INR":"International Relations","PCR":"Peace & Conflict","CYS":"Cyber Security"};
+let courses = [];
+Object.keys(faculties).forEach(pre=>{for(let lvl=1; lvl<=4; lvl++){for(let i=1; i<=20; i++){let num=lvl*100+i;courses.push({c:pre+num,t:`${titles[pre]||pre} - ${pre+num}`,f:faculties[pre],l:`${lvl}00L`});}}});
+courses = [...new Map(courses.map(c=>[c.c,c])).values()].sort((a,b)=>a.c.localeCompare(b.c));
+let shown=200;
+function waLink(code){return `https://wa.me/2349046023711?text=${encodeURIComponent(`Hello Mr C, I want ${code} Past Question. 2 PQs for 100 naira`)}`;}
+function loadMore(){shown+=300;render();}
+function render(){
+ const q=document.getElementById('q').value.toLowerCase().trim();
+ let filtered=courses.filter(x=>x.c.toLowerCase().includes(q));
+ let total=courses.length;
+ if(q==='') filtered=filtered.slice(0,shown); else filtered=filtered.slice(0,500);
+ document.getElementById('count').textContent=`${filtered.length} / ${total} Courses`;
+ const body=document.getElementById('listBody');body.innerHTML='';
+ document.getElementById('whatsappBox').style.display=filtered.length===0&&q!==''?'block':'none';
+ filtered.forEach(o=>{body.innerHTML+=`<div class="row"><div><span class="code">${o.c}</span></div><div><div class="title">${o.t}<small>${o.f} • ${o.l}</small></div></div><div class="hide-m"><div class="price">₦100<span>for 2 PQs</span></div></div><div><a href="${waLink(o.c)}" target="_blank" class="btn-buy"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:16px;height:16px"> Buy Now</a></div></div>`;});
+ document.getElementById('loadMore').style.display=(q!==''||filtered.length>=total)?'none':'inline-block';
+}
+render();
+</script>
+</body>
+</html>
