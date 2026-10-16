@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Comprehensive Summaries - Mr C Academy Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <script src="https://js.paystack.co/v1/inline.js"></script>
@@ -11,214 +10,115 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
 body{background:#F8FBF8}
 header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #eee}
-.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px}
 .logo img{width:44px;height:44px;border-radius:12px;background:#f6f6f6;object-fit:contain}
-nav{display:flex;gap:18px;align-items:center}
-nav a{text-decoration:none;color:#444;font-size:13.5px;font-weight:500}
-nav a.active{color:var(--green);font-weight:800}
+nav{display:flex;gap:18px;align-items:center} nav a{text-decoration:none;color:#444;font-size:13.5px} nav a.active{color:var(--green);font-weight:800}
 .hero{padding:34px 6% 26px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 45%,#FFF9E5 100%);border-bottom:1px solid #E9F0E9}
-.hero h1{font-size:38px;line-height:1.05;letter-spacing:-1px;color:var(--dark)}
-.hero h1 span{color:var(--green)}
+.hero h1{font-size:38px;line-height:1.05;letter-spacing:-1px;color:var(--dark)}.hero h1 span{color:var(--green)}
 .hero p{margin:10px 0 18px;color:#5a6d5e;font-size:14.5px;max-width:600px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.search-wrap{flex:1;min-width:300px;max-width:520px;position:relative}
-.search-input{width:100%;padding:16px 20px 16px 48px;border-radius:100px;border:1.5px solid #DDE8DE;font-size:14px;outline:none;background:#fff}
+.search-wrap{flex:1;min-width:300px;max-width:520px;position:relative}.search-input{width:100%;padding:16px 20px 16px 48px;border-radius:100px;border:1.5px solid #DDE8DE;font-size:14px;outline:none;background:#fff}
 .search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%)}
 .wa-help{background:#fff;border:1.5px solid #25D366;color:#075E54;padding:13px 20px;border-radius:100px;font-weight:800;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
 .count-bar{padding:12px 6% 0;font-size:12px;color:#6B7F6D;font-weight:700}
 .filter-bar{display:flex;gap:8px;overflow:auto;padding:14px 6%;background:#fff;border-bottom:1px solid #f0f0f0;position:sticky;top:66px;z-index:90}
-.chip{padding:8px 16px;border-radius:100px;border:1.5px solid #E2E8E3;background:#fff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
-.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
-.section{padding:12px 6% 60px}
-.list-header{display:grid;grid-template-columns:100px 1fr 80px 110px;gap:10px;padding:12px 16px;font-size:11px;font-weight:800;color:#888}
+.chip{padding:8px 16px;border-radius:100px;border:1.5px solid #E2E8E3;background:#fff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}.chip.active{background:var(--green);color:#fff;border-color:var(--green)}
+.section{padding:12px 6% 60px}.list-header{display:grid;grid-template-columns:100px 1fr 80px 110px;gap:10px;padding:12px 16px;font-size:11px;font-weight:800;color:#888}
 .course-list{display:flex;flex-direction:column;gap:6px}
 .course-row{display:grid;grid-template-columns:100px 1fr 80px 110px;gap:10px;align-items:center;background:#fff;border:1px solid #EEF2EF;border-radius:14px;padding:12px 16px}
-.code{font-weight:800;color:var(--green);font-size:12.5px;background:#EDF6EE;padding:6px 10px;border-radius:100px;text-align:center}
-.title{font-size:13.5px;color:#1A2E1E}
-.level{font-size:11px;background:#F4F7F4;padding:6px 10px;border-radius:100px;text-align:center;font-weight:700;color:#444;border:1px solid #E8ECE8}
+.code{font-weight:800;color:var(--green);font-size:12.5px;background:#EDF6EE;padding:6px 10px;border-radius:100px;text-align:center}.title{font-size:13.5px;color:#1A2E1E}.level{font-size:11px;background:#F4F7F4;padding:6px 10px;border-radius:100px;text-align:center;font-weight:700;color:#444;border:1px solid #E8ECE8}
 .btn-buy{background:var(--green);color:#fff;border:none;padding:9px 16px;border-radius:100px;font-weight:800;font-size:11.5px;cursor:pointer}
 .empty{text-align:center;padding:50px 20px;background:#fff;border-radius:16px;border:1px dashed #D0D9D1;margin-top:10px}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.show{display:flex}
-.modal{background:#fff;border-radius:20px;padding:26px;max-width:400px;width:100%;text-align:center}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:20px}.modal-overlay.show{display:flex}.modal{background:#fff;border-radius:20px;padding:26px;max-width:400px;width:100%;text-align:center}
 @media(max-width:800px){.list-header{display:none}.course-row{grid-template-columns:1fr auto}.level{display:none}.hero h1{font-size:28px}}
 </style>
 </head>
 <body>
 
-<!-- TOP BANNER 728x90 -->
+<!-- BANNER 728x90 TOP -->
 <div style="text-align:center;padding:10px 0;background:#f5f5f5;">
-<script>
-  atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-</script>
-<script src="https://www.highrevenueformat.com/883db4817d5e178b6cf1e171548f7d9f/invoke.js"></script>
+<script type="text/javascript">atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
+<script type="text/javascript" src="https://www.highrevenueformat.com/883db4817d5e178b6cf1e171548f7d9f/invoke.js"></script>
 </div>
 
-<header>
-<div class="logo"><img src="logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div>
-<nav>
-<a href="index.html">Home</a>
-<a href="past-questions.html">Past Questions</a>
-<a href="summary.html" class="active">Comprehensive Summaries</a>
-<a href="https://wa.me/2349046023711" style="background:var(--green);color:#fff;padding:9px 18px;border-radius:100px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:6px">WhatsApp</a>
-</nav>
-</header>
+<header><div class="logo"><img src="logo.png"><div>Mr C Academy<br>Hub</div></div>
+<nav><a href="index.html">Home</a><a href="past-questions.html">Past Questions</a><a href="summary.html" class="active">Summaries</a><a href="https://wa.me/2349046023711" style="background:var(--green);color:#fff;padding:9px 18px;border-radius:100px;text-decoration:none;font-weight:700">WhatsApp</a></nav></header>
 
-<section class="hero">
-<h1>Comprehensive <span>Summaries</span> - All NOUN Courses</h1>
-<p>40+ pages, exam-focused, simplified English. Pay ₦500 and it will download straight to your phone.</p>
+<section class="hero"><h1>Comprehensive <span>Summaries</span> - All NOUN Courses</h1><p>Pay ₦500 - File will download straight to your phone Downloads folder.</p>
 <div class="hero-actions">
-<div class="search-wrap"><span class="search-icon">🔍</span><input id="searchInput" class="search-input" placeholder="Search e.g. BUS727, CIT101..." onkeyup="render()"></div>
-<a href="https://wa.me/2349046023711" class="wa-help">Couldn't find your course? Chat on WhatsApp</a>
-</div>
-</section>
+<div class="search-wrap"><span class="search-icon">🔍</span><input id="searchInput" class="search-input" placeholder="Search e.g. BUS727..." onkeyup="render()"></div>
+<a href="https://wa.me/2349046023711" class="wa-help">Couldn't find? Chat on WhatsApp</a>
+</div></section>
 
-<div class="count-bar"><span id="count">0 Courses</span> • Pay ₦500 • Auto download to phone</div>
-
+<div class="count-bar"><span id="count">0 Courses</span> • Pay ₦500 • Auto download</div>
 <div class="filter-bar">
-<button class="chip active" onclick="setFilter('ALL', this)">All (2000+)</button>
-<button class="chip" onclick="setFilter('100L', this)">100L</button>
-<button class="chip" onclick="setFilter('200L', this)">200L</button>
-<button class="chip" onclick="setFilter('300L', this)">300L</button>
-<button class="chip" onclick="setFilter('400L', this)">400L</button>
-<button class="chip" onclick="setFilter('800L', this)">800L PG</button>
-<button class="chip" onclick="setFilter('CIT', this)">CIT</button>
-<button class="chip" onclick="setFilter('BUS', this)">BUS</button>
-<button class="chip" onclick="setFilter('GST', this)">GST</button>
-<button class="chip" onclick="setFilter('LAW', this)">LAW</button>
-<button class="chip" onclick="setFilter('NUR', this)">NUR</button>
+<button class="chip active" onclick="setFilter('ALL',this)">All</button><button class="chip" onclick="setFilter('100L',this)">100L</button><button class="chip" onclick="setFilter('200L',this)">200L</button><button class="chip" onclick="setFilter('300L',this)">300L</button><button class="chip" onclick="setFilter('400L',this)">400L</button><button class="chip" onclick="setFilter('800L',this)">800L</button><button class="chip" onclick="setFilter('CIT',this)">CIT</button><button class="chip" onclick="setFilter('BUS',this)">BUS</button><button class="chip" onclick="setFilter('GST',this)">GST</button>
 </div>
+<section class="section"><div class="list-header"><span>CODE</span><span>TITLE</span><span>LEVEL</span><span>ACTION</span></div><div id="courseList" class="course-list"></div><div id="emptyState" class="empty" style="display:none"><h3>Course not found?</h3><a href="#" id="waNotFound" style="background:#25D366;color:#fff;padding:12px 22px;border-radius:100px;text-decoration:none;font-weight:800">Request on WhatsApp</a></div></section>
 
-<section class="section">
-<div class="list-header"><span>CODE</span><span>TITLE</span><span>LEVEL</span><span>ACTION</span></div>
-<div id="courseList" class="course-list"></div>
-<div id="emptyState" class="empty" style="display:none"><h3>Course not found? 😔</h3><p style="margin:10px 0 16px;color:#666;font-size:13px">We will create summary for you within 24h.</p><a href="#" id="waNotFound" style="background:#25D366;color:#fff;padding:12px 22px;border-radius:100px;text-decoration:none;font-weight:800">Request on WhatsApp</a></div>
-</section>
-
-<div id="successModal" class="modal-overlay">
-<div class="modal">
-<div style="font-size:46px">✅</div>
-<h3 id="successTitle">Payment Successful!</h3>
-<p id="successText" style="font-size:13px;color:#666;margin:10px 0 16px">Your file is downloading to your phone.</p>
-<a id="downloadLink" href="#" style="display:block;background:var(--green);color:#fff;padding:13px;border-radius:100px;text-decoration:none;font-weight:800">Downloading...</a>
-<button onclick="closeModal()" style="margin-top:10px;width:100%;background:#f2f2f2;border:none;padding:12px;border-radius:100px;font-weight:700;cursor:pointer">Close</button>
-</div>
-</div>
+<div id="successModal" class="modal-overlay"><div class="modal"><div style="font-size:46px">✅</div><h3 id="successTitle">Payment Successful!</h3><p id="successText" style="font-size:13px;color:#666;margin:10px 0 16px">Downloading to your phone...</p><a id="downloadLink" href="#" style="display:block;background:var(--green);color:#fff;padding:13px;border-radius:100px;text-decoration:none;font-weight:800">Downloading...</a><button onclick="closeModal()" style="margin-top:10px;width:100%;background:#f2f2f2;border:none;padding:12px;border-radius:100px;font-weight:700;cursor:pointer">Close</button></div></div>
 
 <script>
 const SUPABASE_BASE = "https://jjhupalxzvudqlgcqeom.supabase.co/storage/v1/object/public/summaries";
 const PAYSTACK_PUBLIC_KEY = "pk_live_2d846c889ae79826e0a00a23e0b1afaaf4803339";
-const REAL_TITLES = {"CIT101":"Introduction to Computing Sciences","CIT102":"Intro to Problem Solving","BUS105":"Introduction to Business","BUS205":"Business Law","BUS727":"Business Research Methods","MTH101":"Elementary Mathematics I","GST101":"Use of English I"};
-
-let COURSES = [];
-let id=0;
-for(let dept of ["CIT","BUS","MTH","GST","ACC","ECO","BIO","CHM","PHY","POL","LAW","NUR","EDU","ENG","CSS","NSC","ENT","INR","PCR","CYS"]){
+let COURSES=[]; let id=0;
+const REAL_TITLES={"BUS727":"Business Research Methods","CIT101":"Intro to Computing","BUS105":"Introduction to Business"};
+for(let dept of ["CIT","BUS","MTH","GST","ACC","ECO","BIO","CHM","PHY","POL","LAW","NUR","EDU","ENG","CSS"]){
  for(let num=101; num<=899; num+=1){
-  if(id>=2000) break;
-  let level = Math.floor(num/100)*100 + "L";
-  if(num>=700) level = num>=800? "800L" : "700L";
-  let code = dept + num;
-  let title = REAL_TITLES[code] || `${dept} ${num} - Comprehensive Summary`;
-  COURSES.push({code, title, level, dept});
-  id++;
-  if(num%7!==0) continue;
-  num+=2;
+  if(id>=1200) break;
+  let level=Math.floor(num/100)*100+"L"; if(num>=800) level="800L";
+  let code=dept+num; COURSES.push({code,title:REAL_TITLES[code]||dept+" "+num+" Comprehensive Summary",level,dept}); id++;
+  if(num%7!==0) continue; num+=2;
  }
 }
-COURSES = [...new Map(COURSES.map(c=>[c.code,c])).values()];
-
+COURSES=[...new Map(COURSES.map(c=>[c.code,c])).values()];
 let currentFilter="ALL";
-function setFilter(f, el){
- currentFilter=f;
- document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
- el.classList.add('active');
- render();
-}
-
+function setFilter(f,el){currentFilter=f;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');render();}
 function render(){
- const q = document.getElementById('searchInput').value.toLowerCase().trim();
- let filtered = COURSES.filter(c=>{
-  const matchQ =!q || c.code.toLowerCase().includes(q) || c.title.toLowerCase().includes(q);
-  const matchF = currentFilter==="ALL" || c.level===currentFilter || c.dept===currentFilter || c.code.startsWith(currentFilter);
-  return matchQ && matchF;
- });
- document.getElementById('count').innerText = filtered.length + " / " + COURSES.length + " Courses";
- const list = document.getElementById('courseList');
- list.innerHTML="";
- document.getElementById('waNotFound').href = `https://wa.me/2349046023711?text=Hi%20Mr%20C,%20I%20need%20summary%20for%20${encodeURIComponent(q)}`;
- if(filtered.length===0){
-  list.style.display="none";
-  document.getElementById('emptyState').style.display="block";
-  return;
- }
- list.style.display="flex";
- document.getElementById('emptyState').style.display="none";
- filtered.slice(0,1200).forEach(c=>{
-  list.innerHTML+=`<div class="course-row"><span class="code">${c.code}</span><span class="title">${c.title}</span><span class="level">${c.level}</span><button class="btn-buy" onclick="buySummary('${c.code}')">Buy ₦500</button></div>`;
- });
+ const q=document.getElementById('searchInput').value.toLowerCase().trim();
+ let filtered=COURSES.filter(c=>{const mq=!q||c.code.toLowerCase().includes(q)||c.title.toLowerCase().includes(q); const mf=currentFilter==="ALL"||c.level===currentFilter||c.dept===currentFilter||c.code.startsWith(currentFilter); return mq&&mf;});
+ document.getElementById('count').innerText=filtered.length+" / "+COURSES.length+" Courses";
+ const list=document.getElementById('courseList'); list.innerHTML=""; document.getElementById('waNotFound').href=`https://wa.me/2349046023711?text=Need ${encodeURIComponent(q)}`;
+ if(filtered.length===0){list.style.display="none";document.getElementById('emptyState').style.display="block";return;}
+ list.style.display="flex"; document.getElementById('emptyState').style.display="none";
+ filtered.slice(0,800).forEach(c=>{list.innerHTML+=`<div class="course-row"><span class="code">${c.code}</span><span class="title">${c.title}</span><span class="level">${c.level}</span><button class="btn-buy" onclick="buySummary('${c.code}')">Buy ₦500</button></div>`;});
 }
 render();
 
-// ====== PAY + FORCE DOWNLOAD + LOCK ======
 function buySummary(code){
-  const handler = PaystackPop.setup({
-    key: PAYSTACK_PUBLIC_KEY,
-    email: 'student@mrcacademy.com',
-    amount: 50000,
-    currency: 'NGN',
-    ref: 'MRC_'+code+'_'+Date.now(),
-    callback: function(res){
-      forceDownloadToPhone(code);
-    },
-    onClose: function(){}
-  });
-  handler.openIframe();
+ const handler=PaystackPop.setup({key:PAYSTACK_PUBLIC_KEY,email:'student@mrcacademy.com',amount:50000,currency:'NGN',ref:'MRC_'+code+'_'+Date.now(),callback:function(res){forceDownloadToPhone(code);},onClose:function(){}});
+ handler.openIframe();
 }
 
-async function forceDownloadToPhone(code){
-  const fileUrl = `${SUPABASE_BASE}/${code}.pdf`;
-  const downloadName = `MrC_${code}.pdf`;
+// SIMPLE DOWNLOAD - NO CORS, NO CONFIGURATION NEEDED
+function forceDownloadToPhone(code){
+  const fileName = `MrC_${code}.pdf`;
+  const downloadUrl = `${SUPABASE_BASE}/${code}.pdf?download=${fileName}`;
 
   document.getElementById('successTitle').innerText = code + " - Payment Successful!";
-  document.getElementById('successText').innerText = "Downloading... Check your notification bar and Downloads folder.";
+  document.getElementById('successText').innerText = "Downloading to phone... Check Downloads folder.";
   document.getElementById('successModal').classList.add('show');
-  document.getElementById('downloadLink').innerText = "Downloading " + downloadName + "...";
+  document.getElementById('downloadLink').innerText = "Downloading " + fileName;
+  document.getElementById('downloadLink').href = downloadUrl;
 
-  try {
-    const res = await fetch(fileUrl);
-    if(!res.ok) throw new Error("File not found. Rename file in Supabase to "+code+".pdf");
+  const a = document.createElement('a');
+  a.href = downloadUrl;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
 
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = blobUrl;
-    a.download = downloadName;
-    document.body.appendChild(a);
-    a.click();
+  setTimeout(() => {
+    window.location.href = downloadUrl;
     a.remove();
-
-    document.getElementById('downloadLink').innerText = "Downloaded ✓ - Check Downloads";
-    document.getElementById('downloadLink').href = blobUrl;
-    document.getElementById('downloadLink').setAttribute('download', downloadName);
-
-    setTimeout(()=> URL.revokeObjectURL(blobUrl), 10000);
-
-  } catch(err){
-    // Fallback if CORS blocks - still force download
-    document.getElementById('successText').innerText = err.message;
-    const a = document.createElement('a');
-    a.href = fileUrl + `?download=${downloadName}`;
-    a.download = downloadName;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  }
+    document.getElementById('successText').innerText = "✅ Done! Go to My Files > Downloads > " + fileName;
+    document.getElementById('downloadLink').innerText = "Downloaded ✓";
+  }, 800);
 }
-
 function closeModal(){document.getElementById('successModal').classList.remove('show');}
 </script>
 
+<!-- POP AD BOTTOM -->
 <script src="https://pl31855543.profitableratecpmnetwork.com/81/d9/83/81d98344f2f95ced9cf7369e6e207293.js"></script>
+
 </body>
 </html>
