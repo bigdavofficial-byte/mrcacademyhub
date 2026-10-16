@@ -95,5 +95,6 @@ function continueQuiz(){if(!isUnlocked && currentQuestions.length===5){document.
 function payWithPaystack(){if(PAYSTACK_KEY.includes('YOUR_PUBLIC_KEY')){alert('Add Paystack key');return;}let email=getCurrentUser().email;let handler=PaystackPop.setup({key:PAYSTACK_KEY,email:email,amount:PAYMENT_AMOUNT,currency:'NGN',ref:''+Math.floor(Math.random()*1000000000),callback:function(res){localStorage.setItem('unlocked_'+selectedCourse.code,'yes');alert('Payment successful! Unlocked '+selectedCourse.code);document.getElementById('paywallBox').style.display='none';isUnlocked=true;startCourseAfterLogin(selectedCourse);},onClose:function(){alert('Payment cancelled');}});handler.openIframe();}
 renderCourses();
 </script>
+<script src="https://pl31855543.profitableratecpmnetwork.com/81/d9/83/81d98344f2f95ced9cf7369e6e207293.js"></script>
 </body>
 </html>
