@@ -44,20 +44,42 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<div id="must-click-ad">
-  <div style="background:#fff;padding:30px;border-radius:18px;max-width:380px;width:92%;text-align:center">
-    <h3 style="color:#0B4D2A;margin:0 0 12px 0">Mr C Academy Hub</h3>
-    <p style="color:#555;font-size:14px;margin-bottom:20px">Access best academic support and past questions</p>
-    <a href="#" id="mustClickBtn" style="display:block;background:#0B4D2A;color:#fff;padding:14px;border-radius:100px;text-decoration:none;font-weight:700">Continue to Portal →</a>
-    <p style="font-size:11px;color:#999;margin-top:10px">Ad will open in new tab</p>
+<div id="video-lock">
+  <div style="background:#fff;padding:24px;border-radius:18px;max-width:400px;width:92%;text-align:center">
+    <h3 style="color:#0B4D2A;margin:0 0 10px 0">Mr C Academy Hub</h3>
+    <p style="color:#555;font-size:13px;margin-bottom:14px">Watch short video to access past questions</p>
+    
+    <!-- CHANGE VIDEO ID HERE -->
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#000">
+      <iframe id="promoVideo" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" 
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1" 
+      allowfullscreen></iframe>
+    </div>
+
+    <p id="timerText" style="font-size:12px;color:#999;margin:12px 0">Please watch... 15s</p>
+    <a href="#" id="continueBtn" style="display:none;background:#0B4D2A;color:#fff;padding:14px;border-radius:100px;text-decoration:none;font-weight:700">Continue to Portal →</a>
+    <p style="font-size:10px;color:#aaa;margin-top:8px">Ad will open in new tab</p>
   </div>
 </div>
-<style>#must-click-ad{position:fixed;inset:0;background:#081e12f5;display:flex;align-items:center;justify-content:center;z-index:999999999}</style>
+
+<style>#video-lock{position:fixed;inset:0;background:#081e12f5;display:flex;align-items:center;justify-content:center;z-index:999999999}</style>
+
 <script>
-document.getElementById('mustClickBtn').addEventListener('click', function(e){
+let sec = 15;
+let timer = setInterval(()=>{
+  sec--;
+  document.getElementById('timerText').innerText = sec>0 ? `Please watch... ${sec}s` : 'Video completed';
+  if(sec<=0){
+    clearInterval(timer);
+    document.getElementById('timerText').style.display='none';
+    document.getElementById('continueBtn').style.display='block';
+  }
+},1000);
+
+document.getElementById('continueBtn').addEventListener('click', function(e){
   e.preventDefault();
   window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
-  document.getElementById('must-click-ad').remove();
+  document.getElementById('video-lock').remove();
 });
 </script>
 <!-- TOP BANNER -->
