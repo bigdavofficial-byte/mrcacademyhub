@@ -45,24 +45,19 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </head>
 <body>
 <div id="must-click-ad">
-  <div class="must-click-box">
-    <h3>Mr C Academy Hub</h3>
-    <p>Access premium academic support, curated past questions, and expert guidance to excel in your NOUN examinations.</p>
-    <a href="https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7" target="_blank" id="mustClickBtn">Continue to Academic Portal →</a>
-    <span>Secure Access</span>
+  <div style="background:#fff;padding:30px;border-radius:18px;max-width:380px;width:92%;text-align:center">
+    <h3 style="color:#0B4D2A;margin:0 0 12px 0">Mr C Academy Hub</h3>
+    <p style="color:#555;font-size:14px;margin-bottom:20px">Access best academic support and past questions</p>
+    <a href="#" id="mustClickBtn" style="display:block;background:#0B4D2A;color:#fff;padding:14px;border-radius:100px;text-decoration:none;font-weight:700">Continue to Portal →</a>
+    <p style="font-size:11px;color:#999;margin-top:10px">Ad will open in new tab</p>
   </div>
 </div>
-<style>
-#must-click-ad{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,30,18,0.96);display:flex;align-items:center;justify-content:center;z-index:9999999;padding:20px;font-family:Inter,sans-serif}
-.must-click-box{background:#ffffff;padding:40px 28px;border-radius:20px;max-width:420px;width:100%;text-align:center;border:1px solid #e8efe9}
-.must-click-box h3{color:#0B4D2A;font-size:22px;margin-bottom:14px;letter-spacing:-0.5px;font-weight:800}
-.must-click-box p{color:#4a5a52;font-size:15px;line-height:1.6;margin-bottom:26px}
-#mustClickBtn{display:block;background:#0B4D2A;color:#fff;padding:16px;border-radius:100px;font-weight:700;text-decoration:none;font-size:15px;letter-spacing:0.3px}
-.must-click-box span{font-size:11px;color:#9aa8a0;margin-top:14px;display:block;letter-spacing:1.5px;text-transform:uppercase}
-</style>
+<style>#must-click-ad{position:fixed;inset:0;background:#081e12f5;display:flex;align-items:center;justify-content:center;z-index:999999999}</style>
 <script>
-document.getElementById('mustClickBtn').addEventListener('click', function(){
-  setTimeout(function(){document.getElementById('must-click-ad').style.display='none';},800);
+document.getElementById('mustClickBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
+  document.getElementById('must-click-ad').remove();
 });
 </script>
 <!-- TOP BANNER -->
