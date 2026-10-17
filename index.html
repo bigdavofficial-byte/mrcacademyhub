@@ -44,56 +44,67 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<!-- MR C ACADEMY - INSIDE SITE ONLY - NO NEW TAB -->
-<div id="mrc-gate" style="position:fixed;inset:0;background:rgba(5,18,11,0.94);backdrop-filter:blur(14px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:Inter,system-ui">
+<!-- MR C ACADEMY - HIGH MONEY + CLEAR RETURN - BANNER VERSION -->
+<div id="mrc-gate" style="position:fixed;inset:0;background:rgba(5,18,11,0.96);backdrop-filter:blur(16px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:Inter,system-ui">
 
-  <!-- STEP 1: Button to support -->
+  <!-- BEFORE CLICK -->
   <div id="step1" style="background:#fff;width:100%;max-width:360px;border-radius:28px;padding:26px 22px;text-align:center">
     <div style="width:52px;height:52px;background:#0B1F14;color:#fff;border-radius:14px;display:grid;place-items:center;margin:0 auto 14px;font-weight:800">M</div>
     <h3 style="margin:0;color:#0B1F14;font-size:17px">Unlock Academy Resources</h3>
-    <p style="margin:8px 0 18px;color:#6B7D71;font-size:13px;line-height:1.5">Watch a short sponsor ad to continue. You will stay on this page.</p>
+    <p style="margin:8px 0 18px;color:#6B7D71;font-size:13px;line-height:1.5">Support academy with a quick sponsor ad. High support for us.</p>
     <button id="watchBtn" style="width:100%;background:#0B4D2A;color:#fff;border:0;padding:15px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer">Watch Ad to Continue →</button>
-    <p style="margin:10px 0 0;font-size:11px;color:#9CAFA3">Premium • No redirect</p>
+    <p style="margin:10px 0 0;font-size:11px;color:#9CAFA3">Opens sponsor in new tab • You stay here</p>
   </div>
 
-  <!-- STEP 2: Ad plays INSIDE -->
-  <div id="step2" style="display:none;background:#fff;width:100%;max-width:380px;border-radius:24px;overflow:hidden">
-    <div style="padding:12px 18px;background:#0B1F14;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-      <span style="opacity:.7;letter-spacing:1px">SPONSOR AD - STAY ON PAGE</span>
-      <span id="timer" style="background:rgba(255,255,255,.15);padding:5px 10px;border-radius:100px"><span id="sec">15</span>s • Auto return</span>
+  <!-- AFTER CLICK - CLEAR RETURN GUIDE -->
+  <div id="step2" style="display:none;background:#fff;width:100%;max-width:380px;border-radius:28px;overflow:hidden;text-align:center">
+    <div style="padding:14px 20px;background:#0B1F14;color:#fff;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:11px;letter-spacing:1px;opacity:.8">AD PLAYING IN NEW TAB</span>
+      <span style="font-size:11px;background:#0B4D2A;padding:6px 12px;border-radius:100px"><span id="sec">15</span>s</span>
     </div>
-    <!-- Ad loads HERE inside, not outside -->
-    <iframe id="adFrame" style="width:100%;height:320px;border:0;background:#000" allow="autoplay"></iframe>
-    <div style="padding:10px 16px;text-align:center;font-size:11px;color:#6B7D71;background:#F7F9F8">Ad is playing inside academy. You will return automatically, do not leave this page.</div>
+    
+    <div style="padding:22px 20px">
+      <div style="width:64px;height:64px;background:#E8F5E9;border-radius:20px;display:grid;place-items:center;margin:0 auto 14px;font-size:28px">↗️</div>
+      <h3 style="margin:0;color:#0B1F14;font-size:16px">Sponsor Opened!</h3>
+      <p style="margin:8px 0 0;color:#6B7D71;font-size:13px;line-height:1.5">
+        Adsterra sponsor is open in new tab.<br>
+        <b style="color:#0B1F14">After viewing, close that tab to return here.</b>
+      </p>
+
+      <div style="margin:18px 0;background:#F7F9F8;border:1px dashed #D1DDD6;border-radius:16px;padding:14px;text-align:left">
+        <div style="font-size:12px;font-weight:700;color:#0B1F14;margin-bottom:6px">How to return to Academy:</div>
+        <div style="font-size:12px;color:#6B7D71;line-height:1.6">
+          1. Check new tab wey open<br>
+          2. View small (5-10 sec is enough)<br>
+          3. Close that tab → You go see Academy Resources here automatically
+        </div>
+      </div>
+
+      <div style="height:4px;background:#EEF2EF;border-radius:100px;overflow:hidden;margin:14px 0"><div id="bar" style="height:100%;width:0%;background:#0B4D2A;transition:width 1s linear"></div></div>
+      
+      <button id="returnBtn" style="width:100%;background:#0B1F14;color:#fff;border:0;padding:14px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer">I Viewed Ad, Return to Academy →</button>
+      <p style="margin:10px 0 0;font-size:11px;color:#9CAFA3">This support gives academy high earnings. Thank you!</p>
+    </div>
   </div>
 
 </div>
 
 <script>
 const gate = document.getElementById('mrc-gate');
-const step1 = document.getElementById('step1');
-const step2 = document.getElementById('step2');
-const adFrame = document.getElementById('adFrame');
-
 document.getElementById('watchBtn').onclick = function(){
-  // Show ad INSIDE - NO window.open, NO new tab
-  step1.style.display='none';
-  step2.style.display='block';
+  // HIGH MONEY CLICK - opens new tab
+  window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
   
-  // Load your smartlink INSIDE iframe (this click counts as your money)
-  adFrame.src = 'https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7';
-
-  // Countdown and auto return
-  let s = 15;
-  let iv = setInterval(()=>{
-    s--;
-    document.getElementById('sec').innerText = s;
-    if(s<=0){
-      clearInterval(iv);
-      gate.remove(); // Auto return to Academy Resources
-    }
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='block';
+  
+  let s=15; let bar=document.getElementById('bar');
+  let iv=setInterval(()=>{
+    s--; document.getElementById('sec').innerText=s; bar.style.width=((15-s)/15*100)+'%';
+    if(s<=0){ clearInterval(iv); gate.remove(); }
   },1000);
 };
+document.getElementById('returnBtn').onclick = ()=>{ gate.remove(); };
 </script>
 <!-- TOP BANNER -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
