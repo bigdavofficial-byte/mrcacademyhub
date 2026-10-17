@@ -44,67 +44,44 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<!-- MR C ACADEMY - HIGH MONEY + CLEAR RETURN - BANNER VERSION -->
-<div id="mrc-gate" style="position:fixed;inset:0;background:rgba(5,18,11,0.96);backdrop-filter:blur(16px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:Inter,system-ui">
+<!-- MR C ACADEMY - CLASSIC INLINE LINK + HIGH MONEY + RETURN -->
+<p id="mrc-para" style="font-family:sans-serif;color:#333;line-height:1.6;max-width:600px;margin:20px auto;padding:16px;background:#fff;border:1px solid #f1f1f1;border-radius:8px">
+    If you are looking for ways to maximize your digital monetization strategies, you can explore our 
+    <a href="#" id="classicLink" class="classic-inline-link" style="color:#1a1a1a;font-weight:600;text-decoration:none;border-bottom:2px solid #1a1a1a;transition:all .2s ease">Sponsored Partner Offers</a> 
+    to view current live market campaigns.
+    <br><span style="font-size:11px;color:#a0aec0">Opens in new tab • Supports academy</span>
+</p>
 
-  <!-- BEFORE CLICK -->
-  <div id="step1" style="background:#fff;width:100%;max-width:360px;border-radius:28px;padding:26px 22px;text-align:center">
-    <div style="width:52px;height:52px;background:#0B1F14;color:#fff;border-radius:14px;display:grid;place-items:center;margin:0 auto 14px;font-weight:800">M</div>
-    <h3 style="margin:0;color:#0B1F14;font-size:17px">Unlock Academy Resources</h3>
-    <p style="margin:8px 0 18px;color:#6B7D71;font-size:13px;line-height:1.5">Support academy with a quick sponsor ad. High support for us.</p>
-    <button id="watchBtn" style="width:100%;background:#0B4D2A;color:#fff;border:0;padding:15px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer">Watch Ad to Continue →</button>
-    <p style="margin:10px 0 0;font-size:11px;color:#9CAFA3">Opens sponsor in new tab • You stay here</p>
-  </div>
-
-  <!-- AFTER CLICK - CLEAR RETURN GUIDE -->
-  <div id="step2" style="display:none;background:#fff;width:100%;max-width:380px;border-radius:28px;overflow:hidden;text-align:center">
-    <div style="padding:14px 20px;background:#0B1F14;color:#fff;display:flex;justify-content:space-between;align-items:center">
-      <span style="font-size:11px;letter-spacing:1px;opacity:.8">AD PLAYING IN NEW TAB</span>
-      <span style="font-size:11px;background:#0B4D2A;padding:6px 12px;border-radius:100px"><span id="sec">15</span>s</span>
-    </div>
-    
-    <div style="padding:22px 20px">
-      <div style="width:64px;height:64px;background:#E8F5E9;border-radius:20px;display:grid;place-items:center;margin:0 auto 14px;font-size:28px">↗️</div>
-      <h3 style="margin:0;color:#0B1F14;font-size:16px">Sponsor Opened!</h3>
-      <p style="margin:8px 0 0;color:#6B7D71;font-size:13px;line-height:1.5">
-        Adsterra sponsor is open in new tab.<br>
-        <b style="color:#0B1F14">After viewing, close that tab to return here.</b>
-      </p>
-
-      <div style="margin:18px 0;background:#F7F9F8;border:1px dashed #D1DDD6;border-radius:16px;padding:14px;text-align:left">
-        <div style="font-size:12px;font-weight:700;color:#0B1F14;margin-bottom:6px">How to return to Academy:</div>
-        <div style="font-size:12px;color:#6B7D71;line-height:1.6">
-          1. Check new tab wey open<br>
-          2. View small (5-10 sec is enough)<br>
-          3. Close that tab → You go see Academy Resources here automatically
-        </div>
-      </div>
-
-      <div style="height:4px;background:#EEF2EF;border-radius:100px;overflow:hidden;margin:14px 0"><div id="bar" style="height:100%;width:0%;background:#0B4D2A;transition:width 1s linear"></div></div>
-      
-      <button id="returnBtn" style="width:100%;background:#0B1F14;color:#fff;border:0;padding:14px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer">I Viewed Ad, Return to Academy →</button>
-      <p style="margin:10px 0 0;font-size:11px;color:#9CAFA3">This support gives academy high earnings. Thank you!</p>
-    </div>
-  </div>
-
-</div>
+<!-- Hidden return guide wey go show after click - same inline style -->
+<p id="mrc-return" style="display:none;font-family:sans-serif;color:#333;line-height:1.6;max-width:600px;margin:20px auto;padding:16px;background:#f0fff4;border:1px solid #c6f6d5;border-radius:8px">
+    <span style="font-size:11px;font-weight:700;color:#22543d;letter-spacing:0.5px">✓ SPONSOR OPENED • <span id="sec">15</span>S AUTO RETURN</span><br>
+    <span style="font-size:14px;color:#1a1a1a"><b>Partner banner opened in new tab.</b> View 5-10 sec, then close that tab to continue reading Academy Resources here.</span>
+    <br>
+    <span style="font-size:12px;color:#718096">How to return: Check new tab → view → close tab → you back here automatically.</span>
+    <br>
+    <a href="#" id="returnBtn" style="display:inline-block;margin-top:10px;color:#fff;background:#1a1a1a;text-decoration:none;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px">I Viewed Ad, Continue Reading →</a>
+    <span style="display:block;margin-top:8px;height:3px;background:#e2e8f0;border-radius:100px;overflow:hidden"><span id="bar" style="display:block;height:100%;width:0%;background:#1a1a1a;transition:width 1s linear"></span></span>
+</p>
 
 <script>
-const gate = document.getElementById('mrc-gate');
-document.getElementById('watchBtn').onclick = function(){
-  // HIGH MONEY CLICK - opens new tab
+const para = document.getElementById('mrc-para');
+const ret = document.getElementById('mrc-return');
+
+document.getElementById('classicLink').onclick = function(e){
+  e.preventDefault();
+  // HIGH MONEY: banner opens new tab
   window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
   
-  document.getElementById('step1').style.display='none';
-  document.getElementById('step2').style.display='block';
+  para.style.display='none';
+  ret.style.display='block';
   
-  let s=15; let bar=document.getElementById('bar');
+  let s=15, bar=document.getElementById('bar');
   let iv=setInterval(()=>{
     s--; document.getElementById('sec').innerText=s; bar.style.width=((15-s)/15*100)+'%';
-    if(s<=0){ clearInterval(iv); gate.remove(); }
+    if(s<=0){ clearInterval(iv); ret.innerHTML='<span style="font-size:14px;color:#22543d">✓ Thank you! Academy Resources unlocked. Continue reading below.</span>'; setTimeout(()=>{ ret.remove(); para.remove(); },1500); }
   },1000);
 };
-document.getElementById('returnBtn').onclick = ()=>{ gate.remove(); };
+document.getElementById('returnBtn').onclick = function(e){ e.preventDefault(); ret.remove(); para.remove(); };
 </script>
 <!-- TOP BANNER -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
