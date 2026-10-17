@@ -44,43 +44,69 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<div id="video-lock">
-  <div style="background:#fff;padding:24px;border-radius:18px;max-width:400px;width:92%;text-align:center">
-    <h3 style="color:#0B4D2A;margin:0 0 10px 0">Mr C Academy Hub</h3>
-    <p style="color:#555;font-size:13px;margin-bottom:14px">Watch short video to access past questions</p>
+<div id="adLocker">
+  <div style="background:#fff;width:100%;max-width:440px;border-radius:24px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,0.35);font-family:Inter, system-ui, sans-serif">
     
-    <!-- CHANGE VIDEO ID HERE -->
-    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#000">
-      <iframe id="promoVideo" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" 
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1" 
-      allowfullscreen></iframe>
+    <!-- Premium Header -->
+    <div style="padding:20px 24px;display:flex;justify-content:space-between;align-items:center;background:#0B1F14;color:#fff">
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;opacity:0.6;font-weight:600">MR C ACADEMY HUB</div>
+        <div style="font-size:13px;font-weight:500;margin-top:2px">Academy Resources Access</div>
+      </div>
+      <span id="adCount" style="font-size:11px;background:rgba(255,255,255,0.12);padding:6px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.15)">Ad 1 of 2</span>
     </div>
 
-    <p id="timerText" style="font-size:12px;color:#999;margin:12px 0">Please watch... 15s</p>
-    <a href="#" id="continueBtn" style="display:none;background:#0B4D2A;color:#fff;padding:14px;border-radius:100px;text-decoration:none;font-weight:700">Continue to Portal →</a>
-    <p style="font-size:10px;color:#aaa;margin-top:8px">Ad will open in new tab</p>
+    <!-- Ad Inside Site -->
+    <div style="height:340px;background:#050A06;position:relative">
+      <iframe id="adFrame" src="https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7" style="width:100%;height:100%;border:0"></iframe>
+      <div id="skipBox" style="position:absolute;bottom:14px;right:14px;background:rgba(11,31,20,0.9);color:#fff;padding:9px 16px;border-radius:100px;font-size:12px;font-weight:600;backdrop-filter:blur(10px)">
+        Continue in <span id="sec">15</span>s
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div style="height:3px;background:#EEF2EF">
+      <div id="progress" style="height:100%;width:0%;background:#0B4D2A;transition:width 1s linear"></div>
+    </div>
+
+    <div style="padding:18px 24px 22px;text-align:center">
+      <p style="font-size:12px;color:#6B7D71;margin:0;letter-spacing:0.2px">Please support our academy by viewing this short ad</p>
+      <button id="contBtn" style="display:none;width:100%;margin-top:14px;background:#0B4D2A;color:#fff;border:0;padding:15px;border-radius:100px;font-weight:700;font-size:14px;letter-spacing:0.3px;cursor:pointer">Continue to Academy Resources →</button>
+    </div>
   </div>
 </div>
 
-<style>#video-lock{position:fixed;inset:0;background:#081e12f5;display:flex;align-items:center;justify-content:center;z-index:999999999}</style>
+<style>#adLocker{position:fixed;inset:0;background:rgba(5,18,11,0.92);display:flex;align-items:center;justify-content:center;z-index:999999999;padding:16px;backdrop-filter:blur(12px)}</style>
 
 <script>
-let sec = 15;
-let timer = setInterval(()=>{
-  sec--;
-  document.getElementById('timerText').innerText = sec>0 ? `Please watch... ${sec}s` : 'Video completed';
-  if(sec<=0){
-    clearInterval(timer);
-    document.getElementById('timerText').style.display='none';
-    document.getElementById('continueBtn').style.display='block';
-  }
-},1000);
-
-document.getElementById('continueBtn').addEventListener('click', function(e){
-  e.preventDefault();
-  window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
-  document.getElementById('video-lock').remove();
-});
+let currentAd = 1; let totalAds = 2; let seconds = 15; let interval;
+function startTimer(){
+  seconds = 15;
+  document.getElementById('sec').innerText = seconds;
+  document.getElementById('progress').style.width = '0%';
+  document.getElementById('contBtn').style.display = 'none';
+  document.getElementById('skipBox').style.display = 'block';
+  document.getElementById('adCount').innerText = `Ad ${currentAd} of ${totalAds}`;
+  interval = setInterval(()=>{
+    seconds--;
+    document.getElementById('sec').innerText = seconds;
+    document.getElementById('progress').style.width = ((15-seconds)/15*100)+'%';
+    if(seconds<=0){
+      clearInterval(interval);
+      if(currentAd < totalAds){
+        currentAd++;
+        document.getElementById('adFrame').src = 'https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7&ad='+currentAd;
+        startTimer();
+      }else{
+        document.getElementById('skipBox').innerHTML = 'Access Granted ✓';
+        document.getElementById('contBtn').style.display = 'block';
+        setTimeout(()=>{ document.getElementById('adLocker').remove(); }, 1200);
+      }
+    }
+  },1000);
+}
+startTimer();
+document.getElementById('contBtn').addEventListener('click', ()=>{ document.getElementById('adLocker').remove(); });
 </script>
 <!-- TOP BANNER -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
