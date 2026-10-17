@@ -44,65 +44,56 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<!-- MR C ACADEMY HUB - Professional Ad Gate (Audiomack Style) -->
-<div id="mrc-gate" style="position:fixed;inset:0;background:#0B1F14F0;backdrop-filter:blur(16px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:Inter,system-ui">
+<!-- MR C ACADEMY - INSIDE SITE ONLY - NO NEW TAB -->
+<div id="mrc-gate" style="position:fixed;inset:0;background:rgba(5,18,11,0.94);backdrop-filter:blur(14px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:Inter,system-ui">
 
-  <!-- Initial State - What student sees first -->
-  <div id="gate-start" style="background:#fff;width:100%;max-width:380px;border-radius:28px;padding:28px 24px;text-align:center">
-    <div style="width:56px;height:56px;background:#0B1F14;border-radius:16px;display:grid;place-items:center;margin:0 auto 16px;color:#fff;font-weight:800;font-size:20px">M</div>
-    <h2 style="margin:0;font-size:18px;color:#0B1F14">Academy Resources</h2>
-    <p style="margin:8px 0 20px;color:#6B7D71;font-size:13px;line-height:1.5">Support the academy to unlock premium materials. This helps us keep resources free.</p>
-    <button id="watchAdBtn" style="width:100%;background:#0B4D2A;color:#fff;border:0;padding:16px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer">Watch Ad to Continue →</button>
-    <p style="margin:12px 0 0;font-size:11px;color:#9CAFA3">Takes ~15 seconds • Stay on this page</p>
+  <!-- STEP 1: Button to support -->
+  <div id="step1" style="background:#fff;width:100%;max-width:360px;border-radius:28px;padding:26px 22px;text-align:center">
+    <div style="width:52px;height:52px;background:#0B1F14;color:#fff;border-radius:14px;display:grid;place-items:center;margin:0 auto 14px;font-weight:800">M</div>
+    <h3 style="margin:0;color:#0B1F14;font-size:17px">Unlock Academy Resources</h3>
+    <p style="margin:8px 0 18px;color:#6B7D71;font-size:13px;line-height:1.5">Watch a short sponsor ad to continue. You will stay on this page.</p>
+    <button id="watchBtn" style="width:100%;background:#0B4D2A;color:#fff;border:0;padding:15px;border-radius:100px;font-weight:700;font-size:14px;cursor:pointer">Watch Ad to Continue →</button>
+    <p style="margin:10px 0 0;font-size:11px;color:#9CAFA3">Premium • No redirect</p>
   </div>
 
-  <!-- Video State - Shows AFTER they click -->
-  <div id="gate-video" style="display:none;background:#fff;width:100%;max-width:380px;border-radius:28px;overflow:hidden">
-    <div style="padding:16px 20px;background:#0B1F14;color:#fff;display:flex;justify-content:space-between;align-items:center">
-      <span style="font-size:12px;letter-spacing:1px;opacity:.7">ADVERTISEMENT</span>
-      <span id="videoCount" style="font-size:11px;background:rgba(255,255,255,.15);padding:5px 10px;border-radius:100px">Ad 1 of 2 • <span id="sec">15</span>s</span>
+  <!-- STEP 2: Ad plays INSIDE -->
+  <div id="step2" style="display:none;background:#fff;width:100%;max-width:380px;border-radius:24px;overflow:hidden">
+    <div style="padding:12px 18px;background:#0B1F14;color:#fff;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+      <span style="opacity:.7;letter-spacing:1px">SPONSOR AD - STAY ON PAGE</span>
+      <span id="timer" style="background:rgba(255,255,255,.15);padding:5px 10px;border-radius:100px"><span id="sec">15</span>s • Auto return</span>
     </div>
-    <div style="height:220px;background:#000;display:grid;place-items:center;color:#fff">
-      <div style="text-align:center">
-        <div style="font-size:32px;margin-bottom:8px">▶</div>
-        <div id="adStatus" style="font-size:13px;opacity:.8">Loading academy sponsor...</div>
-        <div style="width:120px;height:3px;background:rgba(255,255,255,.2);margin:14px auto 0;border-radius:100px;overflow:hidden"><div id="bar" style="height:100%;width:0%;background:#fff;transition:width 1s linear"></div></div>
-      </div>
-    </div>
-    <div style="padding:14px 20px;text-align:center;font-size:11px;color:#6B7D71">You are still on Mr C Academy Hub. Returning automatically...</div>
+    <!-- Ad loads HERE inside, not outside -->
+    <iframe id="adFrame" style="width:100%;height:320px;border:0;background:#000" allow="autoplay"></iframe>
+    <div style="padding:10px 16px;text-align:center;font-size:11px;color:#6B7D71;background:#F7F9F8">Ad is playing inside academy. You will return automatically, do not leave this page.</div>
   </div>
 
 </div>
 
 <script>
-document.getElementById('watchAdBtn').addEventListener('click', function(){
-  // 1. THIS CLICK IS YOUR MONEY - Opens your smartlink (counts as click)
-  window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
+const gate = document.getElementById('mrc-gate');
+const step1 = document.getElementById('step1');
+const step2 = document.getElementById('step2');
+const adFrame = document.getElementById('adFrame');
+
+document.getElementById('watchBtn').onclick = function(){
+  // Show ad INSIDE - NO window.open, NO new tab
+  step1.style.display='none';
+  step2.style.display='block';
   
-  // 2. Switch to video view INSIDE site (like Audiomack)
-  document.getElementById('gate-start').style.display='none';
-  document.getElementById('gate-video').style.display='block';
-  
-  // 3. Professional countdown
-  let current = 1, total = 2, s = 15;
-  let timer = setInterval(()=>{
+  // Load your smartlink INSIDE iframe (this click counts as your money)
+  adFrame.src = 'https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7';
+
+  // Countdown and auto return
+  let s = 15;
+  let iv = setInterval(()=>{
     s--;
     document.getElementById('sec').innerText = s;
-    document.getElementById('bar').style.width = ((15-s)/15*100)+'%';
     if(s<=0){
-      if(current < total){
-        current++; s=15;
-        document.getElementById('videoCount').innerHTML = `Ad ${current} of ${total} • <span id="sec">15</span>s`;
-        document.getElementById('bar').style.width='0%';
-        document.getElementById('adStatus').innerText = 'Loading academy sponsor...';
-      }else{
-        clearInterval(timer);
-        document.getElementById('adStatus').innerText='Access granted ✓';
-        setTimeout(()=>{ document.getElementById('mrc-gate').remove(); }, 800);
-      }
+      clearInterval(iv);
+      gate.remove(); // Auto return to Academy Resources
     }
   },1000);
-});
+};
 </script>
 <!-- TOP BANNER -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
