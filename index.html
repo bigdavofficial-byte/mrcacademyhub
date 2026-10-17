@@ -44,44 +44,56 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<!-- MR C ACADEMY - CLASSIC INLINE LINK + HIGH MONEY + RETURN -->
-<p id="mrc-para" style="font-family:sans-serif;color:#333;line-height:1.6;max-width:600px;margin:20px auto;padding:16px;background:#fff;border:1px solid #f1f1f1;border-radius:8px">
-    If you are looking for ways to maximize your digital monetization strategies, you can explore our 
-    <a href="#" id="classicLink" class="classic-inline-link" style="color:#1a1a1a;font-weight:600;text-decoration:none;border-bottom:2px solid #1a1a1a;transition:all .2s ease">Sponsored Partner Offers</a> 
-    to view current live market campaigns.
-    <br><span style="font-size:11px;color:#a0aec0">Opens in new tab • Supports academy</span>
-</p>
+<!-- MR C ACADEMY - RESOURCE CARD + HIGH MONEY + RETURN GUIDE -->
+<div id="mrc-gate" style="position:fixed;inset:0;background:rgba(248,249,250,0.92);backdrop-filter:blur(12px);display:grid;place-items:center;z-index:99999999;padding:16px">
 
-<!-- Hidden return guide wey go show after click - same inline style -->
-<p id="mrc-return" style="display:none;font-family:sans-serif;color:#333;line-height:1.6;max-width:600px;margin:20px auto;padding:16px;background:#f0fff4;border:1px solid #c6f6d5;border-radius:8px">
-    <span style="font-size:11px;font-weight:700;color:#22543d;letter-spacing:0.5px">✓ SPONSOR OPENED • <span id="sec">15</span>S AUTO RETURN</span><br>
-    <span style="font-size:14px;color:#1a1a1a"><b>Partner banner opened in new tab.</b> View 5-10 sec, then close that tab to continue reading Academy Resources here.</span>
-    <br>
-    <span style="font-size:12px;color:#718096">How to return: Check new tab → view → close tab → you back here automatically.</span>
-    <br>
-    <a href="#" id="returnBtn" style="display:inline-block;margin-top:10px;color:#fff;background:#1a1a1a;text-decoration:none;font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px">I Viewed Ad, Continue Reading →</a>
-    <span style="display:block;margin-top:8px;height:3px;background:#e2e8f0;border-radius:100px;overflow:hidden"><span id="bar" style="display:block;height:100%;width:0%;background:#1a1a1a;transition:width 1s linear"></span></span>
-</p>
+  <!-- YOUR CARD - STEP 1 -->
+  <div id="step1" class="resource-card" style="border:1px solid #e2e8f0;border-radius:12px;padding:24px;max-width:320px;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 4px 6px rgba(0,0,0,0.02);background:#ffffff;position:relative">
+      <div class="card-badge" style="position:absolute;top:16px;right:16px;background:#edf2f7;color:#4a5568;font-size:10px;padding:4px 8px;border-radius:20px;font-weight:600">Network Partner</div>
+      <div class="card-icon" style="font-size:28px;margin-bottom:12px">💡</div>
+      <h4 style="margin:0 0 6px 0;font-size:16px;color:#1a1a1a">Premium Ad Network Showcase</h4>
+      <p style="margin:0 0 16px 0;font-size:13px;color:#718096;line-height:1.4">Click below to safely view trending external web platforms and promotional rates. Stay on page guide included.</p>
+      <a href="#" id="watchBtn" class="card-link" style="color:#fff;background:#0B1F14;text-decoration:none;font-size:14px;font-weight:600;padding:10px 18px;border-radius:6px;display:inline-block">Visit Partner Website →</a>
+      <p style="margin:12px 0 0;font-size:11px;color:#a0aec0">Opens in new tab • High earnings</p>
+  </div>
+
+  <!-- STEP 2 - AFTER CLICK - SAME CARD STYLE BUT WITH RETURN GUIDE -->
+  <div id="step2" class="resource-card" style="display:none;border:1px solid #c6f6d5;border-radius:12px;padding:24px;max-width:320px;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 10px 20px rgba(0,0,0,0.08);background:#ffffff;position:relative">
+      <div class="card-badge" style="position:absolute;top:16px;right:16px;background:#c6f6d5;color:#22543d;font-size:10px;padding:4px 8px;border-radius:20px;font-weight:600">OPENED • <span id="sec">15</span>s</div>
+      <div class="card-icon" style="font-size:28px;margin-bottom:12px">✅</div>
+      <h4 style="margin:0 0 6px 0;font-size:16px;color:#1a1a1a">Partner Opened!</h4>
+      <p style="margin:0 0 12px 0;font-size:13px;color:#4a5568;line-height:1.4">
+        <b>Banner ad is open in new tab.</b><br>View 5-10 sec then close that tab to return to Academy Resources here.
+      </p>
+      <div style="background:#f7fafc;border-radius:8px;padding:10px;margin-bottom:14px">
+        <div style="font-size:11px;color:#718096;line-height:1.5">
+          1. Check new tab wey open<br>
+          2. Wait small for banner<br>
+          3. Close tab → Auto back here
+        </div>
+        <div style="margin-top:8px;height:3px;background:#edf2f7;border-radius:100px;overflow:hidden"><div id="bar" style="height:100%;width:0%;background:#0B1F14;transition:width 1s linear"></div></div>
+      </div>
+      <a href="#" id="returnBtn" class="card-link" style="color:#fff;background:#1a1a1a;text-decoration:none;font-size:14px;font-weight:600;padding:10px 18px;border-radius:6px;display:inline-block">I Viewed Ad, Return →</a>
+  </div>
+
+</div>
 
 <script>
-const para = document.getElementById('mrc-para');
-const ret = document.getElementById('mrc-return');
-
-document.getElementById('classicLink').onclick = function(e){
+document.getElementById('watchBtn').onclick = function(e){
   e.preventDefault();
-  // HIGH MONEY: banner opens new tab
+  // HIGH MONEY: banner opens in new tab = high pay
   window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
   
-  para.style.display='none';
-  ret.style.display='block';
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='block';
   
   let s=15, bar=document.getElementById('bar');
   let iv=setInterval(()=>{
     s--; document.getElementById('sec').innerText=s; bar.style.width=((15-s)/15*100)+'%';
-    if(s<=0){ clearInterval(iv); ret.innerHTML='<span style="font-size:14px;color:#22543d">✓ Thank you! Academy Resources unlocked. Continue reading below.</span>'; setTimeout(()=>{ ret.remove(); para.remove(); },1500); }
+    if(s<=0){ clearInterval(iv); document.getElementById('mrc-gate').remove(); }
   },1000);
 };
-document.getElementById('returnBtn').onclick = function(e){ e.preventDefault(); ret.remove(); para.remove(); };
+document.getElementById('returnBtn').onclick = function(e){ e.preventDefault(); document.getElementById('mrc-gate').remove(); };
 </script>
 <!-- TOP BANNER -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
