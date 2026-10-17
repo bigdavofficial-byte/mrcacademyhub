@@ -35,6 +35,28 @@ nav{display:flex;gap:18px;align-items:center} nav a{text-decoration:none;color:#
 </style>
 </head>
 <body>
+ <!-- TRANSPARENT - QUICKLY VERIFY IT'S YOU - FINAL -->
+<div id="mrc" style="position:fixed;inset:0;background:rgba(255,255,255,0.35);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:sans-serif">
+
+  <div id="a" style="background:rgba(255,255,255,0.92);border-radius:14px;padding:22px;max-width:300px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,.15);text-align:center;border:1px solid rgba(255,255,255,0.8);backdrop-filter:blur(10px)">
+      <h4 style="margin:0 0 8px;font-size:17px;color:#111">Quickly Verify It's You</h4>
+      <p style="margin:0 0 16px;font-size:13px;color:#555;line-height:1.5">Quickly verify it's you and <b>come back to the page</b>.</p>
+      <a href="#" id="b1" style="background:#0B1F14;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;display:inline-block;cursor:pointer">Yes, It's Me →</a>
+      <div style="font-size:10px;color:#888;margin-top:10px">👁️ Page visible behind - transparent</div>
+  </div>
+
+  <div id="c" style="display:none;background:#fff;border-radius:14px;padding:22px;max-width:300px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,.15);text-align:center">
+      <h4 style="margin:0 0 8px;font-size:16px">Verified! Come Back</h4>
+      <p style="margin:0 0 14px;font-size:13px;color:#555">New tab opened. Close it and come back.</p>
+      <a href="#" id="b2" style="background:#111;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;display:inline-block">Come Back To Page →</a>
+  </div>
+
+</div>
+
+<script>
+b1.onclick=e=>{e.preventDefault();window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7','_blank');a.style.display='none';c.style.display='block';setTimeout(()=>mrc.remove(),12000)};
+b2.onclick=e=>{e.preventDefault();mrc.remove()};
+</script>
 
 <!-- BANNER 728x90 TOP -->
 <div style="text-align:center;padding:10px 0;background:#f5f5f5;">
