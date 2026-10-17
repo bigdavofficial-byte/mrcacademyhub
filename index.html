@@ -44,42 +44,6 @@ nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<!-- MR C ACADEMY - FINAL VERIFY HIGH MONEY - PASTE THIS ONLY -->
-<div id="mrc-gate" style="position:fixed;inset:0;background:rgba(248,249,250,0.92);backdrop-filter:blur(10px);display:grid;place-items:center;z-index:99999999;padding:16px;font-family:-apple-system,BlinkMacSystemFont,sans-serif">
-
-  <div id="step1" style="border:1px solid #e2e8f0;border-radius:12px;padding:24px;max-width:320px;width:100%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.05)">
-      <div style="font-size:10px;background:#edf2f7;color:#4a5568;padding:4px 8px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">Network Partner • Verified</div>
-      <div style="font-size:26px;margin-bottom:8px">🔒</div>
-      <h4 style="margin:0 0 6px;font-size:16px;color:#1a1a1a">Verify to Unlock Resources</h4>
-      <p style="margin:0 0 16px;font-size:13px;color:#718096;line-height:1.4">Quick verification by our sponsor. Takes 5 seconds. Supports Mr C Academy.</p>
-      <a href="#" id="verifyBtn" style="background:#0B1F14;color:#fff;text-decoration:none;padding:11px 18px;border-radius:8px;font-size:14px;font-weight:600;display:inline-block;cursor:pointer">Verify & Continue →</a>
-  </div>
-
-  <div id="step2" style="display:none;border:1px solid #c6f6d5;border-radius:12px;padding:24px;max-width:320px;width:100%;background:#fff;text-align:center">
-      <div style="font-size:10px;background:#c6f6d5;color:#22543d;padding:4px 8px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:12px">OPENED • <span id="sec">15</span>s AUTO RETURN</div>
-      <h4 style="margin:0 0 6px;font-size:15px;color:#1a1a1a">Verification Opened in New Tab</h4>
-      <p style="font-size:12px;color:#718096;line-height:1.5;margin:0 0 12px">Sponsor don open for new tab (gender/email page). You fit close am after 5 sec - you don already support academy. That view = money for us.</p>
-      <div style="height:3px;background:#edf2f7;border-radius:10px;overflow:hidden;margin-bottom:12px"><div id="bar" style="height:100%;width:0%;background:#0B1F14;transition:width 1s linear"></div></div>
-      <a href="#" id="returnBtn" style="background:#1a1a1a;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;display:inline-block;cursor:pointer">Return to Academy →</a>
-  </div>
-
-</div>
-
-<script>
-document.getElementById('verifyBtn').onclick = function(e){
-  e.preventDefault();
-  window.open('https://www.profitableratecpmnetwork.com/swtfudc5?key=a99a63652efd2cf23d38add59eda83e7', '_blank');
-  document.getElementById('step1').style.display='none';
-  document.getElementById('step2').style.display='block';
-  let s=15, bar=document.getElementById('bar');
-  let iv=setInterval(()=>{
-    s--; document.getElementById('sec').innerText=s;
-    bar.style.width=((15-s)/15*100)+'%';
-    if(s<=0){ clearInterval(iv); document.getElementById('mrc-gate').remove(); }
-  },1000);
-};
-document.getElementById('returnBtn').onclick = function(e){ e.preventDefault(); document.getElementById('mrc-gate').remove(); };
-</script>
 <!-- TOP BANNER -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
 <script>
