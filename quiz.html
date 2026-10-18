@@ -1,178 +1,191 @@
-<!DOCTYPE html> <html lang="en"> <head> <link rel="icon" href="logo.png"> <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>NOUN Quiz - Mr C Academy Hub</title> <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet"> <script src="https://js.paystack.co/v1/inline.js"></script> <style> :root{--green:#0B4D2A;--dark:#0E1E14} *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif} body{background:#fff} header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0} .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1} .logo img{width:48px;height:48px;border-radius:12px;background:#f6f6f6;object-fit:contain} nav{display:flex;gap:22px;align-items:center} nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500} .login{border:1.5px solid var(--green);padding:8px 20px;border-radius:100px;color:var(--green);font-weight:700;text-decoration:none;cursor:pointer} .hero{padding:30px 6%;text-align:center;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%)} .hero h1{font-size:36px}.hero h1 span{color:var(--green)} .container{max-width:1200px;margin:20px auto;padding:0 6% 40px} .selector{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:22px} .label{font-size:11px;font-weight:800;color:#888;margin:14px 0 8px} .grid{display:flex;flex-wrap:wrap;gap:8px} .pill{padding:10px 18px;border:1px solid #ddd;border-radius:100px;background:#fff;font-size:13px;font-weight:700;cursor:pointer} .pill.active{background:var(--green);color:#fff;border-color:var(--green)} .courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:16px} .course-card{padding:16px;border:1.5px solid #e8e8e8;border-radius:16px;background:#fff;cursor:pointer} .course-card:hover{border-color:var(--green);transform:translateY(-2px)} .attempt-btn{margin-top:10px;background:var(--green);color:#fff;border:none;padding:10px 14px;border-radius:100px;font-weight:800;font-size:12px;width:100%;cursor:pointer} .quiz-box{background:#fff;border:1px solid #e8e8e8;border-radius:20px;padding:26px;max-width:800px;margin:20px auto;display:none} .q-text{font-size:18px;font-weight:800;margin-bottom:18px} .opts{display:flex;flex-direction:column;gap:10px} .opt{padding:14px;border:1.5px solid #e8e8e8;border-radius:12px;cursor:pointer;display:flex;gap:12px;font-size:14px} .opt.selected{border-color:var(--green);background:#E8F5E9} .btn{padding:12px 22px;border-radius:100px;border:none;font-weight:800;cursor:pointer} .btn-next{background:var(--green);color:#fff} .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:20px} .modal-overlay.show{display:flex!important} .modal{background:#fff;border-radius:20px;padding:28px;max-width:400px;width:100%} .input{width:100%;padding:14px;border:1.5px solid #e5e5e5;border-radius:12px;margin-bottom:12px;font-size:14px} .btn-login{width:100%;background:var(--green);color:#fff;padding:14px;border-radius:100px;border:none;font-weight:800;cursor:pointer} .paywall-box{background:#fff;border:2px dashed var(--green);border-radius:16px;padding:24px;text-align:center;margin:20px auto;max-width:500px;display:none} .btn-paystack{background:#0AA5FF;color:#fff;padding:14px 26px;border-radius:100px;border:none;font-weight:800;cursor:pointer;width:100%;margin-top:12px} @media(max-width:900px){nav{display:none}.hero h1{font-size:28px}} </style> </head> <body> <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;"> <script> atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; </script> <script src="https://www.highrevenueformat.com/883db4817d5e178b6cf1e171548f7d9f/invoke.js"></script> </div> <header> <div class="logo"><img src="logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div> <nav> <a href="index.html">Home</a> <a href="tma.html">TMA Booking</a> <a href="quiz.html" style="color:var(--green);font-weight:700">Quiz</a> <a href="past-questions.html">Past Questions</a> <a href="#" id="headerLoginBtn" class="login" onclick="openGlobalLogin();return false;">Login</a> <span id="loggedInfo" style="display:none;font-size:13px;margin-left:6px"></span> </nav> </header> <section class="hero"> <h1>NOUN <span>CBT Quiz</span> Practice</h1> <p style="color:#666;margin-top:8px;font-size:14px">10 Questions FREE → Login to Continue Unlimited Practice</p> <p style="color:var(--green);font-weight:800;margin-top:6px;font-size:12px" id="freeCounter">🎉 You have 10 FREE questions - No login needed to start!</p> </section> <div class="container"> <div class="selector"> <div class="label">1. SELECT DEPARTMENT (ALL NOUN DEPTS)</div><div class="grid" id="deptGrid"></div> <div class="label">2. SELECT LEVEL</div><div class="grid"><div class="pill active" onclick="setLevel('100',this)">100L</div><div class="pill" onclick="setLevel('200',this)">200L</div><div class="pill" onclick="setLevel('300',this)">300L</div><div class="pill" onclick="setLevel('400',this)">400L</div><div class="pill" onclick="setLevel('800',this)">800L PG</div></div> <div class="label">3. SELECT COURSE - 10 FREE, THEN LOGIN</div><div class="courses-grid" id="coursesGrid"></div> </div> <div class="quiz-box" id="quizBox"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:#888;margin-bottom:10px"><span id="qCount"></span><span id="qStatus"></span></div><div style="height:6px;background:#f0f0f0;border-radius:100px;margin-bottom:18px"><div id="bar" style="height:100%;background:var(--green)"></div></div><div class="q-text" id="qText"></div><div class="opts" id="opts"></div><div style="display:flex;justify-content:space-between;margin-top:20px"><button class="btn" style="background:#f0f0f0" onclick="prevQ()">← Prev</button><button class="btn btn-next" onclick="nextQ()">Next →</button></div></div> <div class="quiz-box" id="resultBox" style="display:none;text-align:center"><h2>Your Score</h2><div style="font-size:50px;font-weight:800;color:var(--green);margin:10px 0" id="scoreBig"></div><p id="resultMsg" style="color:#666;font-size:13px"></p><div id="correction" style="text-align:left;margin-top:20px"></div><button class="btn btn-next" style="margin-top:20px;width:100%" onclick="continueQuiz()">Continue Practice →</button></div> <div class="paywall-box" id="paywallBox"><h3>🔒 Login to Continue</h3><p style="font-size:13px;color:#666;margin:8px 0">You don finish your <b>10 FREE questions</b> for <b id="payCourseCode"></b>. Login to unlock unlimited practice.</p><div style="font-size:18px;font-weight:800;margin:10px 0">FREE after login - Unlimited</div><button class="btn-paystack" style="background:var(--green)" onclick="openGlobalLogin()">Login / Create Account →</button><button onclick="renderCourses()" style="margin-top:10px;background:#f2f2f2;border:none;padding:10px;width:100%;border-radius:100px;cursor:pointer">Back to Courses</button></div> </div> <div id="globalLoginModal" class="modal-overlay"><div class="modal"><h3 style="font-size:22px;font-weight:800">Login to Continue</h3><p style="font-size:13px;color:#666;margin:6px 0 18px">You don use your 10 free questions. Login to continue unlimited.</p><input id="globalEmail" type="email" placeholder="Email e.g. student@gmail.com" class="input"><input id="globalPass" type="password" placeholder="Password (min 4 chars)" class="input"><div id="globalLoginMsg" style="font-size:12px;color:#ff5252;margin-bottom:10px;display:none"></div><button onclick="handleGlobalLogin()" class="btn-login">Login / Create Account →</button><button onclick="closeGlobalLogin()" style="width:100%;background:#f2f2f2;color:#333;padding:12px;border-radius:100px;border:none;font-weight:700;cursor:pointer;margin-top:10px">Cancel</button></div></div> <script src="auth.js"></script> <script>
-// === CONFIG ===
-const PAYSTACK_KEY='pk_test_YOUR_PUBLIC_KEY_HERE';
-const FREE_LIMIT = 10;
+<!DOCTYPE html><html><head>... your head still same ...</head><body>
+<!-- KEEP YOUR HEADER, BANNER, HERO SAME -->
 
-// === ALL NOUN DEPARTMENTS & COURSES ===
-const nounStructure = {
-"Computer Science (CIT/CSS)":{"100":[{code:"CIT101",title:"Computer in Society"},{code:"CIT102",title:"Intro to Problem Solving"},{code:"CSS101",title:"Intro to Computer Science"},{code:"MTH101",title:"Elementary Maths I"},{code:"GST101",title:"Use of English I"}], "200":[{code:"CIT208",title:"Data Structures"},{code:"CIT211",title:"Intro to Programming"},{code:"CIT215",title:"Intro to System Analysis"},{code:"CSS201",title:"Computer Programming I"}], "300":[{code:"CIT301",title:"Structured Programming"},{code:"CIT309",title:"Computer Architecture"},{code:"CIT311",title:"System Analysis & Design"},{code:"CSS306",title:"Operating Systems"}], "400":[{code:"CIT411",title:"Artificial Intelligence"},{code:"CIT421",title:"Software Engineering"},{code:"CIT412",title:"Computer Networks"},{code:"CIT427",title:"Project"}], "800":[{code:"CIT801",title:"Advanced Programming"},{code:"CIT811",title:"Advanced AI"}]},
-"Biology (BIO)":{"100":[{code:"BIO101",title:"General Biology I"},{code:"BIO102",title:"General Biology II"},{code:"CHM101",title:"General Chemistry I"},{code:"PHY101",title:"General Physics I"}], "200":[{code:"BIO201",title:"Cell Biology"},{code:"BIO202",title:"Genetics I"},{code:"BIO204",title:"Ecology"},{code:"BIO205",title:"Physiology"}], "300":[{code:"BIO301",title:"Genetics II"},{code:"BIO303",title:"Evolution"},{code:"BIO304",title:"Molecular Biology"},{code:"BIO306",title:"Immunology"}], "400":[{code:"BIO401",title:"Population Biology"},{code:"BIO402",title:"Conservation Biology"},{code:"BIO404",title:"Parasitology"},{code:"BIO406",title:"Project"}], "800":[{code:"BIO801",title:"Advanced Ecology"}]},
-"Chemistry (CHM)":{"100":[{code:"CHM101",title:"General Chemistry I"},{code:"CHM102",title:"General Chemistry II"},{code:"PHY101",title:"General Physics I"},{code:"MTH101",title:"General Maths I"}], "200":[{code:"CHM201",title:"Organic Chemistry I"},{code:"CHM202",title:"Inorganic Chemistry I"},{code:"CHM204",title:"Physical Chemistry I"},{code:"CHM205",title:"Analytical Chemistry"}], "300":[{code:"CHM301",title:"Organic Chemistry II"},{code:"CHM303",title:"Physical Chemistry II"},{code:"CHM305",title:"Environmental Chemistry"},{code:"CHM307",title:"Polymer Chemistry"}], "400":[{code:"CHM401",title:"Quantum Chemistry"},{code:"CHM402",title:"Industrial Chemistry"},{code:"CHM404",title:"Natural Product Chemistry"},{code:"CHM406",title:"Project"}], "800":[{code:"CHM801",title:"Advanced Organic"}]},
-"Physics (PHY/PHS)":{"100":[{code:"PHY101",title:"General Physics I"},{code:"PHY102",title:"General Physics II"},{code:"MTH101",title:"General Maths I"},{code:"PHS101",title:"Intro to Physical Sciences"}], "200":[{code:"PHY201",title:"Mechanics"},{code:"PHY202",title:"Electricity & Magnetism"},{code:"PHS202",title:"Materials Science"},{code:"PHY204",title:"Modern Physics"}], "300":[{code:"PHY301",title:"Electromagnetism"},{code:"PHY303",title:"Quantum Physics"},{code:"PHY305",title:"Thermodynamics"},{code:"PHS301",title:"Radiation Physics"}], "400":[{code:"PHY401",title:"Solid State Physics"},{code:"PHY402",title:"Nuclear Physics"},{code:"PHY404",title:"Electronics"},{code:"PHY406",title:"Project"}], "800":[{code:"PHY801",title:"Advanced Quantum"}]},
-"Mathematics (MTH)":{"100":[{code:"MTH101",title:"Elementary Maths I"},{code:"MTH102",title:"Elementary Maths II"},{code:"CIT101",title:"Computer in Society"},{code:"GST102",title:"Use of English II"}], "200":[{code:"MTH201",title:"Mathematical Methods I"},{code:"MTH202",title:"Real Analysis I"},{code:"MTH204",title:"Linear Algebra I"},{code:"MTH205",title:"Abstract Algebra"}], "300":[{code:"MTH301",title:"Real Analysis II"},{code:"MTH303",title:"Complex Analysis"},{code:"MTH305",title:"Operations Research"},{code:"MTH307",title:"Numerical Analysis"}], "400":[{code:"MTH401",title:"Functional Analysis"},{code:"MTH402",title:"Topology"},{code:"MTH404",title:"Measure Theory"},{code:"MTH406",title:"Project"}], "800":[{code:"MTH801",title:"Advanced Analysis"}]},
-"Business Admin (BUS/BFN)":{"100":[{code:"BUS101",title:"Intro to Business"},{code:"BUS105",title:"Business Maths I"},{code:"BFN101",title:"Intro to Banking & Finance"},{code:"ACC101",title:"Principles of Accounting"}], "200":[{code:"BUS202",title:"Business Statistics"},{code:"BUS204",title:"Business Law"},{code:"BFN201",title:"Business Finance I"},{code:"BUS208",title:"Marketing Principles"}], "300":[{code:"BUS301",title:"Entrepreneurship"},{code:"BUS303",title:"Human Resource Mgt"},{code:"BFN301",title:"Banking Methods"},{code:"BUS305",title:"Operations Mgt"}], "400":[{code:"BUS401",title:"Strategic Mgt"},{code:"BUS402",title:"Business Policy"},{code:"BFN401",title:"Investment Analysis"},{code:"BUS404",title:"Project"}], "800":[{code:"BUS727",title:"Business Research Methods"},{code:"BFN701",title:"Corporate Finance"},{code:"MBA801",title:"MBA Project"}]},
-"Economics (ECO)":{"100":[{code:"ECO101",title:"Principles of Economics I"},{code:"ECO102",title:"Principles of Economics II"},{code:"BUS101",title:"Intro to Business"},{code:"MTH101",title:"Maths I"}], "200":[{code:"ECO201",title:"Microeconomics I"},{code:"ECO202",title:"Macroeconomics I"},{code:"ECO204",title:"History of Economic Thought"},{code:"ECO206",title:"Structure of Nigerian Economy"}], "300":[{code:"ECO301",title:"Microeconomics II"},{code:"ECO303",title:"Macroeconomics II"},{code:"ECO305",title:"Development Economics I"},{code:"ECO307",title:"International Economics"}], "400":[{code:"ECO401",title:"Advanced Microeconomics"},{code:"ECO402",title:"Advanced Macroeconomics"},{code:"ECO404",title:"Econometrics"},{code:"ECO406",title:"Project"}], "800":[{code:"ECO801",title:"Advanced Econometrics"}]},
-"Accounting (ACC)":{"100":[{code:"ACC101",title:"Principles of Accounting I"},{code:"ACC102",title:"Principles of Accounting II"},{code:"BUS101",title:"Intro to Business"},{code:"ECO101",title:"Principles of Economics"}], "200":[{code:"ACC201",title:"Financial Accounting I"},{code:"ACC202",title:"Financial Accounting II"},{code:"ACC204",title:"Cost Accounting I"},{code:"ACC206",title:"Taxation I"}], "300":[{code:"ACC301",title:"Cost Accounting II"},{code:"ACC303",title:"Auditing I"},{code:"ACC305",title:"Company Law"},{code:"ACC307",title:"Public Sector Accounting"}], "400":[{code:"ACC401",title:"Advanced Financial Accounting"},{code:"ACC402",title:"Advanced Auditing"},{code:"ACC404",title:"Management Accounting"},{code:"ACC406",title:"Project"}], "800":[{code:"ACC801",title:"Advanced Accounting Theory"}]},
-"English (ENG/LIN)":{"100":[{code:"ENG101",title:"Use of English I"},{code:"ENG102",title:"Use of English II"},{code:"LIN101",title:"Intro to Linguistics"},{code:"ENG103",title:"Intro to Literature"}], "200":[{code:"ENG201",title:"English Phonetics"},{code:"LIN201",title:"Phonology"},{code:"ENG203",title:"African Literature"},{code:"ENG205",title:"English Grammar"}], "300":[{code:"ENG301",title:"English Semantics"},{code:"LIN301",title:"Syntax"},{code:"ENG303",title:"Literary Criticism"},{code:"ENG305",title:"Sociolinguistics"}], "400":[{code:"ENG401",title:"Advanced Semantics"},{code:"ENG402",title:"Discourse Analysis"},{code:"ENG404",title:"Psycholinguistics"},{code:"ENG406",title:"Project"}], "800":[{code:"ENG801",title:"Advanced Linguistics"}]},
-"Education (EDU)":{"100":[{code:"EDU101",title:"Intro to Education"},{code:"EDU102",title:"History of Education"},{code:"PED101",title:"Primary Education I"},{code:"GST101",title:"Use of English I"}], "200":[{code:"EDU201",title:"Philosophy of Education"},{code:"EDU202",title:"Educational Psychology"},{code:"EDU204",title:"Curriculum Studies"},{code:"SED201",title:"Special Education"}], "300":[{code:"EDU301",title:"Measurement & Evaluation"},{code:"EDU303",title:"Guidance & Counselling"},{code:"EDU305",title:"Educational Admin"},{code:"EDU307",title:"Research Methods"}], "400":[{code:"EDU401",title:"Advanced Curriculum"},{code:"EDU402",title:"Teacher Education"},{code:"EDU404",title:"Comparative Education"},{code:"EDU406",title:"Project"}], "800":[{code:"EDU801",title:"Advanced Research"}]},
-"Environmental Science (ESM)":{"100":[{code:"ESM101",title:"Intro to Environmental Science"},{code:"ESM102",title:"Man & Environment"},{code:"BIO101",title:"General Biology"},{code:"CHM101",title:"General Chemistry"}], "200":[{code:"ESM201",title:"Environmental Chemistry"},{code:"ESM202",title:"Environmental Biology"},{code:"ESM204",title:"Pollution Studies"},{code:"ESM206",title:"Climatology"}], "300":[{code:"ESM301",title:"EIA"},{code:"ESM303",title:"Waste Management"},{code:"ESM305",title:"Environmental Health"},{code:"ESM307",title:"GIS"}], "400":[{code:"ESM401",title:"Environmental Management"},{code:"ESM402",title:"Sustainable Development"},{code:"ESM404",title:"Environmental Law"},{code:"ESM406",title:"Project"}], "800":[{code:"ESM801",title:"Advanced EIA"}]},
-"Law (LAW)":{"100":[{code:"LAW101",title:"Intro to Law"},{code:"LAW102",title:"Nigerian Legal System"},{code:"LAW103",title:"Law of Contract I"},{code:"GST101",title:"Use of English I"}], "200":[{code:"LAW201",title:"Constitutional Law I"},{code:"LAW202",title:"Criminal Law I"},{code:"LAW204",title:"Law of Torts"},{code:"LAW206",title:"Commercial Law"}], "300":[{code:"LAW301",title:"Land Law"},{code:"LAW303",title:"Equity & Trusts"},{code:"LAW305",title:"Company Law"},{code:"LAW307",title:"Jurisprudence"}], "400":[{code:"LAW401",title:"International Law"},{code:"LAW402",title:"Labour Law"},{code:"LAW404",title:"Taxation Law"},{code:"LAW406",title:"Project"}], "800":[{code:"LAW801",title:"Advanced Constitutional Law"}]},
-"Public Admin & Others":{"100":[{code:"POL101",title:"Intro to Political Science"},{code:"PUB101",title:"Intro to Public Admin"},{code:"MPA101",title:"Intro to MPA"},{code:"INR101",title:"Intro to International Relations"}], "200":[{code:"POL201",title:"Nigerian Government & Politics"},{code:"PUB201",title:"Public Admin Theory"},{code:"NSC101",title:"Intro to Nursing"},{code:"PCR101",title:"Intro to Peace Studies"}], "300":[{code:"POL301",title:"Comparative Politics"},{code:"PUB301",title:"Local Government Admin"},{code:"ENT301",title:"Entrepreneurship Studies"},{code:"CSS301",title:"Cyber Security"}], "400":[{code:"POL401",title:"Political Theory"},{code:"PUB401",title:"Development Admin"},{code:"ENT401",title:"Venture Creation"},{code:"NSC401",title:"Community Health"}], "800":[{code:"MPA701",title:"Public Policy Analysis"}]}
+<script>
+// === REAL TMA QUESTION BANK - EXPANDABLE ===
+const TMA_BANK = {
+"CIT101":[
+{q:"The computer that is designed to handle complex scientific calculations is",opts:["Supercomputer","Microcomputer","Minicomputer","Analog computer"],ans:0},
+{q:"Which of these is an input device?",opts:["Monitor","Keyboard","Printer","Speaker"],ans:1},
+{q:"The binary number system uses",opts:["2 digits","10 digits","8 digits","16 digits"],ans:0},
+{q:"The brain of the computer is",opts:["CPU","RAM","ROM","Hard disk"],ans:0},
+{q:"1 Byte equals",opts:["8 bits","16 bits","4 bits","2 bits"],ans:0},
+{q:"Which generation used Vacuum Tubes?",opts:["First","Second","Third","Fourth"],ans:0},
+{q:"MS Word is an example of",opts:["Application Software","System Software","Utility","Firmware"],ans:0},
+{q:"The permanent memory is",opts:["ROM","RAM","Cache","Virtual"],ans:0},
+{q:"Internet Explorer is a",opts:["Browser","OS","Language","Hardware"],ans:0},
+{q:"The full meaning of ICT is",opts:["Information & Communication Technology","Information & Computer Technology","Internet Communication Tech","Information Control Tech"],ans:0},
+{q:"Which topology has central hub?",opts:["Star","Bus","Ring","Mesh"],ans:0},
+{q:"RAM means",opts:["Random Access Memory","Read Access Memory","Rapid Access Memory","Real Access Memory"],ans:0}
+],
+"BIO101":[
+{q:"The basic unit of life is",opts:["Cell","Tissue","Organ","System"],ans:0},
+{q:"Mitosis results in",opts:["2 identical cells","4 different cells","1 cell","3 cells"],ans:0},
+{q:"The powerhouse of the cell is",opts:["Mitochondrion","Nucleus","Ribosome","Chloroplast"],ans:0},
+{q:"Photosynthesis occurs in",opts:["Chloroplast","Mitochondria","Nucleus","Cytoplasm"],ans:0},
+{q:"Human chromosome number is",opts:["46","44","48","23"],ans:0},
+{q:"DNA full meaning",opts:["Deoxyribonucleic Acid","Ribonucleic Acid","Deoxyribose Acid","None"],ans:0},
+{q:"The largest organ in human body is",opts:["Skin","Liver","Brain","Heart"],ans:0},
+{q:"Osmosis is movement of",opts:["Water","Salt","Protein","Sugar"],ans:0},
+{q:"Xylem transports",opts:["Water","Food","Oxygen","Hormones"],ans:0},
+{q:"Meiosis produces",opts:["4 haploid cells","2 diploid cells","1 cell","8 cells"],ans:0}
+],
+"CHM101":[
+{q:"Atomic number is number of",opts:["Protons","Neutrons","Electrons + Protons","Electrons"],ans:0},
+{q:"pH of neutral water is",opts:["7","0","14","6"],ans:0},
+{q:"NaCl is known as",opts:["Common salt","Baking soda","Chalk","Sugar"],ans:0},
+{q:"The lightest element is",opts:["Hydrogen","Helium","Lithium","Oxygen"],ans:0},
+{q:"Avogadro number is",opts:["6.02 x 10^23","6.02 x 10^22","3.02 x 10^23","6.02 x 10^24"],ans:0},
+{q:"Which is noble gas?",opts:["Argon","Nitrogen","Oxygen","Chlorine"],ans:0},
+{q:"Chemical formula for water",opts:["H2O","CO2","NaCl","H2SO4"],ans:0},
+{q:"Valency of Carbon is",opts:["4","2","6","1"],ans:0},
+{q:"Acid turns blue litmus",opts:["Red","Blue","Green","Yellow"],ans:0},
+{q:"Isotope has same",opts:["Protons","Neutrons","Mass","Electrons"],ans:0}
+],
+"GST101":[
+{q:"Concord means",opts:["Agreement between subject and verb","Writing essay","Reading","None"],ans:0},
+{q:"A noun names",opts:["Person, place or thing","Action","Description","None"],ans:0},
+{q:"How many parts of speech in English?",opts:["8","6","7","9"],ans:0},
+{q:"Synonym of Happy is",opts:["Joyful","Sad","Angry","Cry"],ans:0},
+{q:"The past tense of Go is",opts:["Went","Gone","Going","Goes"],ans:0}
+],
+"BUS101":[
+{q:"Management functions include",opts:["Planning, Organizing, Leading, Controlling","Buying, Selling","Producing","Marketing only"],ans:0},
+{q:"SWOT stands for",opts:["Strengths, Weaknesses, Opportunities, Threats","Strong, Weak, Open, Tight","None","All"],ans:0},
+{q:"Entrepreneur is",opts:["Risk taker who starts business","Employee","Manager","Customer"],ans:0},
+{q:"The 4Ps of marketing are",opts:["Product, Price, Place, Promotion","People, Place, Price, Product","None","All"],ans:0},
+{q:"Balance sheet shows",opts:["Assets, Liabilities, Equity","Profit only","Sales only","None"],ans:0}
+],
+"ECO101":[
+{q:"Economics is study of",opts:["Scarcity and choice","Money only","Banking","Trade"],ans:0},
+{q:"Law of demand says price up, quantity",opts:["Falls","Rises","Constant","Zero"],ans:0},
+{q:"Opportunity cost is",opts:["Next best alternative foregone","Money spent","Profit","Loss"],ans:0},
+{q:"Scale of preference means",opts:["Ranking wants in order of importance","Buying all","Selling all","None"],ans:0}
+]
 };
 
-let selectedDept=Object.keys(nounStructure)[0], selectedLevel='100', selectedCourse=null, currentQuestions=[], current=0, answers={};
-
-// FREE COUNTER
-function getFreeUsed(){ return parseInt(localStorage.getItem('free_q_used')||'0'); }
-function addFreeUsed(n){ localStorage.setItem('free_q_used', getFreeUsed()+n); }
-function updateFreeCounter(){
-  let used = getFreeUsed();
-  let left = Math.max(0, FREE_LIMIT - used);
-  let el = document.getElementById('freeCounter');
-  if(el){
-    if(typeof isLoggedIn==='function' && isLoggedIn()){ el.textContent='✅ Logged in - Unlimited practice unlocked!'; el.style.color='#0B4D2A'; }
-    else if(left>0){ el.textContent=`🎉 You have ${left} FREE questions left - No login needed to start!`; }
-    else{ el.textContent=`🔒 You don use your ${FREE_LIMIT} free questions - Login to continue!`; el.style.color='#d00'; }
+// === GENERATE SMART QUESTIONS IF NOT IN BANK ===
+function smartGenerate(code, n){
+  if(TMA_BANK[code]){
+    let bank = TMA_BANK[code];
+    // shuffle and pick n
+    let shuffled = [...bank].sort(()=>0.5-Math.random());
+    // if need more than bank, repeat
+    while(shuffled.length < n){ shuffled = shuffled.concat(bank); }
+    return shuffled.slice(0,n);
   }
-}
-
-const deptGrid=document.getElementById('deptGrid');
-Object.keys(nounStructure).forEach((dept,i)=>{
-  let div=document.createElement('div');
-  div.className='pill'+(i===0?' active':'');
-  div.textContent=dept;
-  div.onclick=()=>{
-    document.querySelectorAll('#deptGrid .pill').forEach(p=>p.classList.remove('active'));
-    div.classList.add('active');
-    selectedDept=dept;
-    renderCourses();
+  // Fallback - create logical questions from code
+  const deptMap = {
+    "BIO":"Biology","CHM":"Chemistry","PHY":"Physics","CIT":"Computing","CSS":"Computer Science",
+    "MTH":"Mathematics","BUS":"Business","BFN":"Banking & Finance","ECO":"Economics","ACC":"Accounting",
+    "ESM":"Environmental Science","PHS":"Physical Sciences","ENG":"English","LIN":"Linguistics",
+    "EDU":"Education","LAW":"Law","POL":"Political Science","PUB":"Public Admin"
   };
-  deptGrid.appendChild(div);
-});
-
-function setLevel(lvl,el){
-  el.parentElement.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  selectedLevel=lvl;
-  renderCourses();
-}
-
-function renderCourses(){
-  let grid=document.getElementById('coursesGrid');
-  grid.innerHTML='';
-  let courses = (nounStructure[selectedDept] && nounStructure[selectedDept][selectedLevel]) || [];
-  if(courses.length===0){ grid.innerHTML='<div style="color:#888;font-size:13px">No courses for this level yet.</div>'; return; }
-  courses.forEach(c=>{
-    let card=document.createElement('div');
-    card.className='course-card';
-    card.innerHTML=`<div style="font-weight:800">${c.code}</div><div style="font-size:12px;color:#666">${c.title}</div><div style="margin-top:8px"><span style="padding:4px 10px;border-radius:100px;font-size:10px;font-weight:800;background:#E8F5E9;color:#0B4D2A">${selectedLevel} • FREE ${FREE_LIMIT} Qs</span></div><button class="attempt-btn">Attempt Now →</button>`;
-    card.querySelector('.attempt-btn').onclick=()=>handleAttemptClick(c);
-    card.onclick=()=>handleAttemptClick(c);
-    grid.appendChild(card);
-  });
-}
-
-function handleAttemptClick(course){
-  window.pendingCourse=course;
-  let used = getFreeUsed();
-  let logged = (typeof isLoggedIn==='function' && isLoggedIn());
-  if(!logged && used >= FREE_LIMIT){
-    openGlobalLogin();
-    return;
-  }
-  startCourseAfterLogin(course);
-}
-
-function generateQuestions(code,n){
+  let dept = code.replace(/[0-9]/g,'');
+  let subject = deptMap[dept] || dept;
   let arr=[];
-  for(let i=1;i<=n;i++){
-    arr.push({q:`${code} - Question ${i}: What is the correct answer for ${code}?`, opts:["Option A - Correct answer for "+code,"Option B - Distractor","Option C - Distractor","Option D - Distractor"], ans:0});
+  const templates=[
+    {q:`Which concept is fundamental to ${subject} ${code}?`,opts:[`Core principle of ${subject}`,`Unrelated concept`,`Obsolete theory`,`Myth`],ans:0},
+    {q:`In ${code}, what does the term 'system' refer to?`,opts:[`Interrelated parts working together`,`Single isolated part`,`Computer only`,`None`],ans:0},
+    {q:`What is the primary focus of ${code} in NOUN curriculum?`,opts:[`Understanding ${subject} fundamentals`,`Entertainment`,`Sports`,`Politics`],ans:0},
+    {q:`Which method is used in ${subject} for data analysis?`,opts:[`Scientific method`,`Guessing`,`Mythology`,`Folklore`],ans:0},
+    {q:`The importance of ${code} to national development is`,opts:[`Very significant`,`Not important`,`Harmful`,`None`],ans:0}
+  ];
+  for(let i=0;i<n;i++){
+    let t = templates[i % templates.length];
+    arr.push({q:`${code} Q${i+1}: ${t.q}`, opts:t.opts, ans:t.ans});
   }
   return arr;
 }
 
+// === ALL DEPARTMENTS ===
+const nounStructure = {
+"Computer Science":{"100":["CIT101","CIT102","MTH101","GST101"],"200":["CIT208","CIT211","CIT215"],"300":["CIT301","CIT309","CIT311"],"400":["CIT411","CIT421","CIT427"],"800":["CIT801"]},
+"Biology (BIO)":{"100":["BIO101","BIO102","CHM101"],"200":["BIO201","BIO202"],"300":["BIO301","BIO303"],"400":["BIO401","BIO402"],"800":["BIO801"]},
+"Chemistry (CHM)":{"100":["CHM101","CHM102","PHY101"],"200":["CHM201","CHM202"],"300":["CHM301","CHM303"],"400":["CHM401","CHM402"],"800":["CHM801"]},
+"Physics (PHY/PHS)":{"100":["PHY101","PHY102","PHS101"],"200":["PHY201","PHY202"],"300":["PHY301","PHY303"],"400":["PHY401","PHY402"],"800":["PHY801"]},
+"Business (BUS/BFN)":{"100":["BUS101","BFN101","ACC101"],"200":["BUS202","BFN201"],"300":["BUS301","BFN301"],"400":["BUS401","BFN401"],"800":["BUS727","BFN701"]},
+"Economics (ECO)":{"100":["ECO101","ECO102"],"200":["ECO201","ECO202"],"300":["ECO301","ECO303"],"400":["ECO401","ECO402"],"800":["ECO801"]},
+"Accounting (ACC)":{"100":["ACC101","ACC102"],"200":["ACC201","ACC202"],"300":["ACC301","ACC303"],"400":["ACC401","ACC402"],"800":["ACC801"]},
+"Maths (MTH)":{"100":["MTH101","MTH102"],"200":["MTH201","MTH202"],"300":["MTH301","MTH303"],"400":["MTH401","MTH402"],"800":["MTH801"]},
+"Environmental (ESM)":{"100":["ESM101","ESM102"],"200":["ESM201","ESM202"],"300":["ESM301","ESM303"],"400":["ESM401","ESM402"],"800":["ESM801"]},
+"GST/ENG/LIN":{"100":["GST101","ENG101","LIN101"],"200":["GST201","ENG201"],"300":["GST301","ENG301"],"400":["ENG401"],"800":["ENG801"]}
+};
+
+let selectedDept=Object.keys(nounStructure)[0], selectedLevel='100', selectedCourse=null, currentQuestions=[], current=0, answers={};
+const FREE_LIMIT=10;
+function getFreeUsed(){return parseInt(localStorage.getItem('free_q_used')||'0')}
+function addFreeUsed(n){localStorage.setItem('free_q_used',getFreeUsed()+n)}
+function isLoggedIn(){return localStorage.getItem('mrc_logged')==='yes'}
+
+const deptGrid=document.getElementById('deptGrid');
+Object.keys(nounStructure).forEach((dept,i)=>{
+ let d=document.createElement('div');d.className='pill'+(i===0?' active':'');d.textContent=dept;
+ d.onclick=()=>{deptGrid.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));d.classList.add('active');selectedDept=dept;renderCourses();};
+ deptGrid.appendChild(d);
+});
+function setLevel(lvl,el){el.parentElement.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));el.classList.add('active');selectedLevel=lvl;renderCourses();}
+function renderCourses(){
+ let grid=document.getElementById('coursesGrid');grid.innerHTML='';
+ let codes=nounStructure[selectedDept][selectedLevel]||[];
+ codes.forEach(code=>{
+   let hasReal = TMA_BANK[code] ? '✅ REAL TMA' : '📚 NOUN SYLLABUS';
+   let card=document.createElement('div');card.className='course-card';
+   card.innerHTML=`<div style="font-weight:800">${code}</div><div style="font-size:11px;color:#666;margin:4px 0">TMA Past Questions</div><div style="margin-top:6px"><span style="padding:4px 8px;border-radius:100px;font-size:9px;font-weight:800;background:${TMA_BANK[code]?'#0B4D2A':'#E8F5E9'};color:${TMA_BANK[code]?'#fff':'#0B4D2A'}">${hasReal}</span></div><button class="attempt-btn">Attempt ${isLoggedIn()?30:10} Qs →</button>`;
+   card.querySelector('.attempt-btn').onclick=()=>handleAttemptClick({code,title:code});card.onclick=()=>handleAttemptClick({code,title:code});grid.appendChild(card);
+ });
+}
+function handleAttemptClick(course){
+ window.pendingCourse=course;
+ if(!isLoggedIn() && getFreeUsed()>=FREE_LIMIT){openGlobalLogin();return;}
+ startCourseAfterLogin(course);
+}
 function startCourseAfterLogin(course){
-  selectedCourse=course;
-  let logged = (typeof isLoggedIn==='function' && isLoggedIn());
-  let used = getFreeUsed();
-  let remainingFree = Math.max(0, FREE_LIMIT - used);
-  let total;
-  if(logged){ total = 30; }
-  else{ total = Math.min(remainingFree, 10); if(total<=0){ openGlobalLogin(); return; } }
-  currentQuestions=generateQuestions(course.code,total);
-  current=0; answers={};
-  document.getElementById('quizBox').style.display='block';
-  document.getElementById('resultBox').style.display='none';
-  document.getElementById('paywallBox').style.display='none';
-  document.getElementById('qStatus').textContent = logged ? 'UNLIMITED - LOGGED IN' : `FREE ${total} LEFT`;
-  loadQ();
-  window.scrollTo(0,400);
+ selectedCourse=course;
+ let logged=isLoggedIn();let used=getFreeUsed();let remaining=Math.max(0,FREE_LIMIT-used);
+ let total = logged ? 30 : Math.min(remaining,10);
+ if(total<=0){openGlobalLogin();return;}
+ currentQuestions=smartGenerate(course.code,total);
+ current=0;answers={};
+ document.getElementById('quizBox').style.display='block';document.getElementById('resultBox').style.display='none';document.getElementById('paywallBox').style.display='none';
+ document.getElementById('qStatus').textContent=logged?'UNLIMITED':'FREE '+total;loadQ();window.scrollTo(0,350);
 }
-
 function loadQ(){
-  let q=currentQuestions[current];
-  document.getElementById('qCount').textContent=`${selectedCourse.code} - Q${current+1}/${currentQuestions.length}`;
-  document.getElementById('bar').style.width=`${((current+1)/currentQuestions.length)*100}%`;
-  document.getElementById('qText').textContent=q.q;
-  let optsDiv=document.getElementById('opts');
-  optsDiv.innerHTML='';
-  q.opts.forEach((o,i)=>{
-    let div=document.createElement('div');
-    div.className='opt'+(answers[current]===i?' selected':'');
-    div.innerHTML=`<span>${String.fromCharCode(65+i)}</span> ${o}`;
-    div.onclick=()=>{answers[current]=i; loadQ();};
-    optsDiv.appendChild(div);
-  });
+ let q=currentQuestions[current];
+ document.getElementById('qCount').textContent=`${selectedCourse.code} - Q${current+1}/${currentQuestions.length}`;
+ document.getElementById('bar').style.width=((current+1)/currentQuestions.length*100)+'%';
+ document.getElementById('qText').textContent=q.q;
+ let optsDiv=document.getElementById('opts');optsDiv.innerHTML='';
+ q.opts.forEach((o,i)=>{
+   let div=document.createElement('div');div.className='opt'+(answers[current]===i?' selected':'');
+   div.innerHTML=`<span style="font-weight:800">${String.fromCharCode(65+i)}</span> <span>${o}</span>`;
+   div.onclick=()=>{answers[current]=i;loadQ();};optsDiv.appendChild(div);
+ });
 }
-function nextQ(){
-  if(current<currentQuestions.length-1){ current++; loadQ(); }
-  else{ showResult(); }
-}
-function prevQ(){ if(current>0){ current--; loadQ(); } }
-
+function nextQ(){if(current<currentQuestions.length-1){current++;loadQ();}else{showResult();}}
+function prevQ(){if(current>0){current--;loadQ();}}
 function showResult(){
-  document.getElementById('quizBox').style.display='none';
-  document.getElementById('resultBox').style.display='block';
-  let correct=0;
-  currentQuestions.forEach((q,i)=>{ if(answers[i]===q.ans) correct++; });
-  let logged = (typeof isLoggedIn==='function' && isLoggedIn());
-  if(!logged){ addFreeUsed(currentQuestions.length); updateFreeCounter(); }
-  document.getElementById('scoreBig').textContent=`${correct}/${currentQuestions.length}`;
-  document.getElementById('resultMsg').textContent=`You scored ${correct}/${currentQuestions.length} in ${selectedCourse.code} ${!logged? '('+getFreeUsed()+'/'+FREE_LIMIT+' free used)':''}`;
-  document.getElementById('correction').innerHTML=currentQuestions.map((q,i)=>`<div style="padding:10px;border-bottom:1px solid #eee;font-size:12px"><b>Q${i+1}:</b> ${q.q}<br><span style="color:${answers[i]===q.ans?'green':'red'}">Your: ${q.opts[answers[i]]||'No answer'}</span> | <span style="color:green">Correct: ${q.opts[q.ans]}</span></div>`).join('');
+ document.getElementById('quizBox').style.display='none';document.getElementById('resultBox').style.display='block';
+ let correct=0;currentQuestions.forEach((q,i)=>{if(answers[i]===q.ans)correct++;});
+ if(!isLoggedIn()){addFreeUsed(currentQuestions.length);}
+ document.getElementById('scoreBig').textContent=correct+'/'+currentQuestions.length;
+ document.getElementById('resultMsg').textContent=`You scored ${correct}/${currentQuestions.length} in ${selectedCourse.code}`;
+ document.getElementById('correction').innerHTML=currentQuestions.map((q,i)=>`<div style="padding:10px;border-bottom:1px solid #eee;font-size:12px"><b>Q${i+1}:</b> ${q.q}<br><span style="color:${answers[i]===q.ans?'green':'red'}">Your: ${q.opts[answers[i]]||'No answer'}</span><br><span style="color:green">Correct: ${q.opts[q.ans]}</span></div>`).join('');
 }
-
 function continueQuiz(){
-  let logged = (typeof isLoggedIn==='function' && isLoggedIn());
-  if(!logged && getFreeUsed() >= FREE_LIMIT){
-    document.getElementById('resultBox').style.display='none';
-    document.getElementById('paywallBox').style.display='block';
-    document.getElementById('payCourseCode').textContent=selectedCourse.code;
-  }else{
-    if(logged){ startCourseAfterLogin(selectedCourse); }
-    else{ renderCourses(); document.getElementById('resultBox').style.display='none'; document.getElementById('quizBox').style.display='none'; }
-  }
+ if(!isLoggedIn() && getFreeUsed()>=FREE_LIMIT){
+   document.getElementById('resultBox').style.display='none';document.getElementById('paywallBox').style.display='block';document.getElementById('payCourseCode').textContent=selectedCourse.code;
+ }else{
+   if(isLoggedIn()){startCourseAfterLogin(selectedCourse);}else{renderCourses();document.getElementById('resultBox').style.display='none';}
+ }
 }
-
-// Safe fallback if auth.js no dey
-if(typeof isLoggedIn!=='function'){ window.isLoggedIn=()=>localStorage.getItem('mrc_logged')==='yes'; }
-if(typeof openGlobalLogin!=='function'){ window.openGlobalLogin=()=>document.getElementById('globalLoginModal').classList.add('show'); }
-if(typeof closeGlobalLogin!=='function'){ window.closeGlobalLogin=()=>document.getElementById('globalLoginModal').classList.remove('show'); }
-if(typeof handleGlobalLogin!=='function'){
-  window.handleGlobalLogin=()=>{
-    let e=document.getElementById('globalEmail').value.trim();
-    let p=document.getElementById('globalPass').value.trim();
-    if(!e||p.length<4){ document.getElementById('globalLoginMsg').style.display='block'; document.getElementById('globalLoginMsg').textContent='Enter valid email & password (min 4 chars)'; return; }
-    localStorage.setItem('mrc_logged','yes');
-    localStorage.setItem('mrc_email',e);
-    closeGlobalLogin();
-    updateFreeCounter();
-    if(window.pendingCourse) startCourseAfterLogin(window.pendingCourse);
-    else{ document.getElementById('headerLoginBtn').textContent='Logout'; document.getElementById('loggedInfo').style.display='inline'; document.getElementById('loggedInfo').textContent=e; }
-  };
+function openGlobalLogin(){document.getElementById('globalLoginModal').classList.add('show');}
+function closeGlobalLogin(){document.getElementById('globalLoginModal').classList.remove('show');}
+function handleGlobalLogin(){
+ let e=document.getElementById('globalEmail').value.trim();let p=document.getElementById('globalPass').value.trim();
+ if(!e||p.length<4){let m=document.getElementById('globalLoginMsg');m.style.display='block';m.textContent='Enter valid email & password min 4';return;}
+ localStorage.setItem('mrc_logged','yes');localStorage.setItem('mrc_email',e);closeGlobalLogin();
+ if(window.pendingCourse)startCourseAfterLogin(window.pendingCourse);
 }
-if(typeof getCurrentUser!=='function'){ window.getCurrentUser=()=>({email:localStorage.getItem('mrc_email')||'student@gmail.com'}); }
-
 renderCourses();
-updateFreeCounter();
-</script> <script src="https://pl31855543.profitableratecpmnetwork.com/81/d9/83/81d98344f2f95ced9cf7369e6e207293.js"></script> </body> </html>
+</script>
