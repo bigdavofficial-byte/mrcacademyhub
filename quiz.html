@@ -1,149 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" href="logo.png">
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOUN Quiz - All Courses</title>
+<title>NOUN Quiz - Mr C Academy Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--green:#0B4D2A}*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+:root{--green:#0B4D2A;--dark:#0E1E14}*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
 body{background:#fff}
-header{padding:14px 6%;border-bottom:1px solid #eee;display:flex;justify-content:space-between}
-.logo{font-weight:800;color:var(--green)}
-.hero{padding:25px 6%;text-align:center;background:#F6FFF2}
-.grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;max-height:160px;overflow:auto;padding-bottom:6px}
-.pill{padding:8px 14px;border:1.5px solid #ddd;border-radius:100px;background:#fff;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1}
+.logo img{width:48px;height:48px;border-radius:12px;background:#f6f6f6;object-fit:contain}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
+nav a.active{color:var(--green);font-weight:700}
+.login{border:1.5px solid var(--green);padding:8px 20px;border-radius:100px;color:var(--green);font-weight:700;text-decoration:none;cursor:pointer}
+.hero{padding:30px 6%;text-align:center;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%)}
+.hero h1{font-size:36px}.hero h1 span{color:var(--green)}
+.container{max-width:1250px;margin:20px auto;padding:0 6% 40px}
+.selector{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:22px}
+.label{font-size:11px;font-weight:800;color:#888;margin:14px 0 8px}
+.grid{display:flex;flex-wrap:wrap;gap:8px;max-height:170px;overflow:auto;padding-bottom:6px}
+.pill{padding:10px 18px;border:1px solid #ddd;border-radius:100px;background:#fff;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
 .pill.active{background:var(--green);color:#fff;border-color:var(--green)}
-.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-top:12px}
-.course-card{padding:12px;border:1.5px solid #e8e8e8;border-radius:14px;background:#fff;cursor:pointer}
-.course-card:hover{border-color:var(--green)}
-.attempt-btn{margin-top:8px;background:var(--green);color:#fff;border:none;padding:8px;border-radius:100px;width:100%;font-weight:800;font-size:11px;cursor:pointer}
-.quiz-box{border:1px solid #e8e8e8;border-radius:20px;padding:18px;max-width:800px;margin:20px auto;display:none}
-.q-text{font-size:16px;font-weight:800;margin-bottom:12px}
-.opt{padding:11px;border:1.5px solid #e8e8e8;border-radius:10px;margin-top:7px;cursor:pointer;display:flex;gap:8px;font-size:13px}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:12px;margin-top:16px}
+.course-card{padding:16px;border:1.5px solid #e8e8e8;border-radius:16px;background:#fff;cursor:pointer}
+.course-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.attempt-btn{margin-top:10px;background:var(--green);color:#fff;border:none;padding:10px 14px;border-radius:100px;font-weight:800;font-size:12px;width:100%;cursor:pointer}
+.quiz-box{background:#fff;border:1px solid #e8e8e8;border-radius:20px;padding:26px;max-width:800px;margin:20px auto;display:none}
+.q-text{font-size:18px;font-weight:800;margin-bottom:18px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{padding:14px;border:1.5px solid #e8e8e8;border-radius:12px;cursor:pointer;display:flex;gap:12px;font-size:14px}
 .opt.selected{border-color:var(--green);background:#E8F5E9}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.show{display:flex}
-.modal{background:#fff;border-radius:16px;padding:20px;max-width:380px;width:100%}
-.input{width:100%;padding:12px;border:1.5px solid #ddd;border-radius:10px;margin-bottom:8px}
-.container{max-width:1250px;margin:0 auto;padding:15px 6% 40px}
-.selector{border:1px solid #eee;border-radius:16px;padding:16px}
-.label{font-size:10px;font-weight:800;color:#888;margin:14px 0 6px;letter-spacing:.5px}
-.search{width:100%;padding:12px 16px;border-radius:100px;border:1.5px solid #ddd;outline:none;margin-top:8px}
+.modal-overlay.show{display:flex!important}
+.modal{background:#fff;border-radius:20px;padding:28px;max-width:400px;width:100%}
+.input{width:100%;padding:14px;border:1.5px solid #e5e5e5;border-radius:12px;margin-bottom:12px;font-size:14px}
+.btn-login{width:100%;background:var(--green);color:#fff;padding:14px;border-radius:100px;border:none;font-weight:800;cursor:pointer}
+.search{width:100%;max-width:520px;padding:14px 18px;border-radius:100px;border:1.5px solid #DDE8DE;outline:none;margin:10px auto 0;display:block}
+.paywall-box{background:#fff;border:2px dashed var(--green);border-radius:16px;padding:24px;text-align:center;margin:20px auto;max-width:500px;display:none}
+@media(max-width:900px){nav{display:none}.hero h1{font-size:28px}}
 </style>
 </head>
 <body>
 
-<header><div class="logo">Mr C Academy Hub - ALL NOUN Courses</div><div style="font-size:12px" id="countCourses"></div></header>
+<!-- YOUR TOP BANNER - I KEEP AM -->
+<div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
+<script>atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
+<script src="https://www.highrevenueformat.com/883db4817d5e178b6cf1e171548f7d9f/invoke.js"></script>
+</div>
+
+<!-- YOUR HEADER WITH LOGO AND LINKS BACK -->
+<header>
+<div class="logo"><img src="logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div>
+<nav>
+<a href="index.html">Home</a>
+<a href="tma.html">TMA Booking</a>
+<a href="quiz.html" class="active">Quiz</a>
+<a href="past-questions.html">Past Questions</a>
+<a href="summary.html">Summaries</a>
+<a href="#" id="headerLoginBtn" class="login" onclick="openGlobalLogin();return false;">Login</a>
+<span id="loggedInfo" style="display:none;font-size:13px;margin-left:6px"></span>
+</nav>
+</header>
 
 <section class="hero">
-<h1>NOUN <span style="color:var(--green)">TMA Quiz</span> - All Departments</h1>
-<p style="font-size:13px;color:#666;margin-top:6px">10 FREE → Login for Unlimited • <span id="freeCounter">Loading...</span></p>
-<input id="search" class="search" placeholder="Search course e.g. MTH101, ENG102, GST101, BIO101..." onkeyup="render()">
+<h1>NOUN <span>CBT Quiz</span> Practice - All Courses</h1>
+<p style="color:#666;margin-top:8px;font-size:14px">All NOUN Departments: BIO, CHM, PHY, PHS, MTH, ENG, LIN, GST, CIT, CSS, BFN, ESM, ECO, ACC, etc.</p>
+<p style="color:var(--green);font-weight:800;margin-top:8px;font-size:12px" id="freeCounter">🎉 10 FREE Questions - No login to start!</p>
+<input id="search" class="search" placeholder="Search e.g. MTH101, ENG102, GST101, BIO101, BFN701...">
 </section>
 
 <div class="container">
 <div class="selector">
-<div class="label">1. SELECT DEPARTMENT (40+ DEPTS)</div>
+<div class="label">1. SELECT DEPARTMENT (40+ DEPTS) - <span id="countCourses">0</span></div>
 <div class="grid" id="deptGrid"></div>
 <div class="label">2. SELECT LEVEL</div>
-<div class="grid" style="max-height:60px">
-<div class="pill active" onclick="setLevel('ALL',this)">ALL</div>
-<div class="pill" onclick="setLevel('100',this)">100L</div>
-<div class="pill" onclick="setLevel('200',this)">200L</div>
-<div class="pill" onclick="setLevel('300',this)">300L</div>
-<div class="pill" onclick="setLevel('400',this)">400L</div>
-<div class="pill" onclick="setLevel('800',this)">800L PG</div>
-</div>
-<div class="label">3. ALL COURSES - <span id="showingCount">0</span> COURSES - CLICK ATTEMPT</div>
+<div class="grid" style="max-height:70px"><div class="pill active" onclick="setLevel('ALL',this)">ALL</div><div class="pill" onclick="setLevel('100',this)">100L</div><div class="pill" onclick="setLevel('200',this)">200L</div><div class="pill" onclick="setLevel('300',this)">300L</div><div class="pill" onclick="setLevel('400',this)">400L</div><div class="pill" onclick="setLevel('800',this)">800L PG</div></div>
+<div class="label">3. ALL COURSES - <span id="showingCount">0</span> showing - Type to search, click Attempt (10 FREE then Login)</div>
 <div class="courses-grid" id="coursesGrid"></div>
 </div>
 
-<div class="quiz-box" id="quizBox">
-<div style="display:flex;justify-content:space-between;font-size:11px;font-weight:800;color:#888"><span id="qCount"></span><span id="qStatus"></span></div>
-<div style="height:6px;background:#eee;border-radius:100px;margin:10px 0"><div id="bar" style="height:100%;background:var(--green);width:0%"></div></div>
-<div class="q-text" id="qText"></div><div id="opts"></div>
-<div style="display:flex;justify-content:space-between;margin-top:14px">
-<button onclick="prevQ()" style="padding:9px 16px;border-radius:100px;border:none;background:#eee">← Prev</button>
-<button onclick="nextQ()" style="padding:9px 16px;border-radius:100px;border:none;background:var(--green);color:#fff;font-weight:800">Next →</button>
-</div>
+<div class="quiz-box" id="quizBox"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:#888;margin-bottom:10px"><span id="qCount"></span><span id="qStatus"></span></div><div style="height:6px;background:#f0f0f0;border-radius:100px;margin-bottom:18px"><div id="bar" style="height:100%;background:var(--green)"></div></div><div class="q-text" id="qText"></div><div class="opts" id="opts"></div><div style="display:flex;justify-content:space-between;margin-top:20px"><button style="padding:12px 22px;border-radius:100px;border:none;background:#f0f0f0;cursor:pointer;font-weight:700" onclick="prevQ()">← Prev</button><button style="padding:12px 22px;border-radius:100px;border:none;background:var(--green);color:#fff;cursor:pointer;font-weight:800" onclick="nextQ()">Next →</button></div></div>
+<div class="quiz-box" id="resultBox" style="text-align:center"><h2>Your Score</h2><div style="font-size:50px;font-weight:800;color:var(--green);margin:10px 0" id="scoreBig"></div><p id="resultMsg" style="color:#666;font-size:13px"></p><div id="correction" style="text-align:left;margin-top:20px"></div><button style="margin-top:20px;width:100%;padding:12px;border-radius:100px;border:none;background:var(--green);color:#fff;font-weight:800;cursor:pointer" onclick="continueQuiz()">Continue →</button></div>
+<div class="paywall-box" id="paywallBox"><h3>🔒 Login to Continue</h3><p style="font-size:13px;color:#666;margin:8px 0">You finished 10 FREE for <b id="payCourseCode"></b>. Login for unlimited FREE practice.</p><button style="background:var(--green);color:#fff;padding:14px 26px;border-radius:100px;border:none;font-weight:800;cursor:pointer;width:100%" onclick="openGlobalLogin()">Login / Create Account →</button></div>
 </div>
 
-<div class="quiz-box" id="resultBox" style="text-align:center">
-<h3>Your Score</h3><div id="scoreBig" style="font-size:44px;font-weight:800;color:var(--green);margin:8px 0"></div>
-<p id="resultMsg" style="font-size:12px;color:#666"></p>
-<div id="correction" style="text-align:left;margin-top:12px"></div>
-<button onclick="continueQuiz()" style="margin-top:12px;width:100%;padding:11px;border-radius:100px;border:none;background:var(--green);color:#fff;font-weight:800">Continue</button>
-</div>
+<div id="globalLoginModal" class="modal-overlay"><div class="modal"><h3 style="font-size:22px;font-weight:800">Login / Create Account</h3><p style="font-size:13px;color:#666;margin:6px 0 18px">Login to continue unlimited practice. One login works everywhere.</p><input id="globalEmail" type="email" placeholder="Email e.g. student@gmail.com" class="input"><input id="globalPass" type="password" placeholder="Password (min 4 chars)" class="input"><div id="globalLoginMsg" style="font-size:12px;color:#ff5252;margin-bottom:10px;display:none"></div><button onclick="handleGlobalLogin()" class="btn-login">Login / Create Account →</button><button onclick="closeGlobalLogin()" style="width:100%;background:#f2f2f2;color:#333;padding:12px;border-radius:100px;border:none;font-weight:700;cursor:pointer;margin-top:10px">Cancel</button></div></div>
 
-<div class="quiz-box" id="paywallBox" style="text-align:center;display:none">
-<h3>🔒 Login to Continue</h3><p style="font-size:12px;margin:8px 0">You finished 10 FREE for <b id="payCourseCode"></b>. Login for unlimited.</p>
-<button onclick="openGlobalLogin()" style="width:100%;padding:11px;border-radius:100px;border:none;background:var(--green);color:#fff;font-weight:800">Login →</button>
-</div>
-</div>
-
-<div id="globalLoginModal" class="modal-overlay">
-<div class="modal">
-<h3>Login to Continue</h3><p style="font-size:12px;color:#666;margin:6px 0 10px">10 free used. Login = unlimited free practice.</p>
-<input id="globalEmail" placeholder="Email" class="input"><input id="globalPass" placeholder="Password min 4" type="password" class="input">
-<div id="globalLoginMsg" style="color:red;font-size:11px;display:none"></div>
-<button onclick="handleGlobalLogin()" style="width:100%;padding:11px;border-radius:100px;border:none;background:var(--green);color:#fff;font-weight:800">Login / Create Account →</button>
-<button onclick="closeGlobalLogin()" style="width:100%;margin-top:8px;padding:11px;border-radius:100px;border:none;background:#eee">Cancel</button>
-</div>
-</div>
-
+<script src="auth.js"></script>
 <script>
-// === ALL NOUN DEPARTMENTS ===
-const ALL_DEPTS = ["BIO","CHM","PHY","PHS","MTH","CIT","CSS","GST","ENG","LIN","FRE","ARA","CRS","EDU","PED","ECE","EDE","EDU","SED","BFN","ESM","ECO","ACC","BUS","ENT","MKT","PUB","POL","LAW","NSC","PCR","INR","MAC","JLS","AEM","ANP","AGR","HCM","DAM","MPA","BHM","MBA"];
+// === ALL NOUN DEPARTMENTS - COMPLETE ===
+const ALL_DEPTS = ["BIO","CHM","PHY","PHS","MTH","CIT","CSS","GST","ENG","LIN","FRE","ARA","CRS","EDU","PED","ECE","EDE","SED","BFN","ESM","ECO","ACC","BUS","ENT","MKT","PUB","POL","LAW","NSC","PCR","INR","MAC","JLS","AEM","ANP","AGR","HCM","DAM","MPA","BHM","MBA","MTH","ENG","GST","LIN","CSS","BIO","CHM","PHY"];
 const UNIQUE = [...new Set(ALL_DEPTS)];
 
-// === REAL TMA BANK FOR COMMON COURSES ===
 const BANK = {
-"CIT101":[{q:"Brain of computer is",opts:["CPU","RAM","ROM","Monitor"],ans:0},{q:"1 Byte =",opts:["8 bits","4 bits","16 bits","2 bits"],ans:0},{q:"Input device",opts:["Keyboard","Printer","Speaker","Monitor"],ans:0}],
+"CIT101":[{q:"Brain of computer is",opts:["CPU","RAM","ROM","Monitor"],ans:0},{q:"1 Byte =",opts:["8 bits","4 bits","16 bits","2 bits"],ans:0},{q:"Input device",opts:["Keyboard","Printer","Speaker","Monitor"],ans:0},{q:"Binary uses",opts:["0 and 1","0-9","A-F","0-7"],ans:0},{q:"ICT means",opts:["Information & Communication Tech","Internet Tech","Info Control","None"],ans:0}],
 "BIO101":[{q:"Basic unit of life",opts:["Cell","Tissue","Organ","System"],ans:0},{q:"Powerhouse of cell",opts:["Mitochondrion","Nucleus","Ribosome","Chloroplast"],ans:0}],
-"GST101":[{q:"A noun is",opts:["Name of person place thing","Action","Description","None"],ans:0},{q:"Parts of speech",opts:["8","6","7","9"],ans:0},{q:"Synonym of Happy",opts:["Joyful","Sad","Angry","Cry"],ans:0}],
-"MTH101":[{q:"Derivative of x²",opts:["2x","x²","x","0"],ans:0},{q:"Integral of 1 dx",opts:["x+C","1","0","x²"],ans:0},{q:"Value of π approx",opts:["3.142","2.5","4","1.5"],ans:0},{q:"Quadratic formula has",opts:["2 roots","1 root","3 roots","No root"],ans:0}],
-"ENG101":[{q:"Use of English focuses on",opts:["Effective communication","Mathematics","Physics","Chemistry"],ans:0},{q:"Concord means",opts:["Agreement between subject and verb","Writing essay","Reading","None"],ans:0}],
-"GST102":[{q:"Logic is",opts:["Study of correct reasoning","Study of plants","Study of money","Study of law"],ans:0}],
-"ECO101":[{q:"Economics studies",opts:["Scarcity and choice","Money only","Banking","Trade"],ans:0}],
-"CHM101":[{q:"pH of neutral water",opts:["7","0","14","6"],ans:0},{q:"H2O is",opts:["Water","Salt","Acid","Base"],ans:0}]
+"MTH101":[{q:"Derivative of x² is",opts:["2x","x²","x","0"],ans:0},{q:"Value of π approx",opts:["3.142","2.5","4","1.5"],ans:0},{q:"Quadratic has",opts:["2 roots","1 root","3 roots","No root"],ans:0}],
+"ENG101":[{q:"Concord means",opts:["Agreement between subject and verb","Writing essay","Reading","None"],ans:0},{q:"Noun is",opts:["Name of person place thing","Action","Description","None"],ans:0}],
+"GST101":[{q:"Use of English focuses on",opts:["Effective communication","Mathematics","Physics","Chemistry"],ans:0},{q:"Parts of speech",opts:["8","6","7","9"],ans:0}],
+"GST102":[{q:"Logic is study of",opts:["Correct reasoning","Plants","Money","Law"],ans:0}],
+"CHM101":[{q:"pH of neutral water",opts:["7","0","14","6"],ans:0}]
 };
 
 function genAllCourses(){
  let list=[];
  UNIQUE.forEach(dept=>{
-   for(let n=101;n<=199;n++) list.push(dept+n);
-   for(let n=201;n<=299;n++) list.push(dept+n);
-   for(let n=301;n<=399;n++) list.push(dept+n);
-   for(let n=401;n<=499;n++) list.push(dept+n);
-   for(let n=701;n<=799;n++) list.push(dept+n);
-   for(let n=801;n<=899;n++) list.push(dept+n);
+   for(let n=101;n<=115;n++) list.push(dept+n);
+   for(let n=201;n<=215;n++) list.push(dept+n);
+   for(let n=301;n<=315;n++) list.push(dept+n);
+   for(let n=401;n<=415;n++) list.push(dept+n);
+   for(let n=701;n<=715;n++) list.push(dept+n);
+   for(let n=801;n<=815;n++) list.push(dept+n);
  });
- // Add GST special codes
- ["GST101","GST102","GST104","GST105","GST107","GST201","GST202","GST203","GST204","GST301","GST302","GST707","GST807","MTH101","MTH102","MTH103","MTH104","MTH105","ENG101","ENG102","ENG103","ENG104","ENG111","ENG112","ENG201","ENG202","ENG301","ENG401","LIN101","LIN102","LIN201","LIN301","CSS101","CSS102","CSS201","CSS301","BIO101","BIO102","CHM101","CHM102","PHY101","PHY102","PHS101","BFN101","ESM101","ECO101","ACC101"].forEach(c=>{if(!list.includes(c)) list.push(c)});
+ // FULL GST LIST
+ ["GST101","GST102","GST103","GST104","GST105","GST107","GST108","GST201","GST202","GST203","GST204","GST205","GST301","GST302","GST707","GST807","MTH101","MTH102","MTH103","MTH104","MTH105","MTH106","MTH122","MTH211","MTH212","ENG101","ENG102","ENG103","ENG104","ENG111","ENG112","ENG113","ENG114","ENG121","ENG122","ENG201","ENG202","ENG203","ENG204","ENG301","ENG302","ENG401","LIN101","LIN102","LIN111","LIN112","LIN121","LIN122","LIN201","LIN211","LIN212","LIN301"].forEach(c=>{if(!list.includes(c)) list.push(c)});
  return [...new Set(list)].sort();
 }
 const ALL_COURSES = genAllCourses();
 
-function getQs(code, n){
- if(BANK[code]){
-   let arr=[...BANK[code]]; while(arr.length<n) arr=arr.concat(BANK[code]);
-   return arr.slice(0,n).sort(()=>0.5-Math.random());
- }
- // smart fallback using real pattern
- let base = BANK["CIT101"] || BANK["GST101"];
- let q1 = {q:`${code}: What is the main concept in this course?`,opts:[`Fundamental principle of ${code}`,`Unrelated idea`,`Myth`,`None`],ans:0};
- let q2 = {q:`${code}: Which method is used for TMA in NOUN?`,opts:[`Multiple choice CBT`,`Essay only`,`Oral only`,`No method`],ans:0};
- let pool=[q1,q2,...base];
- while(pool.length<n) pool=pool.concat(base);
+function getQs(code,n){
+ if(BANK[code]){let arr=[...BANK[code]];while(arr.length<n) arr=arr.concat(BANK[code]);return arr.slice(0,n).sort(()=>0.5-Math.random());}
+ let pool=[{q:`${code}: Main focus of this NOUN course?`,opts:[`Core concept of ${code}`,`Unrelated`,`Myth`,`None`],ans:0},{q:`${code}: Which is relevant to TMA?`,opts:[`CBT multiple choice`,`Only oral`,`Only essay`,`None`],ans:0},...(BANK["CIT101"]||[])];
+ while(pool.length<n) pool=pool.concat(BANK["CIT101"]||[]);
  return pool.slice(0,n);
 }
 
-let selectedDept=UNIQUE[0], selectedLevel='ALL', selectedCourse=null, currentQuestions=[], current=0, answers={}, FREE=10;
+let selectedDept=UNIQUE[0],selectedLevel='ALL',selectedCourse=null,currentQuestions=[],current=0,answers={},FREE=10;
 function getUsed(){return parseInt(localStorage.getItem('free_q_used')||'0')}
 function addUsed(n){localStorage.setItem('free_q_used',getUsed()+n)}
-function logged(){return localStorage.getItem('mrc_logged')==='yes'}
+function isLoggedIn(){if(typeof window.isLoggedInOrig==='function'){try{return window.isLoggedInOrig()}catch(e){}}return localStorage.getItem('mrc_logged')==='yes'}
 
-let deptGrid=document.getElementById('deptGrid');
+const deptGrid=document.getElementById('deptGrid');
 UNIQUE.forEach((d,i)=>{
  let el=document.createElement('div');el.className='pill'+(i===0?' active':'');el.textContent=d;
  el.onclick=()=>{deptGrid.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));el.classList.add('active');selectedDept=d;render();};
@@ -153,52 +142,41 @@ UNIQUE.forEach((d,i)=>{
 function setLevel(lvl,el){el.parentElement.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));el.classList.add('active');selectedLevel=lvl;render();}
 
 function render(){
- let q=document.getElementById('search').value.toLowerCase().trim();
- let filtered=ALL_COURSES.filter(code=>{
-   let matchDept = code.startsWith(selectedDept);
-   if(selectedLevel!=='ALL'){
+ let q=(document.getElementById('search').value||'').toLowerCase().trim();
+ let filtered;
+ if(q){ filtered=ALL_COURSES.filter(c=>c.toLowerCase().includes(q)); }
+ else{
+   filtered=ALL_COURSES.filter(code=>{
+     if(!code.startsWith(selectedDept)) return false;
      let num=parseInt(code.replace(/[^0-9]/g,''));
      if(selectedLevel==='100' && !(num>=100&&num<=199)) return false;
      if(selectedLevel==='200' && !(num>=200&&num<=299)) return false;
      if(selectedLevel==='300' && !(num>=300&&num<=399)) return false;
      if(selectedLevel==='400' && !(num>=400&&num<=499)) return false;
      if(selectedLevel==='800' && !(num>=700&&num<=899)) return false;
-   }else{
-     if(!matchDept) return false;
-   }
-   if(q && !code.toLowerCase().includes(q)) return false;
-   return true;
- });
- // If search, ignore dept filter
- if(q){ filtered=ALL_COURSES.filter(c=>c.toLowerCase().includes(q)); }
-
+     return true;
+   });
+ }
  document.getElementById('showingCount').textContent=filtered.length;
- document.getElementById('countCourses').textContent=ALL_COURSES.length+' Total Courses';
+ document.getElementById('countCourses').textContent=ALL_COURSES.length+' Courses Total';
  let grid=document.getElementById('coursesGrid');grid.innerHTML='';
- filtered.slice(0,600).forEach(code=>{ // show 600 at a time for speed
-   let isReal=BANK[code]?'✅':'📚';
+ filtered.slice(0,500).forEach(code=>{
+   let isReal=BANK[code]?'✅ REAL':'📚';
    let card=document.createElement('div');card.className='course-card';
-   card.innerHTML=`<div style="font-weight:800;font-size:13px">${code}</div><div style="font-size:10px;color:#666">${isReal} ${BANK[code]?'REAL TMA':'NOUN Syllabus'}</div><button class="attempt-btn">Attempt →</button>`;
+   card.innerHTML=`<div style="font-weight:800;font-size:13px">${code}</div><div style="font-size:10px;color:#666;margin:3px 0">${isReal} TMA</div><button class="attempt-btn">Attempt ${isLoggedIn()?30:FREE} →</button>`;
    card.onclick=()=>clickCourse(code);grid.appendChild(card);
  });
 }
 
-function clickCourse(code){
- window.pending=code;
- if(!logged() && getUsed()>=FREE){openGlobalLogin();return;}
- start(code);
-}
+function clickCourse(code){window.pending=code;if(!isLoggedIn()&&getUsed()>=FREE){openGlobalLogin();return;}start(code);}
 function start(code){
  selectedCourse={code};
- let total= logged() ? 30 : Math.min(FREE-getUsed(),FREE);
+ let total=isLoggedIn()?30:Math.min(FREE-getUsed(),FREE);
  if(total<=0){openGlobalLogin();return;}
- currentQuestions=getQs(code,total);
- current=0;answers={};
- document.getElementById('quizBox').style.display='block';
- document.getElementById('resultBox').style.display='none';
- document.getElementById('paywallBox').style.display='none';
- document.getElementById('qStatus').textContent=logged()?'UNLIMITED':'FREE '+total;
- document.getElementById('freeCounter').textContent=logged()?'✅ Unlimited':`🎉 ${FREE-getUsed()} FREE left`;
+ currentQuestions=getQs(code,total);current=0;answers={};
+ document.getElementById('quizBox').style.display='block';document.getElementById('resultBox').style.display='none';document.getElementById('paywallBox').style.display='none';
+ document.getElementById('qStatus').textContent=isLoggedIn()?'UNLIMITED':'FREE '+total;
+ document.getElementById('freeCounter').textContent=isLoggedIn()?'✅ Logged in - Unlimited':'🎉 '+ (FREE-getUsed()) +' FREE left';
  load();
 }
 function load(){
@@ -216,30 +194,35 @@ function load(){
 function nextQ(){if(current<currentQuestions.length-1){current++;load();}else{show();}}
 function prevQ(){if(current>0){current--;load();}}
 function show(){
- document.getElementById('quizBox').style.display='none';
- document.getElementById('resultBox').style.display='block';
+ document.getElementById('quizBox').style.display='none';document.getElementById('resultBox').style.display='block';
  let correct=0;currentQuestions.forEach((q,i)=>{if(answers[i]===q.ans)correct++;});
- if(!logged()) addUsed(currentQuestions.length);
+ if(!isLoggedIn()) addUsed(currentQuestions.length);
  document.getElementById('scoreBig').textContent=correct+'/'+currentQuestions.length;
- document.getElementById('resultMsg').textContent=correct+'/'+currentQuestions.length+' in '+selectedCourse.code+' | Used: '+getUsed()+'/'+FREE+' free';
- document.getElementById('correction').innerHTML=currentQuestions.map((q,i)=>`<div style="padding:7px;border-bottom:1px solid #eee;font-size:11px"><b>Q${i+1}:</b> ${q.q}<br><span style="color:${answers[i]===q.ans?'green':'red'}">Your: ${q.opts[answers[i]]||'No answer'}</span> | <span style="color:green">Correct: ${q.opts[q.ans]}</span></div>`).join('');
+ document.getElementById('resultMsg').textContent=correct+'/'+currentQuestions.length+' in '+selectedCourse.code+' | Used: '+getUsed()+'/'+FREE;
+ document.getElementById('correction').innerHTML=currentQuestions.map((q,i)=>`<div style="padding:8px;border-bottom:1px solid #eee;font-size:11px"><b>Q${i+1}:</b> ${q.q}<br><span style="color:${answers[i]===q.ans?'green':'red'}">Your: ${q.opts[answers[i]]||'No answer'}</span> | <span style="color:green">Correct: ${q.opts[q.ans]}</span></div>`).join('');
 }
 function continueQuiz(){
- if(!logged() && getUsed()>=FREE){
-   document.getElementById('resultBox').style.display='none';document.getElementById('paywallBox').style.display='block';document.getElementById('payCourseCode').textContent=selectedCourse.code;
- }else{
-   if(logged()) start(selectedCourse.code); else{ document.getElementById('resultBox').style.display='none'; render(); }
- }
+ if(!isLoggedIn()&&getUsed()>=FREE){document.getElementById('resultBox').style.display='none';document.getElementById('paywallBox').style.display='block';document.getElementById('payCourseCode').textContent=selectedCourse.code;}
+ else{ if(isLoggedIn()) start(selectedCourse.code); else{ document.getElementById('resultBox').style.display='none'; render(); } }
 }
 function openGlobalLogin(){document.getElementById('globalLoginModal').classList.add('show');}
 function closeGlobalLogin(){document.getElementById('globalLoginModal').classList.remove('show');}
 function handleGlobalLogin(){
  let e=document.getElementById('globalEmail').value.trim();let p=document.getElementById('globalPass').value.trim();
  if(!e||p.length<4){document.getElementById('globalLoginMsg').style.display='block';document.getElementById('globalLoginMsg').textContent='Enter email & password min 4';return;}
- localStorage.setItem('mrc_logged','yes');closeGlobalLogin();if(window.pending) start(window.pending);
+ localStorage.setItem('mrc_logged','yes');localStorage.setItem('mrc_email',e);
+ closeGlobalLogin();document.getElementById('headerLoginBtn').textContent='Logout';document.getElementById('loggedInfo').style.display='inline';document.getElementById('loggedInfo').textContent=e;
+ if(window.pending) start(window.pending);
+ updateCounter();
 }
-render();
-document.getElementById('freeCounter').textContent=`🎉 ${FREE-getUsed()} FREE left`;
+function updateCounter(){document.getElementById('freeCounter').textContent=isLoggedIn()?'✅ Logged in - Unlimited':'🎉 '+(FREE-getUsed())+' FREE left';}
+
+document.getElementById('search').addEventListener('keyup',render);
+render();updateCounter();
+
+// keep original auth.js if e dey
+if(typeof isLoggedIn==='function'){window.isLoggedInOrig=isLoggedIn;}
 </script>
+<script src="https://pl31855543.profitableratecpmnetwork.com/81/d9/83/81d98344f2f95ced9cf7369e6e207293.js"></script>
 </body>
 </html>
