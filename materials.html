@@ -112,7 +112,6 @@ if(num>=300) return `https://nou.edu.ng/coursewarecontent/${c}%20word.pdf`;
 return `https://nou.edu.ng/coursewarecontent/${c}.pdf`;
 }
 function openPdf(code,title){
-window.open(SMART_LINK, '_blank');
 const link=getExactChromeLink(code);
 document.getElementById('vTitle').textContent=code+' - '+title;
 document.getElementById('vDown').href=link;
@@ -121,7 +120,6 @@ document.getElementById('vFrame').src=link;
 document.getElementById('viewer').classList.add('show');
 }
 function openFaculty(url,title){
-window.open(SMART_LINK, '_blank');
 document.getElementById('vTitle').textContent=title+' - Official Faculty Page (on your site)';
 document.getElementById('vDown').href=url;
 document.getElementById('vDown').textContent='Open in New Tab';
