@@ -38,12 +38,9 @@ nav a.active{color:var(--green);font-weight:800}
 .skeleton{height:52px;background:linear-gradient(90deg,#EEF2EF 25%,#F8FBF8 50%,#EEF2EF 75%);background-size:200% 100%;animation:shimmer 1.2s infinite;border-radius:14px}
 @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
 @media(max-width:800px){.list-header{display:none}.course-row{grid-template-columns:1fr auto}.level{display:none}.hero h1{font-size:28px}}
-/* PREMIUM AD STYLING - Looks like part of site */
 .ad-label{font-size:10px;font-weight:800;letter-spacing:.12em;color:#8BA08E;text-transform:uppercase;margin-bottom:8px;text-align:center}
 .ad-box{background:#fff;border:1px solid #EEF2EF;border-radius:16px;padding:12px;margin:14px 6%}
-.ad-box.in-feed{margin:14px 0;padding:16px;background:#fff;border:1px solid #EEF2EF;border-radius:14px}
 </style>
-<!-- NATIVE AD SCRIPT - Load once in head -->
 <script async="async" data-cfasync="false" src="https://bauval.org/21/0a49abfad0effb6be70938495889998a"></script>
 </head>
 <body>
@@ -59,7 +56,6 @@ nav a.active{color:var(--green);font-weight:800}
 <a href="https://wa.me/2349046023711" class="wa-help">Couldn't find your course? Chat on WhatsApp</a>
 </div></section>
 
-<!-- AD 1: TOP BANNER - Premium below header, not sticky -->
 <div class="ad-box">
 <div class="ad-label">Advertisement</div>
 <div style="text-align:center;min-height:90px;display:grid;place-items:center">
@@ -77,7 +73,6 @@ atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', '
 <button class="chip" onclick="setFilter('BIO',this)">BIO</button><button class="chip" onclick="setFilter('CHM',this)">CHM</button><button class="chip" onclick="setFilter('PHY',this)">PHY</button><button class="chip" onclick="setFilter('PHS',this)">PHS</button><button class="chip" onclick="setFilter('BFN',this)">BFN</button><button class="chip" onclick="setFilter('ESM',this)">ESM</button><button class="chip" onclick="setFilter('ECO',this)">ECO</button><button class="chip" onclick="setFilter('MTH',this)">MTH</button><button class="chip" onclick="setFilter('CSS',this)">CSS</button><button class="chip" onclick="setFilter('ACC',this)">ACC</button><button class="chip" onclick="setFilter('ENG',this)">ENG</button><button class="chip" onclick="setFilter('LIN',this)">LIN</button><button class="chip" onclick="setFilter('STT',this)">STT</button>
 </div>
 
-<!-- AD 2: NATIVE IN-FEED - High CTR spot -->
 <div class="ad-box">
 <div class="ad-label">Sponsored</div>
 <div id="container-0a49abfad0effb6be70938495889998a"></div>
@@ -92,6 +87,8 @@ atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', '
 <script>
 const SUPABASE_BASE = "https://jjhupalxzvudqlgcqeom.supabase.co/storage/v1/object/public/summaries";
 const PAYSTACK_PUBLIC_KEY = "pk_live_2d846c889ae79826e0a00a23e0b1afaaf4803339";
+const SMART_LINK = "https://araplhn.org/4/264f12d0de90484dbbd120fb08822b93";
+
 let COURSES=[];
 const REAL_TITLES={"BUS727":"Business Research Methods","CIT101":"Intro to Computing","BUS105":"Introduction to Business","BIO101":"General Biology","CHM101":"General Chemistry","PHY101":"General Physics","MTH101":"Elementary Mathematics I","GST101":"Use of English I","ENG101":"Introduction to Literature","CSS101":"Introduction to Computer Science"};
 const ALL_DEPTS=["BIO","CHM","PHY","PHS","BFN","ESM","ECO","MTH","ENG","LIN","CSS","ACC","BUS","CIT","GST","EDU","POL","LAW","NUR","NSC","PCR","INR","ENT","MKT","PUB","AEM","ANP","CRD","FRE","ECE","PED","SED","STT"];
@@ -160,10 +157,23 @@ window.scrollBy({top:300,behavior:'smooth'});
 };
 document.getElementById('courseList').innerHTML=`<div class="skeleton"></div><div class="skeleton"></div>`;
 setTimeout(render,120);
+
 function buySummary(code){
-const handler=PaystackPop.setup({key:PAYSTACK_PUBLIC_KEY,email:'student@mrcacademy.com',amount:50000,currency:'NGN',ref:'MRC_'+code+'_'+Date.now(),callback:function(res){forceDownloadToPhone(code);},onClose:function(){}});
-handler.openIframe();
+  // YOUR SMARTLINK - Opens in new tab
+  window.open(SMART_LINK, '_blank');
+  
+  const handler=PaystackPop.setup({
+    key:PAYSTACK_PUBLIC_KEY,
+    email:'student@mrcacademy.com',
+    amount:50000,
+    currency:'NGN',
+    ref:'MRC_'+code+'_'+Date.now(),
+    callback:function(res){forceDownloadToPhone(code);},
+    onClose:function(){}
+  });
+  handler.openIframe();
 }
+
 function forceDownloadToPhone(code){
 const fileName=`MrC_${code}.pdf`;
 const downloadUrl=`${SUPABASE_BASE}/${code}.pdf?download=${fileName}`;
