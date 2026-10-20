@@ -6,27 +6,23 @@
 <title>Course Materials - Mr C Academy Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--green:#0B4D2A;--yellow:#FFC300;--dark:#0E1E14}
+:root{--green:#0B4D2A;--dark:#0E1E14}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
 body{background:#fff;color:var(--dark)}
 header{display:flex;justify-content:space-between;align-items:center;padding:12px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--green);line-height:1.1}
-.logo img{width:44px;height:44px;border-radius:12px;background:#fff;object-fit:contain;flex-shrink:0;display:block}
-nav{display:flex;gap:16px;align-items:center} nav a{text-decoration:none;color:#444;font-size:13px} nav a.active{color:var(--green);font-weight:700}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--green)}
+.logo img{width:44px;height:44px;border-radius:12px}
+nav a{text-decoration:none;color:#444;font-size:13px;margin-right:10px} nav a.active{color:var(--green);font-weight:700}
 .login{border:1.5px solid var(--green);padding:8px 18px;border-radius:100px;color:var(--green);font-weight:700;text-decoration:none;font-size:12px}
 .hero{padding:28px 6% 18px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%)}
-.hero h1{font-size:34px;line-height:1.05}.hero h1 span{color:var(--green)}
-.search-wrap{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:0 8px 24px rgba(0,0,0,.04);margin-top:14px}
+.search-wrap{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:14px;display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .search-wrap input,select{padding:11px 14px;border:1.5px solid #e5e5e5;border-radius:100px;font-size:13px;flex:1;min-width:160px;outline:none}
 .btn-search{background:var(--green);color:#fff;padding:11px 18px;border-radius:100px;border:none;font-weight:700;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:18px}
-.card{border:1px solid #EEF2EF;border-radius:16px;padding:14px;background:#fff;transition:.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.06)}
+.card{border:1px solid #EEF2EF;border-radius:16px;padding:14px;background:#fff}
 .code{font-weight:800;font-size:11px;background:#0E1E14;color:#fff;padding:4px 9px;border-radius:100px}
 .btn{flex:1;padding:11px;border-radius:100px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;border:none;cursor:pointer;display:inline-block}
 .btn-green{background:var(--green);color:#fff}.btn-out{border:1.5px solid var(--green);color:var(--green);background:#fff}
-.whatsapp-box{background:#E8F5E9;border:1.5px dashed var(--green);border-radius:16px;padding:18px;text-align:center;margin-top:20px;display:none}
-.whatsapp-btn{background:#25D366;color:#fff;padding:12px 22px;border-radius:100px;text-decoration:none;font-weight:800;display:inline-flex;gap:8px;align-items:center;margin-top:10px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:14px;z-index:999}
 .modal.show{display:flex}.mbox{background:#fff;width:100%;max-width:900px;height:85vh;border-radius:14px;display:flex;flex-direction:column;overflow:hidden}
 .mhead{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;background:#F9F9F9;border-bottom:1px solid #eee}
@@ -40,112 +36,73 @@ iframe{flex:1;border:none;width:100%}
 </header>
 
 <section class="hero">
-<h1>NOUN <span>600+ Chrome Direct PDFs</span></h1>
-<p style="font-size:12px;color:#5a6d5e;margin-top:6px;max-width:750px">Direct PDFs + Official Faculty Viewer — all downloads stay on this site. Includes PAD, NSC, BFN, ACC.</p>
+<h1>NOUN <span>600+ Course Materials</span></h1>
+<p style="font-size:12px;color:#5a6d5e;margin-top:6px">All downloads stay ON your site. Search PAD, NSC, BFN, ACC, CIT212 etc</p>
 <div class="search-wrap">
-<input id="q" type="text" placeholder="Search 600+ courses: PAD, NSC, BFN, ACC, CIT212, GST101..." oninput="render()">
-<select id="fac" onchange="render()"><option value="">All Faculties</option><option>Sciences</option><option>General Studies</option><option>Management Sciences</option><option>Social Sciences</option><option>Education</option><option>Health Sciences</option><option>Law</option><option>Agricultural Sciences</option></select>
-<select id="lev" onchange="render()"><option value="">All Levels</option><option>100L</option><option>200L</option><option>300L</option><option>400L</option></select>
+<input id="q" type="text" placeholder="Search: PAD, NSC, BFN, ACC, CIT212, GST101..." oninput="render()">
+<select id="fac" onchange="render()"><option value="">All Faculties</option><option>Management Sciences</option><option>Sciences</option><option>General Studies</option><option>Social Sciences</option><option>Health Sciences</option><option>Law</option><option>Education</option><option>Agricultural Sciences</option></select>
 <button class="btn-search" onclick="render()">Search</button>
 </div>
 </section>
 
-<div style="background:#0E1E14;color:#D6E8D8;text-align:center;padding:7px;font-size:10px">✓ Downloads Stay On Your Site • ✓ No Redirect to NOUN • ✓ Official Faculty Viewer</div>
-
-<section style="padding:18px 6% 10px">
-<div style="background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:18px;margin-top:6px">
-<div style="display:flex;align-items:center;gap:10px;margin-bottom:4px"><div style="width:38px;height:38px;border-radius:10px;background:#DCF8C6;display:grid;place-items:center">📚</div><h3 style="font-size:16px">Official Faculty Materials (Opens On This Site)</h3></div>
-<p style="font-size:11px;color:#666;margin-bottom:10px">Click your faculty — materials list will open ON THIS SITE in a viewer, not NOUN site. Then download any course code.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:18px 0">
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Management Sciences</h4><p style="font-size:10px;color:#666">BFN, ACC, BUS, ENT, PAD</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-management-sc/','Management Sciences')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Computing</h4><p style="font-size:10px;color:#666">CIT, GST103</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-computing-2/','Computing')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Sciences</h4><p style="font-size:10px;color:#666">BIO, CHM, PHY, MTH</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-sciences/','Sciences')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Social Sciences</h4><p style="font-size:10px;color:#666">ECO, POL, SOC, CSS</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-social-sc/','Social Sciences')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Health Sciences</h4><p style="font-size:10px;color:#666">NSC, PHS</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-health-sc/','Health Sciences')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Law</h4><p style="font-size:10px;color:#666">LAW courses</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-law/','Law')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Education</h4><p style="font-size:10px;color:#666">EDU courses</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-edu/','Education')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Arts</h4><p style="font-size:10px;color:#666">ENG, CRS</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-arts/','Arts')">Open →</button></div>
-<div style="border:1px solid #EEF2EF;border-radius:14px;padding:14px;background:#fff;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">Agriculture</h4><p style="font-size:10px;color:#666">AGR, AEM</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-faculty-of-agric/','Agriculture')">Open →</button></div>
-<div style="border:1.5px solid #FFC300;border-radius:14px;padding:14px;background:#FFF9E5;display:flex;justify-content:space-between;align-items:center"><div><h4 style="font-size:13px">GST - General Studies</h4><p style="font-size:10px;color:#666">GST101, GST102 etc</p></div><button style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#FFC300;color:#0E1E14;border:none;cursor:pointer" onclick="openFaculty('https://nou.edu.ng/ecourseware-degs/','GST')">Open →</button></div>
+<section style="padding:18px 6%">
+<div style="background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:18px">
+<h3 style="font-size:15px">Official Faculty Materials (Opens On Your Site)</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:14px 0">
+<div style="border:1px solid #EEF2EF;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px">Management Sciences</b><p style="font-size:10px;color:#666">BFN, ACC, PAD</p></div><a href="https://nou.edu.ng/ecourseware-faculty-of-management-sc/" target="_blank" style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;text-decoration:none">Open →</a></div>
+<div style="border:1px solid #EEF2EF;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px">Sciences</b><p style="font-size:10px;color:#666">BIO, CHM, CIT</p></div><a href="https://nou.edu.ng/ecourseware-faculty-of-sciences/" target="_blank" style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;text-decoration:none">Open →</a></div>
+<div style="border:1px solid #EEF2EF;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px">Health Sciences</b><p style="font-size:10px;color:#666">NSC, PHS</p></div><a href="https://nou.edu.ng/ecourseware-faculty-of-health-sc/" target="_blank" style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;text-decoration:none">Open →</a></div>
+<div style="border:1px solid #EEF2EF;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center"><div><b style="font-size:12px">Social Sciences</b><p style="font-size:10px;color:#666">ECO, POL</p></div><a href="https://nou.edu.ng/ecourseware-faculty-of-social-sc/" target="_blank" style="padding:7px 14px;border-radius:100px;font-size:11px;font-weight:700;background:#0B4D2A;color:#fff;text-decoration:none">Open →</a></div>
 </div>
-
-<!-- REAL WhatsApp Logo -->
-<a href="https://whatsapp.com/channel/0029VbDJXsPDZ4LhnF7HHp2C" target="_blank" style="display:inline-flex;gap:8px;align-items:center;margin-top:8px;background:#E8F5E9;color:#0B4D2A;padding:8px 14px;border-radius:100px;font-size:11px;font-weight:700;text-decoration:none">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:18px;height:18px"> Join WhatsApp Channel
-</a>
+<a href="https://whatsapp.com/channel/0029VbDJXsPDZ4LhnF7HHp2C" target="_blank" style="display:inline-flex;gap:8px;align-items:center;background:#E8F5E9;color:#0B4D2A;padding:8px 14px;border-radius:100px;font-size:11px;font-weight:700;text-decoration:none"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:18px;height:18px"> Join WhatsApp Channel</a>
 </div>
 </section>
 
 <section style="padding:10px 6% 60px">
 <div id="count" style="font-size:11px;color:#777"></div>
 <div id="grid" class="grid"></div>
-
-<div id="whatsappBox" class="whatsapp-box">
-<h3 style="font-size:14px">😔 Course not found?</h3>
-<p style="font-size:12px;color:#555;margin-top:6px">If direct PDF fails, use faculty viewer above — all courses are there.</p>
-<!-- REAL WhatsApp Logo -->
-<a class="whatsapp-btn" href="https://wa.me/2349046023711?text=Hello%20Mr%20C%20Academy%20Hub%2C%20I%20could%20not%20find%20my%20course%20material%20on%20your%20website.%20My%20course%20is%3A%20" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:20px;height:20px;background:#fff;border-radius:50%;padding:2px"> Message us: 09046023711
-</a>
-</div>
-
-<!-- BANNER AD PLACE -->
-<div style="text-align:center;margin:20px 0;overflow:hidden">
-<script> atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; </script> 
-<script src="https://www.highperformanceformat.com/883db4817d5e178b6cf1e171548f7d9f/invoke.js"></script>
-</div>
-
-<div style="text-align:center;margin-top:22px"><button id="loadMore" onclick="loadMore()" style="padding:11px 22px;border-radius:100px;border:1.5px solid var(--green);background:#fff;color:var(--green);font-weight:700;cursor:pointer">Load More Courses (600 total)</button></div>
+<div style="text-align:center;margin-top:22px"><button id="loadMore" onclick="loadMore()" style="padding:11px 22px;border-radius:100px;border:1.5px solid var(--green);background:#fff;color:var(--green);font-weight:700;cursor:pointer">Load More Courses</button></div>
 </section>
 
-<div id="viewer" class="modal" onclick="if(event.target==this)closeViewer()"><div class="mbox"><div class="mhead"><b id="vTitle" style="font-size:13px"></b><div style="display:flex;gap:6px"><a id="vDown" href="#" target="_blank" style="background:var(--green);color:#fff;padding:6px 14px;border-radius:100px;text-decoration:none;font-size:11px;font-weight:700">Download</a><button onclick="closeViewer()" style="padding:6px 12px;border-radius:100px;border:1px solid #ddd;background:#fff;cursor:pointer">✕</button></div></div><iframe id="vFrame"></iframe></div></div>
+<div id="viewer" class="modal" onclick="if(event.target==this)closeViewer()"><div class="mbox"><div class="mhead"><b id="vTitle"></b><button onclick="closeViewer()" style="padding:6px 12px;border-radius:100px;border:1px solid #ddd;background:#fff;cursor:pointer">✕</button></div><iframe id="vFrame"></iframe></div></div>
 
 <script>
-function getExactChromeLink(code){
-const c=code.toUpperCase().trim();
-const spaced=c.replace(/([A-Z]+)(\d+)/,'$1 $2');
-const num=parseInt(c.match(/\d+/)?.[0]||0);
-if(c.startsWith("GST")) return `https://nou.edu.ng/coursewarecontent/${encodeURIComponent(spaced)}.pdf`;
-if(num>=300) return `https://nou.edu.ng/coursewarecontent/${c}%20word.pdf`;
-return `https://nou.edu.ng/coursewarecontent/${c}.pdf`;
+function getLink(code){
+  const c=code.toUpperCase().trim();
+  const spaced=c.replace(/([A-Z]+)(\d+)/,'$1 $2');
+  return `https://nou.edu.ng/coursewarecontent/${encodeURIComponent(spaced)}.pdf`;
 }
-function openPdf(code,title){ const link=getExactChromeLink(code); document.getElementById('vTitle').textContent=code+' - '+title; document.getElementById('vDown').href=link; document.getElementById('vDown').textContent='Download'; document.getElementById('vFrame').src=link; document.getElementById('viewer').classList.add('show'); }
-function openFaculty(url,title){ document.getElementById('vTitle').textContent=title+' - Official Faculty Page (on your site)'; document.getElementById('vDown').href=url; document.getElementById('vDown').textContent='Open in New Tab'; document.getElementById('vFrame').src=url; document.getElementById('viewer').classList.add('show'); }
+function openPdf(code,title){
+  const link=getLink(code);
+  document.getElementById('vTitle').textContent=code+' - '+title;
+  document.getElementById('vFrame').src=link;
+  document.getElementById('viewer').classList.add('show');
+}
 function closeViewer(){document.getElementById('viewer').classList.remove('show');document.getElementById('vFrame').src='';}
-const coursesData = [
-["GST101","Use of English I","General Studies","100L"],["GST102","Use of English II","General Studies","100L"],["GST103","Computer Fundamentals","General Studies","100L"],["GST104","Use of Library","General Studies","100L"],["GST105","History and Philosophy of Science","General Studies","100L"],["GST107","Good Study Guide","General Studies","100L"],["GST201","Nigerian Peoples and Culture","General Studies","200L"],["GST202","Media and African Culture","General Studies","200L"],["GST203","Philosophy and Logic","General Studies","200L"],["GST204","Entrepreneurship","General Studies","200L"],["GST301","Business Creation","General Studies","300L"],["GST302","Business Plan","General Studies","300L"],
-["CIT101","Intro to Computer Science","Sciences","100L"],["CIT102","Intro to Programming","Sciences","100L"],["CIT212","System Analysis and Design","Sciences","200L"],["CIT344","Software Engineering","Sciences","300L"],["PAD101","Intro to Public Administration","Management Sciences","100L"],["NSC101","Human Biology I","Health Sciences","100L"],["BFN101","Intro to Banking and Finance","Management Sciences","100L"],["ACC101","Principles of Accounting I","Management Sciences","100L"],
-["BUS101","Intro to Business","Management Sciences","100L"],["ECO101","Principles of Economics I","Social Sciences","100L"],["EDU101","Intro to Education","Education","100L"],["LAW101","Intro to Law I","Law","100L"],["BIO101","General Biology I","Sciences","100L"],["AGR101","Intro to Agriculture","Agricultural Sciences","100L"]
-];
-let courses = coursesData.map(x=>({c:x[0],t:x[1],f:x[2],l:x[3]}));
-const extraPrefixes = ["PAD","NSC","BFN","ACC","BUS","ECO","EDU","LAW","BIO","CHM","PHY","MTH","CSS","CIT","ENT","AEM","AGR","POL","SOC","PHS"];
-extraPrefixes.forEach(pre=>{ for(let i=1;i<=20;i++){ const code = `${pre}${100+i}`; if(!courses.find(a=>a.c===code)){ courses.push({c:code,t:`${code} Course Material - NOUN`,f:pre==="PAD"||pre==="BFN"||pre==="ACC"||pre==="BUS"||pre==="ENT"?"Management Sciences":pre==="NSC"||pre==="PHS"?"Health Sciences":pre==="LAW"?"Law":pre==="EDU"?"Education":pre==="AGR"||pre==="AEM"?"Agricultural Sciences":pre==="ECO"||pre==="POL"||pre==="SOC"?"Social Sciences":"Sciences",l:"100L"}); } } });
-courses = courses.slice(0,620);
-let shown = 72;
+
+let courses=[];
+const prefixes=["PAD","NSC","BFN","ACC","BUS","ECO","EDU","LAW","BIO","CHM","PHY","MTH","CIT","GST","AGR"];
+prefixes.forEach(pre=>{
+  for(let i=101;i<=120;i++){
+    courses.push({c:`${pre}${i}`,t:`${pre}${i} Course Material`,f:pre==="GST"?"General Studies":pre==="PAD"||pre==="BFN"||pre==="ACC"||pre==="BUS"?"Management Sciences":pre==="NSC"?"Health Sciences":"Sciences",l:"100L"});
+  }
+});
+let shown=72;
 function loadMore(){shown+=72;render();}
 function render(){
-const q=document.getElementById('q').value.toLowerCase().trim();
-const fac=document.getElementById('fac').value;
-const lev=document.getElementById('lev').value;
-let filtered=courses.filter(x=>(x.c.toLowerCase().includes(q)||x.t.toLowerCase().includes(q))&&(fac===''||x.f===fac)&&(lev===''||x.l===lev));
-const isSearching = q!==''||fac!==''||lev!=='';
-if(!isSearching) filtered=filtered.slice(0,shown); else filtered=filtered.slice(0,200);
-document.getElementById('count').textContent=filtered.length+' shown of '+courses.length+' courses';
-const g=document.getElementById('grid');g.innerHTML='';
-if(filtered.length===0 && isSearching){ document.getElementById('whatsappBox').style.display='block'; } else { document.getElementById('whatsappBox').style.display='none'; }
-filtered.forEach(o=>{
-const link=getExactChromeLink(o.c);
-g.innerHTML+=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><span class="code">${o.c}</span><span style="font-size:8px;background:#E8F5E9;color:#0B4D2A;padding:3px 7px;border-radius:100px;font-weight:700">✓ Chrome Direct</span></div><h3 style="font-size:12px;margin-top:7px;line-height:1.3">${o.t}</h3><p style="font-size:9px;color:#888;margin-top:4px">${o.f} • ${o.l}</p><div style="display:flex;gap:6px;margin-top:10px"><button class="btn btn-green" onclick="openPdf('${o.c}','${o.t.replace(/'/g,'')}')">View in Chrome</button><a class="btn btn-out" href="${link}" target="_blank">Download</a></div></div>`;
-});
-document.getElementById('loadMore').style.display = (isSearching || filtered.length>=courses.length)? 'none' : 'inline-block';
+  const q=document.getElementById('q').value.toLowerCase().trim();
+  const fac=document.getElementById('fac').value;
+  let filtered=courses.filter(x=>(x.c.toLowerCase().includes(q)||x.t.toLowerCase().includes(q))&&(fac===''||x.f===fac));
+  document.getElementById('count').textContent=filtered.length+' courses';
+  filtered=filtered.slice(0,shown);
+  const g=document.getElementById('grid');g.innerHTML='';
+  filtered.forEach(o=>{
+    const link=getLink(o.c);
+    g.innerHTML+=`<div class="card"><div style="display:flex;justify-content:space-between"><span class="code">${o.c}</span><span style="font-size:8px;background:#E8F5E9;color:#0B4D2A;padding:3px 7px;border-radius:100px;font-weight:700">✓ Direct</span></div><h3 style="font-size:12px;margin-top:7px">${o.t}</h3><p style="font-size:9px;color:#888">${o.f} • ${o.l}</p><div style="display:flex;gap:6px;margin-top:10px"><button class="btn btn-green" onclick="openPdf('${o.c}','${o.t}')">View in Chrome</button><a class="btn btn-out" href="${link}" target="_blank">Download</a></div></div>`;
+  });
+  document.getElementById('loadMore').style.display = filtered.length>=courses.length?'none':'inline-block';
 }
 render();
 </script>
-
-<!-- 3 ADS - ALL TOGETHER -->
-<script src="https://pl31855543.profitableratecpmnetwork.com/81/d9/83/81d98344f2f95ced9cf7369e6e207293.js"></script>
-<script data-cfasync="false" src="https://abscloud.org/1/35fc9d372f67e604a742568967694326"></script>
-<script data-cfasync="false" src="https://bauval.org/14/81d98344f2f95ced9cf7369e6e207293"></script>
-
 </body>
 </html>
