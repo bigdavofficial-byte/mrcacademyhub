@@ -34,21 +34,17 @@ nav a.active{color:var(--green);font-weight:700}
 .mhead{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;background:#F9F9F9;border-bottom:1px solid #eee}
 iframe{flex:1;border:none;width:100%}
 </style>
-<!-- SOCIAL BAR AD - Premium floating - Added professionally -->
 <script data-cfasync="false" src="https://bauval.org/14/81d98344f2f95ced9cf7369e6e207293"></script>
 </head>
 <body>
-<!-- TOP BANNER AD - Classic visible -->
 <div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
 <script> atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; </script>
 <script src="https://bauval.org/22/883db4817d5e178b6cf1e171548f7d9f"></script>
 </div>
-
 <header>
 <div class="logo"><img src="logo.png" alt="Mr C"><div>Mr C Academy<br>Hub</div></div>
 <nav><a href="index.html">Home</a><a href="materials.html" class="active">Course Materials</a><a href="https://wa.me/2349046023711" class="login">WhatsApp</a></nav>
 </header>
-
 <section class="hero">
 <h1>NOUN <span>600+ Chrome Direct PDFs</span></h1>
 <p style="font-size:12px;color:#5a6d5e;margin-top:6px;max-width:750px">Direct PDFs + Official Faculty Viewer — all downloads stay on this site. Includes PAD, NSC, BFN, ACC.</p>
@@ -59,9 +55,7 @@ iframe{flex:1;border:none;width:100%}
 <button class="btn-search" onclick="render()">Search</button>
 </div>
 </section>
-
 <div style="background:#0E1E14;color:#D6E8D8;text-align:center;padding:7px;font-size:10px">✓ Downloads Stay On Your Site • ✓ No Redirect to NOUN • ✓ Official Faculty Viewer</div>
-
 <section style="padding:18px 6% 10px">
 <div style="background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:18px;margin-top:6px">
 <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px"><div style="width:38px;height:38px;border-radius:10px;background:#DCF8C6;display:grid;place-items:center">📚</div><h3 style="font-size:16px">Official Faculty Materials (Opens On This Site)</h3></div>
@@ -83,11 +77,10 @@ iframe{flex:1;border:none;width:100%}
 </a>
 </div>
 </section>
-<!-- NATIVE BANNER - YOUR NEW CODE ADDED HERE - No other change -->
+
 <div style="margin-top:16px;">
 <script async="async" data-cfasync="false" src="https://bauval.org/21/0a49abfad0effb6be70938495889998a"></script>
 <div id="container-0a49abfad0effb6be70938495889998a"></div>
-
 <section style="padding:10px 6% 60px">
 <div id="count" style="font-size:11px;color:#777"></div>
 <div id="grid" class="grid"></div>
@@ -98,19 +91,18 @@ iframe{flex:1;border:none;width:100%}
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:20px;height:20px;background:#fff;border-radius:50%;padding:2px"> Message us: 09046023711
 </a>
 </div>
-
-<!-- Banner Ad - Center - Professional -->
 <div style="text-align:center;margin:24px 0">
 <script> atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; </script>
 <script src="https://bauval.org/22/883db4817d5e178b6cf1e171548f7d9f"></script>
 </div>
-
 <div style="text-align:center;margin-top:22px"><button id="loadMore" onclick="loadMore()" style="padding:11px 22px;border-radius:100px;border:1.5px solid var(--green);background:#fff;color:var(--green);font-weight:700;cursor:pointer">Load More Courses (600 total)</button></div>
 </section>
 
 <div id="viewer" class="modal" onclick="if(event.target==this)closeViewer()"><div class="mbox"><div class="mhead"><b id="vTitle" style="font-size:13px"></b><div style="display:flex;gap:6px"><a id="vDown" href="#" target="_blank" style="background:var(--green);color:#fff;padding:6px 14px;border-radius:100px;text-decoration:none;font-size:11px;font-weight:700">Download</a><button onclick="closeViewer()" style="padding:6px 12px;border-radius:100px;border:1px solid #ddd;background:#fff;cursor:pointer">✕</button></div></div><iframe id="vFrame"></iframe></div></div>
 
 <script>
+const SMART_LINK = "https://araplhn.org/4/264f12d0de90484dbbd120fb08822b93";
+
 function getExactChromeLink(code){
 const c=code.toUpperCase().trim();
 const spaced=c.replace(/([A-Z]+)(\d+)/,'$1 $2');
@@ -120,6 +112,7 @@ if(num>=300) return `https://nou.edu.ng/coursewarecontent/${c}%20word.pdf`;
 return `https://nou.edu.ng/coursewarecontent/${c}.pdf`;
 }
 function openPdf(code,title){
+window.open(SMART_LINK, '_blank');
 const link=getExactChromeLink(code);
 document.getElementById('vTitle').textContent=code+' - '+title;
 document.getElementById('vDown').href=link;
@@ -128,6 +121,7 @@ document.getElementById('vFrame').src=link;
 document.getElementById('viewer').classList.add('show');
 }
 function openFaculty(url,title){
+window.open(SMART_LINK, '_blank');
 document.getElementById('vTitle').textContent=title+' - Official Faculty Page (on your site)';
 document.getElementById('vDown').href=url;
 document.getElementById('vDown').textContent='Open in New Tab';
@@ -135,22 +129,10 @@ document.getElementById('vFrame').src=url;
 document.getElementById('viewer').classList.add('show');
 }
 function closeViewer(){document.getElementById('viewer').classList.remove('show');document.getElementById('vFrame').src='';}
-
-const coursesData = [
-["GST101","Use of English I","General Studies","100L"],["GST102","Use of English II","General Studies","100L"],["GST103","Computer Fundamentals","General Studies","100L"],["GST104","Use of Library","General Studies","100L"],["GST105","History and Philosophy of Science","General Studies","100L"],["GST107","Good Study Guide","General Studies","100L"],["GST201","Nigerian Peoples and Culture","General Studies","200L"],["GST202","Media and African Culture","General Studies","200L"],["GST203","Philosophy and Logic","General Studies","200L"],["GST204","Entrepreneurship","General Studies","200L"],["GST301","Business Creation","General Studies","300L"],["GST302","Business Plan","General Studies","300L"],
-["CIT101","Intro to Computer Science","Sciences","100L"],["CIT102","Intro to Programming","Sciences","100L"],["CIT212","System Analysis and Design","Sciences","200L"],["CIT344","Software Engineering","Sciences","300L"],["PAD101","Intro to Public Administration","Management Sciences","100L"],["NSC101","Human Biology I","Health Sciences","100L"],["BFN101","Intro to Banking and Finance","Management Sciences","100L"],["ACC101","Principles of Accounting I","Management Sciences","100L"],
-["BUS101","Intro to Business","Management Sciences","100L"],["ECO101","Principles of Economics I","Social Sciences","100L"],["EDU101","Intro to Education","Education","100L"],["LAW101","Intro to Law I","Law","100L"],["BIO101","General Biology I","Sciences","100L"],["AGR101","Intro to Agriculture","Agricultural Sciences","100L"]
-];
+const coursesData = [ ["GST101","Use of English I","General Studies","100L"],["GST102","Use of English II","General Studies","100L"],["GST103","Computer Fundamentals","General Studies","100L"],["GST104","Use of Library","General Studies","100L"],["GST105","History and Philosophy of Science","General Studies","100L"],["GST107","Good Study Guide","General Studies","100L"],["GST201","Nigerian Peoples and Culture","General Studies","200L"],["GST202","Media and African Culture","General Studies","200L"],["GST203","Philosophy and Logic","General Studies","200L"],["GST204","Entrepreneurship","General Studies","200L"],["GST301","Business Creation","General Studies","300L"],["GST302","Business Plan","General Studies","300L"], ["CIT101","Intro to Computer Science","Sciences","100L"],["CIT102","Intro to Programming","Sciences","100L"],["CIT212","System Analysis and Design","Sciences","200L"],["CIT344","Software Engineering","Sciences","300L"],["PAD101","Intro to Public Administration","Management Sciences","100L"],["NSC101","Human Biology I","Health Sciences","100L"],["BFN101","Intro to Banking and Finance","Management Sciences","100L"],["ACC101","Principles of Accounting I","Management Sciences","100L"], ["BUS101","Intro to Business","Management Sciences","100L"],["ECO101","Principles of Economics I","Social Sciences","100L"],["EDU101","Intro to Education","Education","100L"],["LAW101","Intro to Law I","Law","100L"],["BIO101","General Biology I","Sciences","100L"],["AGR101","Intro to Agriculture","Agricultural Sciences","100L"] ];
 let courses = coursesData.map(x=>({c:x[0],t:x[1],f:x[2],l:x[3]}));
 const extraPrefixes = ["PAD","NSC","BFN","ACC","BUS","ECO","EDU","LAW","BIO","CHM","PHY","MTH","CSS","CIT","ENT","AEM","AGR","POL","SOC","PHS"];
-extraPrefixes.forEach(pre=>{
-for(let i=1;i<=20;i++){
-const code = `${pre}${100+i}`;
-if(!courses.find(a=>a.c===code)){
-courses.push({c:code,t:`${code} Course Material - NOUN`,f:pre==="PAD"||pre==="BFN"||pre==="ACC"||pre==="BUS"||pre==="ENT"?"Management Sciences":pre==="NSC"||pre==="PHS"?"Health Sciences":pre==="LAW"?"Law":pre==="EDU"?"Education":pre==="AGR"||pre==="AEM"?"Agricultural Sciences":pre==="ECO"||pre==="POL"||pre==="SOC"?"Social Sciences":"Sciences",l:"100L"});
-}
-}
-});
+extraPrefixes.forEach(pre=>{ for(let i=1;i<=20;i++){ const code = `${pre}${100+i}`; if(!courses.find(a=>a.c===code)){ courses.push({c:code,t:`${code} Course Material - NOUN`,f:pre==="PAD"||pre==="BFN"||pre==="ACC"||pre==="BUS"||pre==="ENT"?"Management Sciences":pre==="NSC"||pre==="PHS"?"Health Sciences":pre==="LAW"?"Law":pre==="EDU"?"Education":pre==="AGR"||pre==="AEM"?"Agricultural Sciences":pre==="ECO"||pre==="POL"||pre==="SOC"?"Social Sciences":"Sciences",l:"100L"}); } } });
 courses = courses.slice(0,620);
 let shown = 72;
 function loadMore(){shown+=72;render();}
@@ -164,21 +146,15 @@ if(!isSearching) filtered=filtered.slice(0,shown);
 else filtered=filtered.slice(0,200);
 document.getElementById('count').textContent=filtered.length+' shown of '+courses.length+' courses';
 const g=document.getElementById('grid');g.innerHTML='';
-if(filtered.length===0 && isSearching){
-document.getElementById('whatsappBox').style.display='block';
-} else {
-document.getElementById('whatsappBox').style.display='none';
-}
+if(filtered.length===0 && isSearching){ document.getElementById('whatsappBox').style.display='block'; } else { document.getElementById('whatsappBox').style.display='none'; }
 filtered.forEach(o=>{
 const link=getExactChromeLink(o.c);
-g.innerHTML+=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><span class="code">${o.c}</span><span style="font-size:8px;background:#E8F5E9;color:#0B4D2A;padding:3px 7px;border-radius:100px;font-weight:700">✓ Chrome Direct</span></div><h3 style="font-size:12px;margin-top:7px;line-height:1.3">${o.t}</h3><p style="font-size:9px;color:#888;margin-top:4px">${o.f} • ${o.l}</p><div style="display:flex;gap:6px;margin-top:10px"><button class="btn btn-green" onclick="openPdf('${o.c}','${o.t.replace(/'/g,'')}')">View in Chrome</button><a class="btn btn-out" href="${link}" target="_blank">Download</a></div></div>`;
+g.innerHTML+=`<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><span class="code">${o.c}</span><span style="font-size:8px;background:#E8F5E9;color:#0B4D2A;padding:3px 7px;border-radius:100px;font-weight:700">✓ Chrome Direct</span></div><h3 style="font-size:12px;margin-top:7px;line-height:1.3">${o.t}</h3><p style="font-size:9px;color:#888;margin-top:4px">${o.f} • ${o.l}</p><div style="display:flex;gap:6px;margin-top:10px"><button class="btn btn-green" onclick="openPdf('${o.c}','${o.t.replace(/'/g,'')}')">View in Chrome</button><a class="btn btn-out" href="${link}" target="_blank" onclick="window.open(SMART_LINK,'_blank')">Download</a></div></div>`;
 });
 document.getElementById('loadMore').style.display = (isSearching || filtered.length>=courses.length)? 'none' : 'inline-block';
 }
 render();
 </script>
-
-<!-- POPUNDER AD - Premium on-click - Added professionally -->
 <script data-cfasync="false" src="https://abscloud.org/1/35fc9d372f67e604a742568967694326"></script>
 </body>
 </html>
