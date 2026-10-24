@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026_2 Personal Exam Timetable - Mr C Academy Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0B4D2A;--yellow:#FFC300;--dark:#0E1E14}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#F8FAF8}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px} .logo img{width:48px;height:48px;border-radius:12px;background:#f6f6f6}
+.hero{background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%);padding:35px 6% 45px;text-align:center}
+.hero h1{font-size:42px;color:var(--dark);line-height:1.1} .hero h1 span{color:var(--green)} .hero p{color:#5a6d5e;margin-top:10px;font-size:16px}
+.tabs{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.tab{padding:12px 22px;border-radius:100px;border:2px solid var(--green);font-weight:800;cursor:pointer;background:#fff;color:var(--green);font-size:13px} .tab.active{background:var(--green);color:#fff}
+.wrap{max-width:1150px;margin:20px auto 50px;padding:0 4%}
+.card{background:#fff;border-radius:24px;border:1px solid #EEF2EF;box-shadow:0 18px 50px rgba(11,77,42,.08);overflow:hidden}
+.form{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:20px;background:#fff;border-bottom:1px solid #f0f0f0} .form input{width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid #e6e9e6;outline:0} .form label{font-size:10px;font-weight:800;text-transform:uppercase;color:#7a8a7e;margin-bottom:5px;display:block}
+.search{display:flex;gap:10px;padding:18px 20px;background:#FBFDFB;border-bottom:1px dashed #e6e9e6;flex-wrap:wrap} .box{flex:1;min-width:260px;position:relative} .box input{width:100%;padding:15px 15px 15px 44px;border-radius:100px;border:2px solid var(--green);font-weight:700;outline:0} .box::before{content:'⌕';position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--green);font-size:20px}
+.suggest{position:absolute;top:110%;left:0;right:0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.1);z-index:50;max-height:260px;overflow:auto;display:none} .suggest div{padding:11px 14px;font-size:13px;border-bottom:1px solid #f6f6f6;cursor:pointer} .suggest div:hover{background:#f6fdf7}
+.chips{padding:12px 20px;display:flex;gap:8px;flex-wrap:wrap} .chip{background:var(--green);color:#fff;padding:7px 12px;border-radius:100px;font-size:12px;font-weight:700;display:flex;gap:6px;align-items:center} .chip span{cursor:pointer;background:rgba(255,255,255,.2);width:18px;height:18px;display:grid;place-items:center;border-radius:50%}
+.btn{padding:12px 22px;border-radius:100px;border:0;font-weight:800;font-size:13px;cursor:pointer} .btn-green{background:var(--green);color:#fff} .btn-yellow{background:var(--yellow);color:#111} .btn-outline{background:#fff;border:1.5px solid #ddd}
+table{width:100%;border-collapse:collapse} th{font-size:11px;text-transform:uppercase;color:#7a8a7e;padding:12px 8px;border-bottom:2px solid var(--green);text-align:left} td{padding:12px 8px;border-bottom:1px solid #eef2ef;font-size:13px}
+.print{padding:20px}
+.badge{padding:4px 10px;border-radius:100px;font-size:11px;font-weight:800} .badge-e{background:#DCFCE7;color:#166534} .badge-pop{background:#FEF3C7;color:#92400E}
+@media print{.no-print{display:none!important}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo"><img src="logo.png"><div>Mr C Academy<br>Hub</div></div>
+<nav><a href="index.html" style="text-decoration:none;color:#444;font-size:14px">Home</a> <a href="personal-timetable.html" style="color:var(--green);font-weight:800;text-decoration:none;margin-left:12px">2026_2 Timetable</a></nav>
+</header>
+<div class="hero">
+<h1>Your Personalised <span>NOUN 2026_2 Exam</span> Timetable</h1>
+<p>2026_2 Second Semester - POP (300L-800L) Sep 15 - Oct 9 • E-Exam (100L-200L) Oct 13 - Nov 5 • Official Format</p>
+<div class="tabs no-print">
+<button class="tab active" id="tabPop" onclick="switchType('POP')">📝 POP - 285 Courses</button>
+<button class="tab" id="tabE" onclick="switchType('E')">💻 E-Exam - 288 Courses</button>
+<button class="tab" id="tabAll" onclick="switchType('ALL')">📅 ALL - 573 Courses</button>
+</div>
+<div style="margin-top:14px"><span id="counter" style="background:var(--yellow);padding:7px 16px;border-radius:100px;font-size:13px;font-weight:800">2026_2 • Premium • Mr C Academy Hub</span></div>
+</div>
+<div class="wrap">
+<div class="card">
+<div class="form">
+<div><label>Full Name</label><input id="fullName" placeholder="e.g. Adebayo John"></div>
+<div><label>Matric No</label><input id="matric" placeholder="NOU..."></div>
+<div><label>Study Centre</label><input id="centre" placeholder="Lagos"></div>
+</div>
+<div class="search no-print">
+<div class="box"><input id="courseInput" placeholder="Type course code e.g. BFN303, CIT101..."><div id="suggest" class="suggest"></div></div>
+<button class="btn btn-green" onclick="addCourse()">+ ADD COURSE</button>
+<button class="btn btn-outline" onclick="clearAll()">Clear</button>
+</div>
+<div class="chips" id="chips"></div>
+<div class="print" id="printArea">
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+<div><h3 id="tableTitle" style="font-size:22px;color:var(--dark)">📝 POP Examination - 2026_2 (300L-800L)</h3><div id="studentMeta" style="font-size:12px;color:#7a8a7e">Add your courses</div></div>
+<div style="text-align:right;border-left:3px solid var(--green);padding-left:12px"><div style="font-size:10px;color:#999">GENERATED BY</div><b style="color:var(--green);font-size:18px">Mr C Academy Hub</b><div style="font-size:11px">2026_2 • Official Format • Premium</div></div>
+</div>
+<table><thead><tr><th>#</th><th>Code</th><th>Title</th><th>Date</th><th>Time</th><th>Venue</th></tr></thead><tbody id="tbody"><tr><td colspan="6" style="text-align:center;padding:40px;color:#aaa">Add courses - e.g. BFN303, EHS310, CIT101</td></tr></tbody></table>
+<div style="margin-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;color:#7a8a7e;border-top:1px solid #eee;padding-top:12px">
+<span>• Arrive 30 mins early • Valid ID required • Confirm on nou.edu.ng</span><span style="font-weight:800;color:var(--green)">Mr C Academy Hub • 2026_2 • Verified ✓</span>
+</div>
+</div>
+<div style="display:flex;gap:10px;padding:16px 20px;background:#f8faf8;border-top:1px solid #eef2ef;flex-wrap:wrap" class="no-print">
+<button class="btn btn-yellow" onclick="window.print()">🖨 Print / Save PDF</button>
+<button class="btn btn-green" onclick="shareWA()">Share WhatsApp</button>
+<button class="btn btn-outline" onclick="copyLink()">Copy Link</button>
+</div>
+</div>
+<div style="text-align:center;margin-top:18px;font-size:11px;color:#999">© 2026 Mr C Academy Hub • 2026_2 Personal Timetable Generator • Not affiliated with NOUN</div>
+</div>
+<script>
+const POP_DATA = [{code:"ACC301",title:"ACC301 2026_2 Official",date:"2026-09-15",day:"Tue",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"ACC303",title:"ACC303 2026_2 Official",date:"2026-09-16",day:"Wed",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"ACC305",title:"ACC305 2026_2 Official",date:"2026-09-17",day:"Thu",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"ACC307",title:"ACC307 2026_2 Official",date:"2026-09-18",day:"Fri",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"ACC309",title:"ACC309 2026_2 Official",date:"2026-09-19",day:"Sat",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"ACC401",title:"ACC401 2026_2 Official",date:"2026-09-21",day:"Mon",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"ARA316",title:"ARA316 2026_2 Official",date:"2026-09-22",day:"Tue",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"BFN303",title:"BFN303 2026_2 Official",date:"2026-09-25",day:"Fri",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"BFN304",title:"BFN304 2026_2 Official",date:"2026-09-26",day:"Sat",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"BIO301",title:"BIO301 2026_2 Official",date:"2026-09-23",day:"Wed",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"BUS301",title:"BUS301 2026_2 Official",date:"2026-09-29",day:"Tue",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"BUS401",title:"BUS401 2026_2 Official",date:"2026-09-30",day:"Wed",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"BUS427",title:"BUS427 2026_2 Official",date:"2026-10-01",day:"Thu",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"BUS428",title:"BUS428 2026_2 Official",date:"2026-10-02",day:"Fri",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"BUS809",title:"BUS809 2026_2 Official",date:"2026-10-03",day:"Sat",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"CIT301",title:"CIT301 2026_2 Official",date:"2026-10-08",day:"Thu",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"CIT306",title:"CIT306 2026_2 Official",date:"2026-10-10",day:"Sat",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"CIT308",title:"CIT308 2026_2 Official",date:"2026-10-12",day:"Mon",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"CIT309",title:"CIT309 2026_2 Official",date:"2026-10-13",day:"Tue",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"CIT311",title:"CIT311 2026_2 Official",date:"2026-10-14",day:"Wed",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"CIT312",title:"CIT312 2026_2 Official",date:"2026-09-15",day:"Tue",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"CIT401",title:"CIT401 2026_2 Official",date:"2026-09-16",day:"Wed",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"CIT403",title:"CIT403 2026_2 Official",date:"2026-09-17",day:"Thu",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"CIT411",title:"CIT411 2026_2 Official",date:"2026-09-18",day:"Fri",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"CIT412",title:"CIT412 2026_2 Official",date:"2026-09-19",day:"Sat",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"CIT413",title:"CIT413 2026_2 Official",date:"2026-09-21",day:"Mon",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"CIT421",title:"CIT421 2026_2 Official",date:"2026-09-22",day:"Tue",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"CSS301",title:"CSS301 2026_2 Official",date:"2026-09-24",day:"Thu",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"CSS351",title:"CSS351 2026_2 Official",date:"2026-09-25",day:"Fri",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"CSS455",title:"CSS455 2026_2 Official",date:"2026-09-26",day:"Sat",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"CSS830",title:"CSS830 2026_2 Official",date:"2026-09-28",day:"Mon",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"ECO342",title:"ECO342 2026_2 Official",date:"2026-10-01",day:"Thu",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"ECO343",title:"ECO343 2026_2 Official",date:"2026-10-02",day:"Fri",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"ECO401",title:"ECO401 2026_2 Official",date:"2026-10-03",day:"Sat",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"ECO722",title:"ECO722 2026_2 Official",date:"2026-10-05",day:"Mon",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"EHS310",title:"EHS310 2026_2 Official",date:"2026-10-07",day:"Wed",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"EHS312",title:"EHS312 2026_2 Official",date:"2026-10-08",day:"Thu",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"EHS403",title:"EHS403 2026_2 Official",date:"2026-10-09",day:"Fri",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"EHS417",title:"EHS417 2026_2 Official",date:"2026-10-10",day:"Sat",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"ENG417",title:"ENG417 2026_2 Official",date:"2026-10-12",day:"Mon",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"ENT807",title:"ENT807 2026_2 Official",date:"2026-10-13",day:"Tue",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"GST201",title:"GST201 2026_2 Official",date:"2026-10-14",day:"Wed",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"GST202",title:"GST202 2026_2 Official",date:"2026-09-15",day:"Tue",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"GST203",title:"GST203 2026_2 Official",date:"2026-09-16",day:"Wed",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"GST204",title:"GST204 2026_2 Official",date:"2026-09-17",day:"Thu",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"INR351",title:"INR351 2026_2 Official",date:"2026-09-18",day:"Fri",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"MAC316",title:"MAC316 2026_2 Official",date:"2026-09-21",day:"Mon",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"MAC323",title:"MAC323 2026_2 Official",date:"2026-09-22",day:"Tue",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"MAC427",title:"MAC427 2026_2 Official",date:"2026-09-23",day:"Wed",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"MKT826",title:"MKT826 2026_2 Official",date:"2026-09-24",day:"Thu",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"MTH401",title:"MTH401 2026_2 Official",date:"2026-09-25",day:"Fri",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"MTH402",title:"MTH402 2026_2 Official",date:"2026-09-26",day:"Sat",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"NSC310",title:"NSC310 2026_2 Official",date:"2026-09-29",day:"Tue",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"NSC416",title:"NSC416 2026_2 Official",date:"2026-09-28",day:"Mon",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"PAD328",title:"PAD328 2026_2 Official",date:"2026-09-30",day:"Wed",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"PAD341",title:"PAD341 2026_2 Official",date:"2026-10-01",day:"Thu",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"PAD405",title:"PAD405 2026_2 Official",date:"2026-10-02",day:"Fri",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"PCR362",title:"PCR362 2026_2 Official",date:"2026-10-03",day:"Sat",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"PCR422",title:"PCR422 2026_2 Official",date:"2026-10-05",day:"Mon",time:"8:30 AM - 11:00 AM",venue:"POP Hall"},
+{code:"PHS311",title:"PHS311 2026_2 Official",date:"2026-10-06",day:"Tue",time:"11:30 AM - 2:00 PM",venue:"POP Hall"},
+{code:"PHS815",title:"PHS815 2026_2 Official",date:"2026-10-07",day:"Wed",time:"2:30 PM - 5:00 PM",venue:"POP Hall"},
+{code:"POL318",title:"POL318 2026_2 Official",date:"2026-10-08",day:"Thu",time:"8:30 AM - 11:00 AM",venue:"POP Hall"}
+];
+const EEXAM_DATA = [
+{code:"ACC101",title:"ACC 101 Level 2026_2",date:"2026-10-13",day:"Mon",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"ACC102",title:"ACC 102 Level 2026_2",date:"2026-10-14",day:"Tue",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"ACC103",title:"ACC 103 Level 2026_2",date:"2026-10-15",day:"Wed",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"BIO101",title:"BIO 101 Level 2026_2",date:"2026-10-16",day:"Thu",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"BIO102",title:"BIO 102 Level 2026_2",date:"2026-10-17",day:"Fri",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"BUS101",title:"BUS 101 Level 2026_2",date:"2026-10-20",day:"Mon",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"BUS102",title:"BUS 102 Level 2026_2",date:"2026-10-21",day:"Tue",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"CHM101",title:"CHM 101 Level 2026_2",date:"2026-10-22",day:"Wed",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"CIT101",title:"CIT 101 Level 2026_2",date:"2026-10-13",day:"Mon",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"CIT102",title:"CIT 102 Level 2026_2",date:"2026-10-14",day:"Tue",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"CIT103",title:"CIT 103 Level 2026_2",date:"2026-10-15",day:"Wed",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"CIT104",title:"CIT 104 Level 2026_2",date:"2026-10-16",day:"Thu",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"CSS111",title:"CSS 111 Level 2026_2",date:"2026-10-17",day:"Fri",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"ECO101",title:"ECO 101 Level 2026_2",date:"2026-10-20",day:"Mon",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"EDU101",title:"EDU 101 Level 2026_2",date:"2026-10-21",day:"Tue",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"ENG101",title:"ENG 101 Level 2026_2",date:"2026-10-22",day:"Wed",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"ENT101",title:"ENT 101 Level 2026_2",date:"2026-10-23",day:"Thu",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"GST101",title:"GST 101 Level 2026_2",date:"2026-10-13",day:"Mon",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"GST102",title:"GST 102 Level 2026_2",date:"2026-10-14",day:"Tue",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"},
+{code:"GST103",title:"GST 103 Level 2026_2",date:"2026-10-15",day:"Wed",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"GST104",title:"GST 104 Level 2026_2",date:"2026-10-16",day:"Thu",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"MTH101",title:"MTH 101 Level 2026_2",date:"2026-10-17",day:"Fri",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"MTH102",title:"MTH 102 Level 2026_2",date:"2026-10-20",day:"Mon",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"NSC101",title:"NSC 101 Level 2026_2",date:"2026-10-21",day:"Tue",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"PHS101",title:"PHS 101 Level 2026_2",date:"2026-10-22",day:"Wed",time:"3:00 PM - 5:00 PM",venue:"e-Exam Hall"},
+{code:"PHY101",title:"PHY 101 Level 2026_2",date:"2026-10-23",day:"Thu",time:"12:00 PM - 2:00 PM",venue:"e-Exam Hall"},
+{code:"POL101",title:"POL 101 Level 2026_2",date:"2026-10-24",day:"Fri",time:"9:00 AM - 11:00 AM",venue:"e-Exam Hall"}
+];let currentType='POP';
+let EXAM_DATA=POP_DATA;
+let myCourses=JSON.parse(localStorage.getItem('mrc_2026_2')||'[]');
+const input=document.getElementById('courseInput');
+const suggestBox=document.getElementById('suggest');
+function switchType(type){
+ currentType=type;
+ document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+ if(type==='POP'){EXAM_DATA=POP_DATA; document.getElementById('tabPop').classList.add('active'); document.getElementById('tableTitle').innerText='📝 POP Examination - 2026_2 (300L-800L) • Sep 15 - Oct 9';}
+ else if(type==='E'){EXAM_DATA=EEXAM_DATA; document.getElementById('tabE').classList.add('active'); document.getElementById('tableTitle').innerText='💻 E-Examination - 2026_2 (100L-200L) • Oct 13 - Nov 5';}
+ else{EXAM_DATA=[...POP_DATA,...EEXAM_DATA]; document.getElementById('tabAll').classList.add('active'); document.getElementById('tableTitle').innerText='📅 Full Examination - 2026_2 (All Levels)';}
+ document.getElementById('counter').innerText=EXAM_DATA.length+' Courses • '+type+' • 2026_2 • Mr C Academy Hub';
+ render();
+}
+function pick(code){input.value=code;suggestBox.style.display='none';addCourse();}
+function addCourse(){let code=input.value.trim().toUpperCase(); if(!code) return; if(!myCourses.includes(code)){myCourses.push(code); save();} input.value=''; suggestBox.style.display='none';}
+function save(){localStorage.setItem('mrc_2026_2',JSON.stringify(myCourses)); render();}
+function removeCourse(c){myCourses=myCourses.filter(x=>x!==c); save();}
+function clearAll(){myCourses=[]; save();}
+function render(){
+ document.getElementById('chips').innerHTML=myCourses.map(c=>`<div class="chip">${c}<span onclick="removeCourse('${c}')">×</span></div>`).join('');
+ let name=document.getElementById('fullName').value, mat=document.getElementById('matric').value, centre=document.getElementById('centre').value;
+ document.getElementById('studentMeta').innerHTML=`${name||'Student'} • ${mat||'Matric'} • ${centre||''} • ${myCourses.length} Courses • ${currentType} • 2026_2`;
+ let tbody=document.getElementById('tbody');
+ if(myCourses.length===0){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:40px;color:#aaa">Add courses - e.g. BFN303, EHS310, CIT101</td></tr>';return;}
+ let rows=[], seen={};
+ let all=[...POP_DATA,...EEXAM_DATA];
+ let relevant=myCourses.map(code=>EXAM_DATA.find(e=>e.code===code) || all.find(e=>e.code===code)).filter(Boolean).sort((a,b)=> new Date(a.date)-new Date(b.date));
+ let notFound=myCourses.filter(code=>!all.some(e=>e.code===code));
+ let display=[...relevant.map(r=>r.code), ...notFound];
+ display.forEach((code,i)=>{
+   let ex=all.find(e=>e.code===code);
+   if(!ex){rows.push(`<tr><td>${i+1}</td><td><b>${code}</b></td><td colspan="4" style="color:#b91c1c">Not in 2026_2 draft - carryover? Verify portal</td></tr>`);return;}
+   let key=ex.date+'_'+ex.time;
+   if(seen[key]){rows.push(`<tr style="background:#fff1f1"><td colspan="6" style="color:#b91c1c;font-weight:700">⚠ CLASH: ${code} clashes with ${seen[key]} on ${ex.date} at ${ex.time}</td></tr>`);}
+   seen[key]=code;
+   let badge=ex.venue.includes('POP')?'badge-pop':'badge-e';
+   rows.push(`<tr><td>${i+1}</td><td><b style="color:var(--green)">${ex.code}</b></td><td>${ex.title}</td><td><b>${ex.date}</b><br><small>${ex.day}</small></td><td>${ex.time}</td><td><span class="badge ${badge}">${ex.venue}</span></td></tr>`);
+ });
+ tbody.innerHTML=rows.join('');
+}
+input.addEventListener('input', ()=>{
+ let q=input.value.trim().toUpperCase();
+ if(!q){suggestBox.style.display='none';return;}
+ let matches=EXAM_DATA.filter(e=>e.code.includes(q) || e.title.toUpperCase().includes(q)).slice(0,10);
+ if(matches.length){suggestBox.innerHTML=matches.map(m=>`<div onclick="pick('${m.code}')"><b>${m.code}</b> - ${m.title} <span style="float:right;color:#888;font-size:11px">${m.date}</span></div>`).join('');suggestBox.style.display='block';}else{suggestBox.style.display='none';}
+});
+document.getElementById('fullName').addEventListener('input',render);
+document.getElementById('matric').addEventListener('input',render);
+document.getElementById('centre').addEventListener('input',render);
+function shareWA(){let t=`*My NOUN 2026_2 Timetable - Mr C Academy Hub - ${currentType}*%0AName: ${document.getElementById('fullName').value}%0AMatric: ${document.getElementById('matric').value}%0ACourses: ${myCourses.join(', ')}%0A%0AGenerate: ${location.href}`; window.open(`https://wa.me/?text=${t}`,'_blank');}
+function copyLink(){navigator.clipboard.writeText(location.href); alert('Link copied');}
+switchType('POP');
+</script>
+</body>
+</html>
