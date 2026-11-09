@@ -7,65 +7,61 @@
 <title>Mr C Academy Hub - Your #1 NOUN Success Partner</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--green:#0B4D2A;--yellow:#FFC300;--dark:#0E1E14}
+:root{--green:#0B4D2A;--dark:#0E1E14}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+html,body{width:100%;overflow-x:hidden}
 body{background:#fff}
 header{display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid #f0f0f0}
-.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green);font-size:18px;line-height:1;text-decoration:none}
 .logo img{width:48px;height:48px;border-radius:12px;background:#f6f6f6;object-fit:contain}
-nav{display:flex;gap:22px;align-items:center}
-nav a{text-decoration:none;color:#444;font-size:14px;font-weight:500}
-.login{border:1.5px solid var(--green);padding:8px 20px;border-radius:100px;color:var(--green);font-weight:700;text-decoration:none;cursor:pointer}
-.hero{padding:40px 6% 60px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%);display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:30px}
+nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:#444;font-size:13px;font-weight:600}
+.login{border:1.5px solid var(--green);padding:8px 20px;border-radius:100px;color:var(--green);font-weight:700;text-decoration:none}
+.hero{padding:40px 6% 60px;background:radial-gradient(120% 120% at 0% 0%,#E9F5EC 0%,#F6FFF2 40%,#FFF9E5 100%);display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;gap:30px;width:100%}
 .hero h1{font-size:52px;line-height:1.05;color:var(--dark);letter-spacing:-1.5px}
 .hero h1 span{color:var(--green)}
 .hero p{margin:16px 0 26px;color:#5a6d5e;font-size:17px;max-width:480px}
 .btn{padding:15px 26px;border-radius:100px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:10px}
-.btn-wa{background:var(--green);color:#fff;box-shadow:0 10px 20px rgba(11,77,42,.25)}
+.btn-wa{background:var(--green);color:#fff}
 .btn-quiz{background:#fff;border:1.5px solid #0B4D2A;color:#0B4D2A}
-.trust{display:flex;gap:30px;justify-content:center;padding:14px;background:#0E1E14;color:#D6E8D8;font-size:13px;flex-wrap:wrap}
-.section{padding:40px 6%}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.card-premium{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:22px;transition:.25s;cursor:pointer;display:block;text-decoration:none;color:inherit}
-.card-premium:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.trust{display:flex;gap:20px;justify-content:center;padding:14px;background:#0E1E14;color:#D6E8D8;font-size:13px;flex-wrap:wrap;width:100%}
+.section{padding:40px 6%;width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;width:100%}
+.card-premium{background:#fff;border:1px solid #EEF2EF;border-radius:20px;padding:22px;display:block;text-decoration:none;color:inherit}
 .top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
 .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center}
 .badge{margin-top:14px;display:inline-block;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;border:1px solid #e0e0e0}
 .badge-free{background:#E8F5E9;color:var(--green);border-color:#C8E6C9}
 .badge-action{background:#111;color:#fff}
-.img-box{width:100%;height:420px;background:radial-gradient(circle at 30% 20%, #E8F9E9 0%, #FFF7CC 70%);border-radius:32px;display:grid;place-items:center;position:relative}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.show{display:flex!important}
-.modal{background:#fff;border-radius:20px;padding:28px;max-width:400px;width:100%}
-.input{width:100%;padding:14px;border:1.5px solid #e5e5e5;border-radius:12px;margin-bottom:12px;font-size:14px;outline:none}
-.input:focus{border-color:var(--green)}
-.btn-login{width:100%;background:var(--green);color:#fff;padding:14px;border-radius:100px;border:none;font-weight:800;cursor:pointer}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:36px}.img-box{height:320px} nav{display:none}}
+.img-box{width:100%;height:420px;background:radial-gradient(circle at 30% 20%, #E8F9E9 0%, #FFF7CC 70%);border-radius:32px;display:grid;place-items:center}
+footer{width:100%;background:#0E1E14;color:#C8D9CA;padding:60px 6% 25px;margin-top:40px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:30px;width:100%}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:32px}.footer-grid{grid-template-columns:1fr 1fr}.img-box{height:300px}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr} nav{display:none}}
 </style>
 </head>
 <body>
 <!-- BANNER 1 - TOP -->
-<div style="text-align:center; padding:10px 0; background:#f5f5f5; position:sticky; top:0; z-index:9999;">
-<script>
-atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-</script>
+<div style="text-align:center; padding:10px 0; background:#f5f5f5; width:100%;">
+<script>atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
 <script src="https://www.highrevenueformat.com/883db4817d5e178b6cf1e171548f7d9f/invoke.js"></script>
 </div>
+
 <header>
-<div class="logo"><img src="logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></div>
+<a href="index.html" class="logo"><img src="logo.png" alt="logo"><div>Mr C Academy<br>Hub</div></a>
 <nav>
-<a href="index.html" style="color:var(--green);font-weight:700">Home</a>
-<a href="tma.html">TMA Booking</a>
+<a href="index.html">Home</a>
+<a href="tma.html">TMA</a>
 <a href="quiz.html">Quiz</a>
 <a href="past-questions.html">Past Questions</a>
-<a href="materials.html">Course Materials</a>
-<a href="summary.html">Comprehensive Summaries</a>
+<a href="materials.html">Materials</a>
+<a href="summary.html">Summaries</a>
 <a href="project.html">Project</a>
 <a href="resources.html">Resources</a>
-<a href="#" id="headerLoginBtn" class="login" onclick="openGlobalLogin(); return false;">Login</a>
-<span id="loggedInfo" style="display:none;font-size:13px;margin-left:6px"></span>
+<a href="#" class="login" onclick="openGlobalLogin(); return false;">Login</a>
 </nav>
 </header>
+
 <section class="hero">
 <div>
 <h1>Your #1 <span>NOUN</span><br>Success Partner</h1>
@@ -77,9 +73,49 @@ atOptions = { 'key' : '883db4817d5e178b6cf1e171548f7d9f', 'format' : 'iframe', '
 <a class="btn btn-quiz" href="quiz.html">Try 5 Free Questions →</a>
 </div>
 </div>
-<div><div class="img-box"><div style="text-align:center;padding:20px"><div style="font-size:80px">👨‍🎓</div><div style="font-size:24px;font-weight:800;color:#0B4D2A;margin-top:10px">10,000+<br>NOUN Students</div><div style="margin-top:10px;background:#fff;padding:10px 18px;border-radius:100px;display:inline-block;box-shadow:0 8px 20px rgba(0,0,0,.1);font-size:13px;font-weight:700">✅ Verified Success Partner</div></div></div></div>
+<div><div class="img-box"><div style="text-align:center;padding:20px"><div style="font-size:80px">👨‍🎓</div><div style="font-size:24px;font-weight:800;color:#0B4D2A;margin-top:10px">10,000+<br>NOUN Students</div></div></div></div>
 </section>
+
 <div class="trust"><span>✓ Trusted by 10,000+ NOUN Students</span><span>★ 4.8/5 Average Rating</span><span>◍ 24/7 Support on WhatsApp</span></div>
+
 <section class="section"><div class="grid">
-<a href="tma.html" class="card-premium">
-<div class="top"><div class="ic" style="background:#DCF8C6"><svg width="24" height="24" viewBox="0 0 448 512" fill="#25D366"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5
+<a href="tma.html" class="card-premium"><div class="top"><div class="ic" style="background:#DCF8C6">📝</div><h3>TMA Assistance</h3></div><p style="color:#666;font-size:14px">Book us for your TMA assistance.</p><span class="badge badge-action">Book Now</span></a>
+<a href="quiz.html" class="card-premium"><div class="top"><div class="ic" style="background:#FFF3C4">🎯</div><h3>CBT Quiz Practice</h3></div><p style="color:#666;font-size:14px">Attempt 5 free questions.</p><span class="badge badge-action">Try Free</span></a>
+<a href="past-questions.html" class="card-premium"><div class="top"><div class="ic" style="background:#E8F5E9">📁</div><h3>Past Questions</h3></div><p style="color:#666;font-size:14px">Original NOUN past questions 2015–2024.</p><span class="badge badge-free">FREE</span></a>
+<a href="materials.html" class="card-premium"><div class="top"><div class="ic" style="background:#E3F2FD">📚</div><h3>Course Materials</h3></div><p style="color:#666;font-size:14px">All NOUN e-courseware PDFs.</p><span class="badge badge-free">FREE</span></a>
+<a href="summary.html" class="card-premium"><div class="top"><div class="ic" style="background:#FFF3E0">📝</div><h3>Summaries</h3></div><p style="color:#666;font-size:14px">Premium 40+ pages summaries.</p><span class="badge">From ₦500</span></a>
+<a href="project.html" class="card-premium"><div class="top"><div class="ic" style="background:#F3E5F5">🎓</div><h3>Project Topics</h3></div><p style="color:#666;font-size:14px">Approved topics for your department.</p><span class="badge">100+ Topics</span></a>
+</div></section>
+
+<footer>
+<div class="footer-grid">
+<div>
+<div style="display:flex;align-items:center;gap:12px;font-weight:800;color:#fff;font-size:18px;margin-bottom:14px"><img src="logo.png" style="width:44px;height:44px;border-radius:12px;background:#fff"> Mr C Academy Hub</div>
+<p style="font-size:14px;line-height:1.6;color:#A8BEAB">Your #1 NOUN Success Partner. We help 10,000+ NOUN students pass TMA, Quizzes, Exams and Projects faster.</p>
+</div>
+<div><h4 style="color:#fff;margin-bottom:16px">QUICK LINKS</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+<a href="index.html" style="color:#A8BEAB;text-decoration:none">Home</a>
+<a href="tma.html" style="color:#A8BEAB;text-decoration:none">TMA Booking</a>
+<a href="quiz.html" style="color:#A8BEAB;text-decoration:none">Quiz</a>
+<a href="past-questions.html" style="color:#A8BEAB;text-decoration:none">Past Questions</a>
+</div></div>
+<div><h4 style="color:#fff;margin-bottom:16px">ACADEMICS</h4><div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+<a href="materials.html" style="color:#A8BEAB;text-decoration:none">Materials</a>
+<a href="summary.html" style="color:#A8BEAB;text-decoration:none">Summaries</a>
+<a href="project.html" style="color:#A8BEAB;text-decoration:none">Project</a>
+<a href="resources.html" style="color:#A8BEAB;text-decoration:none">Resources</a>
+</div></div>
+<div><h4 style="color:#fff;margin-bottom:16px">GET IN TOUCH</h4>
+<a href="https://wa.me/2349046023711?text=Hi%20Mr%20C" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 20px;border-radius:100px;text-decoration:none;font-weight:700;font-size:14px">
+<svg width="18" height="18" viewBox="0 0 448 512" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-184.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Chat on WhatsApp
+</a>
+</div>
+</div>
+<div style="border-top:1px solid #1E3A24;margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#7A9A7D"><span>© 2026 Mr C Academy Hub</span><span>All pages linked ✓ Full width ✓ WhatsApp linked ✓</span></div>
+</footer>
+
+<script src="auth.js"></script>
+<!-- BANNER 2 - BOTTOM -->
+<script src="https://pl31855543.profitableratecpmnetwork.com/81/d9/83/81d98344f2f95ced9cf7369e6e207293.js"></script>
+</body>
+</html>
